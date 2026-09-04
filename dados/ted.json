@@ -1,0 +1,346 @@
+{
+  "ted": {
+    "numero": "01/2026/SGE/SE/MINC",
+    "partes": "Universidade de Brasília × Ministério da Cultura",
+    "objeto": "Implantação de solução em software livre para integração, qualificação e disponibilização de dados e acervos culturais do Sistema Nacional de Cultura"
+  },
+  "origem": {
+    "relatorio": "3º Relatório Parcial",
+    "periodo": "maio a agosto de 2026",
+    "proximo_periodo": "setembro a novembro de 2026",
+    "apurado_em": "2026-08-31"
+  },
+  "metas": [
+    {
+      "num": "01",
+      "nome": "Diagnóstico e levantamento de bases",
+      "balanco": "consolidou o diagnóstico técnico e institucional em duas peças: o catálogo de fontes de dados, que descreve fonte a fonte o acervo que abastece a plataforma, e o mapeamento das perguntas do Eixo 2, que estabelece a ordem em que as bases foram incorporadas. As escutas qualificadas percorreram seis dos oito eixos do Plano, e a ingestão passou a quinze rotinas ativas.",
+      "encaminhamentos": [
+        "Expandir o mapeamento dos fluxos de dados aos demais eixos do Plano Nacional de Cultura, a partir do método já aplicado ao Eixo 2.",
+        "Definir a periodicidade de atualização da fonte hoje incorporada por carga pontual a partir de planilha, sem cadência pactuada.",
+        "Concluir a incorporação das bases do Eixo 1, articulada ao trabalho do grupo do Cultura em Números."
+      ]
+    },
+    {
+      "num": "02",
+      "nome": "Integração e jornada dos dados do PNC",
+      "balanco": "produziu os artefatos técnicos centrais da plataforma: a arquitetura em seus três níveis — lógica em operação, física proposta e de segurança —, o modelo integrado de dados nos níveis conceitual, lógico e físico, o modelo de governança assentado em qualidade verificada por teste, e o repositório público com as fichas de pipeline e os exemplos de uso. Sobre a camada semântica, doze métricas nomeadas traduzem o modelo em indicadores. Cada um desses conjuntos consta como anexo deste relatório.",
+      "encaminhamentos": [
+        "Realizar a reunião dedicada de requisitos dos painéis com a equipe do Ministério e construir os painéis sobre a camada semântica já constituída.",
+        "Reativar a cadeia do BB Ágil, completando o ciclo entre valor repassado e valor efetivamente pago.",
+        "Estabilizar a datação dos editais e constituir a dimensão única hoje desdobrada em duas cadeias paralelas.",
+        "Ampliar a documentação de coluna do SALIC a partir da exploração, hoje em 12,6% das colunas com definição de negócio herdada da origem.",
+        "Tratar a identidade de documento entre os domínios de cotas e de agentes, condição para o cruzamento entre ambos."
+      ]
+    },
+    {
+      "num": "03",
+      "nome": "Governança, adoção e transferência de tecnologia",
+      "balanco": "avançou na transferência de tecnologia. Produziram-se as diretrizes de infraestrutura para o motor de consulta distribuído, os scripts e procedimentos de implantação e o manual de evolução da plataforma, que registra as decisões de arquitetura tomadas e as dívidas conhecidas de quem for estendê-la. O motor de governança e autorização de acesso permanece especificado e não implantado, condição que decorre da inexistência de infraestrutura de produção.",
+      "encaminhamentos": [
+        "Implantar o motor de consulta distribuído e o componente de governança e autorização de acesso, conforme as diretrizes de infraestrutura produzidas no período.",
+        "Definir a topologia definitiva da infraestrutura do Ministério, observada a diretriz de que a totalidade dos dados nela resida.",
+        "Realizar as oficinas de capacitação previstas no Produto 4, não executadas no período, apoiadas nos documentos de implantação e de evolução."
+      ]
+    },
+    {
+      "num": "04",
+      "nome": "Agentes de IA para acesso qualificado aos dados",
+      "balanco": "deixou o estágio de estudo e passou à entrega funcional. O assistente de tradução de pergunta em linguagem natural para consulta estruturada opera de ponta a ponta desde agosto de 2026: uma pergunta em português produz as bases consultadas, a consulta, o gráfico, a explicação e o relatório. O desenvolvimento é conduzido por medição, com dezesseis decisões de arquitetura registradas e ambiente de avaliação versionado.",
+      "encaminhamentos": [
+        "Portar o assistente para o domínio de dados do Ministério, operação de configuração condicionada à completude dos metadados no catálogo institucional.",
+        "Prosseguir a calibração da recuperação por métricas, com as limitações de granularidade já registradas.",
+        "Conduzir avaliação técnica e ética do assistente junto às áreas competentes do Ministério."
+      ]
+    },
+    {
+      "num": "05",
+      "nome": "Governança de dados do SNIIC",
+      "balanco": "consolidou o catálogo institucional de dados alimentado por declaração versionada, realizou a oficina sobre governança descentralizada e conduziu a preparação do Datathon do Plano Nacional de Cultura — metodologia, logística e materiais —, além de avançar na versão analítica e visual do processo de modelagem da política pública de informação.",
+      "encaminhamentos": [
+        "Executar o conector entre o projeto de transformação e o catálogo institucional, hoje de carga manual, e avaliar a criação de rotina que a automatize.",
+        "Associar os termos do glossário aos ativos correspondentes no catálogo.",
+        "Realizar as oficinas prévias e o Datathon do Plano Nacional de Cultura.",
+        "Apresentar ao Comitê Gestor do SNIIC a proposta de modelagem da política pública de informação."
+      ]
+    },
+    {
+      "num": "06",
+      "nome": "Brasiliana Cultura",
+      "balanco": "concluiu o diagnóstico da gestão da informação dos acervos digitais das seis instituições do sistema MinC e o estudo comparativo de vocabulários que subsidia a arquitetura de informação do portal Brasiliana Cultura, hoje em construção. O diagnóstico estabeleceu a base empírica da priorização: Ibram, Iphan e Funarte concentram a totalidade dos itens hoje acessíveis para coleta computacional.",
+      "encaminhamentos": [
+        "Iniciar a coleta dos acervos do Ibram, do Iphan e da Funarte pela interface de programação nativa do Tainacan.",
+        "Implementar o crosswalk de metadados na própria rotina de coleta, e não apenas como referência documental.",
+        "Definir a periodicidade de sincronização incremental, a estratégia de identificadores persistentes e os critérios de tratamento de duplicidade.",
+        "Constituir frente de articulação institucional, pelo GT de Acervos do SNIIC, para a exposição de dados abertos das demais instituições."
+      ]
+    }
+  ],
+  "artefatos": [
+    {
+      "nome": "Arquitetura lógica",
+      "antes": "Parcial",
+      "agora": "Entregue",
+      "onde": "Figuras 1 e 2 do relatório · Meta 02 · Produto 2"
+    },
+    {
+      "nome": "Arquitetura física",
+      "antes": "Não entregue",
+      "agora": "Entregue como proposta",
+      "onde": "Figura 3 do relatório"
+    },
+    {
+      "nome": "Arquitetura de segurança",
+      "antes": "Não entregue",
+      "agora": "Entregue como proposta",
+      "onde": "Meta 02 · Produto 2 e Anexo VII"
+    },
+    {
+      "nome": "Diagramas dos fluxos de dados",
+      "antes": "Não entregue",
+      "agora": "Entregue",
+      "onde": "Anexo III · diagramas-de-fluxos-de-dados.pdf"
+    },
+    {
+      "nome": "Dicionário de dados",
+      "antes": "Falta artefato",
+      "agora": "Entregue",
+      "onde": "Anexo V · dicionario-de-dados.pdf"
+    },
+    {
+      "nome": "Metadados",
+      "antes": "Não entregue",
+      "agora": "Parcial",
+      "onde": "Catálogo institucional em operação; documento pendente de sincronização"
+    },
+    {
+      "nome": "Modelo conceitual, lógico e físico",
+      "antes": "Falta artefato",
+      "agora": "Entregue",
+      "onde": "Anexo IV · modelo-conceitual-logico-fisico.pdf"
+    },
+    {
+      "nome": "Matriz de papéis e responsabilidades",
+      "antes": "Não entregue",
+      "agora": "Não entregue",
+      "onde": "Declarado em elaboração na Meta 02 · Produto 4"
+    },
+    {
+      "nome": "Políticas de acesso",
+      "antes": "Parcial",
+      "agora": "Parcial",
+      "onde": "Convenções de referência no Anexo VII; motor de política não implantado"
+    },
+    {
+      "nome": "Critérios de qualidade dos dados",
+      "antes": "Não entregue",
+      "agora": "Entregue",
+      "onde": "Meta 02 · Produto 4 · criterios-de-qualidade-dos-dados.pdf"
+    },
+    {
+      "nome": "Documentação dos pipelines",
+      "antes": "Falta artefato",
+      "agora": "Entregue",
+      "onde": "fichas-de-pipeline.pdf · treze das dezesseis rotinas"
+    },
+    {
+      "nome": "Scripts de implantação",
+      "antes": "Não entregue",
+      "agora": "Entregue",
+      "onde": "Anexo VIII · scripts-de-implantacao.pdf"
+    },
+    {
+      "nome": "Exemplos de uso",
+      "antes": "Parcial",
+      "agora": "Entregue",
+      "onde": "Anexo VI · exemplos-de-uso.pdf"
+    },
+    {
+      "nome": "Manual de uso",
+      "antes": "Não entregue",
+      "agora": "Parcial",
+      "onde": "O Anexo VI é guia de consulta; manual do usuário final não produzido"
+    },
+    {
+      "nome": "Manual de manutenção",
+      "antes": "Não entregue",
+      "agora": "Não entregue",
+      "onde": "—"
+    },
+    {
+      "nome": "Manual de evolução",
+      "antes": "Não entregue",
+      "agora": "Entregue",
+      "onde": "Anexo IX · manual-de-evolucao.pdf"
+    },
+    {
+      "nome": "Procedimentos de implantação",
+      "antes": "Parcial",
+      "agora": "Entregue",
+      "onde": "Anexo VIII; roteiro de produção depende da infraestrutura"
+    },
+    {
+      "nome": "Evidências de testes e validação",
+      "antes": "Parcial",
+      "agora": "Parcial",
+      "onde": "858 verificações inventariadas; sem relatório de homologação"
+    },
+    {
+      "nome": "Relação de componentes e versões",
+      "antes": "Parcial",
+      "agora": "Parcial",
+      "onde": "Serviços e imagens no Anexo VIII; poetry.lock não versionado"
+    },
+    {
+      "nome": "Catálogo de fontes de dados",
+      "antes": "Não entregue",
+      "agora": "Entregue",
+      "onde": "Anexo I · catalogo-de-fontes-de-dados.pdf"
+    }
+  ],
+  "pendencias": [
+    {
+      "artefato": "Metadados",
+      "situacao": "Parcial",
+      "falta": "O documento de catálogo com a contagem correta",
+      "destrava": "Sincronizar o domínio de cotas com o catálogo institucional: dos 49 modelos do projeto, 23 constam do catálogo",
+      "quem": "UnB"
+    },
+    {
+      "artefato": "Políticas de acesso",
+      "situacao": "Parcial",
+      "falta": "As políticas propriamente ditas",
+      "destrava": "Implantar o componente de governança de acesso, que pressupõe fronteira administrativa única",
+      "quem": "MinC"
+    },
+    {
+      "artefato": "Manual de uso",
+      "situacao": "Parcial",
+      "falta": "Guia dirigido ao usuário final",
+      "destrava": "Definir o público e o ponto de acesso, hoje condicionados aos painéis",
+      "quem": "MinC"
+    },
+    {
+      "artefato": "Evidências de testes e validação",
+      "situacao": "Parcial",
+      "falta": "Relatório consolidado de homologação",
+      "destrava": "Ambiente de homologação com aceite formal",
+      "quem": "MinC"
+    },
+    {
+      "artefato": "Relação de componentes e versões",
+      "situacao": "Parcial",
+      "falta": "Inventário com versão de cada componente",
+      "destrava": "Versionar o poetry.lock, hoje fora do controle de versão",
+      "quem": "UnB"
+    },
+    {
+      "artefato": "Manual de manutenção",
+      "situacao": "Não entregue",
+      "falta": "O documento",
+      "destrava": "Ambiente de produção definido",
+      "quem": "MinC"
+    },
+    {
+      "artefato": "Matriz de papéis e responsabilidades",
+      "situacao": "Não entregue",
+      "falta": "O documento",
+      "destrava": "Declarado em elaboração na Meta 02 · Produto 4",
+      "quem": "MinC + UnB"
+    }
+  ],
+  "riscos": [
+    {
+      "risco": "Inexistência de infraestrutura de produção; o ambiente disponível é de homologação e a topologia definitiva permanece em estudo",
+      "probabilidade": "Alto",
+      "impacto": "Alto",
+      "mitigacao": "Arquitetura física e de segurança já propostas e documentadas; diretrizes de infraestrutura produzidas; diretriz firmada de que a totalidade dos dados resida na infraestrutura do Ministério"
+    },
+    {
+      "risco": "Documentação de coluna do SALIC parcial: 12,6% das 5.064 colunas com definição de negócio herdada do sistema de origem",
+      "probabilidade": "Alto",
+      "impacto": "Médio",
+      "mitigacao": "Documentação progressiva a partir da exploração; enriquecimento na camada silver; ausência de definição registrada explicitamente, e não omitida"
+    },
+    {
+      "risco": "Definição dos painéis condicionada a acordo prévio com o Ministério quanto ao que deve ser aferido",
+      "probabilidade": "Alto",
+      "impacto": "Médio",
+      "mitigacao": "Camada semântica construída à frente, de modo que cada indicador acordado se torne imediatamente disponível; reunião dedicada de requisitos já pactuada; aproveitamento das escolhas validadas no Cultura em Números"
+    },
+    {
+      "risco": "Cadeia do BB Ágil com extração ativa e transformação desabilitada, impedindo a conciliação entre valor repassado e valor pago",
+      "probabilidade": "Médio",
+      "impacto": "Alto",
+      "mitigacao": "Modelos escritos e versionados à espera da disponibilização da fonte; lacuna documentada de forma explícita no modelo de dados"
+    },
+    {
+      "risco": "Sincronização manual entre a plataforma e o catálogo institucional de metadados",
+      "probabilidade": "Médio",
+      "impacto": "Médio",
+      "mitigacao": "Cadeia de geração integralmente reexecutável e versionada; execução do conector e avaliação de rotina automatizada encaminhadas à equipe"
+    },
+    {
+      "risco": "Meta 06: 90% dos itens do sistema MinC indisponíveis para coleta computacional, com o volume concentrado numa única instituição",
+      "probabilidade": "Alto",
+      "impacto": "Alto",
+      "mitigacao": "Priorização das três instituições que hoje expõem interfaces abertas; frente de articulação institucional específica, a cargo do GT de Acervos do SNIIC"
+    },
+    {
+      "risco": "Custos, prazos e logística de produção do Datathon",
+      "probabilidade": "Médio",
+      "impacto": "Médio",
+      "mitigacao": "Planejamento, produção e mobilização conduzidos no período; materiais e programação em elaboração"
+    }
+  ],
+  "documentos": [
+    {
+      "arquivo": "catalogo-de-fontes-de-dados.pdf",
+      "anexo": "Anexo I"
+    },
+    {
+      "arquivo": "mapeamento-eixo-2-pnc.pdf",
+      "anexo": "Anexo II"
+    },
+    {
+      "arquivo": "diagramas-de-fluxos-de-dados.pdf",
+      "anexo": "Anexo III"
+    },
+    {
+      "arquivo": "modelo-conceitual-logico-fisico.pdf",
+      "anexo": "Anexo IV"
+    },
+    {
+      "arquivo": "dicionario-de-dados.pdf",
+      "anexo": "Anexo V"
+    },
+    {
+      "arquivo": "exemplos-de-uso.pdf",
+      "anexo": "Anexo VI"
+    },
+    {
+      "arquivo": "diretrizes-infraestrutura-trino.pdf",
+      "anexo": "Anexo VII"
+    },
+    {
+      "arquivo": "scripts-de-implantacao.pdf",
+      "anexo": "Anexo VIII"
+    },
+    {
+      "arquivo": "manual-de-evolucao.pdf",
+      "anexo": "Anexo IX"
+    },
+    {
+      "arquivo": "criterios-de-qualidade-dos-dados.pdf",
+      "anexo": "— (no repositório)"
+    },
+    {
+      "arquivo": "fichas-de-pipeline.pdf",
+      "anexo": "— (no repositório)"
+    },
+    {
+      "arquivo": "catalogo-de-metadados.pdf",
+      "anexo": "— (aguarda sincronização)"
+    }
+  ]
+}
