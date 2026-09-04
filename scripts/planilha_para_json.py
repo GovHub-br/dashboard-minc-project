@@ -89,9 +89,15 @@ def le_prazo(bruto):
     return ""  # não reconhecido: trata como sem prazo, nunca como atrasado
 
 
+# O código aceita um prefixo de letras porque planilhas convertem "1.1.1" em
+# data (1 de janeiro de 2001) sem avisar. Com "E1.1.1" isso não acontece, e a
+# rede de dependências sobrevive a um copiar-e-colar para o Sheets.
+PADRAO_CODIGO = re.compile(r"[A-Za-z]{0,3}\d+(\.\d+)*")
+
+
 def le_codigo(bruto):
     s = limpa(bruto).replace(",", ".")
-    return s if re.fullmatch(r"\d+(\.\d+)*", s) else ""
+    return s if PADRAO_CODIGO.fullmatch(s) else ""
 
 
 def le_dependencias(bruto):
@@ -99,7 +105,7 @@ def le_dependencias(bruto):
     if not s or s.lower() in ("-", "n/a", "não se aplica", "nao se aplica"):
         return []
     saida, vistos = [], set()
-    for parte in re.split(r"[;,/+]|\s+e\s+|\s+", s):
+    for parte in re.split(r"[;/+]|\s+e\s+|\s+", s):
         c = le_codigo(parte.strip(".,"))
         if c and c not in vistos:
             vistos.add(c)

@@ -16,7 +16,7 @@ sincronização diária faz o resto.
 | **Eixo** | Um dos 8 eixos do PNC, com o número na frente. Copie do modelo, sem alterar a grafia. | **sim** |
 | **Processo** | Agrupamento dentro do eixo. Pode ficar vazio. | não |
 | **Atividade** | Subdivisão do processo. Pode ficar vazio. | não |
-| **Cod_Task** | Código no formato `1.1.1`. É por ele que as dependências se ligam. | **sim** |
+| **Cod_Task** | Código no formato `E1.1.1`. É por ele que as dependências se ligam. **O `E` na frente é obrigatório** — veja abaixo. | **sim** |
 | **Tarefa** | O que precisa ser feito, em uma frase. | **sim** |
 | **Depende de** | Um ou mais `Cod_Task` que precisam terminar antes. Separe por `;`. | não |
 | **Responsável** | Quem toca. Pode ser pessoa, equipe ou instituição. | não |
@@ -28,16 +28,27 @@ sincronização diária faz o resto.
 ## O código da tarefa
 
 `Cod_Task` é o que amarra a rede de dependências. A convenção é
-`eixo.processo.tarefa`:
+`E` mais `eixo.bloco.tarefa`:
 
 ```
-1.1.1   eixo 1, primeiro bloco, primeira tarefa
-1.1.2   a tarefa seguinte do mesmo bloco
-1.2.1   um novo bloco dentro do eixo 1
+E1.1.1   eixo 1, primeiro bloco, primeira tarefa
+E1.1.2   a tarefa seguinte do mesmo bloco
+E1.2.1   um novo bloco dentro do eixo 1
 ```
 
 O número do eixo tem de bater com a coluna Eixo. Uma tarefa do eixo 3 começa
-com `3.`.
+com `E3.`.
+
+### Por que o `E` na frente
+
+Sem ele, o Google Sheets **converte o código em data, sem avisar**: digite
+`1.1.1` numa célula e ele vira `01/01/2001`; `7.2.1` vira `07/02/2001`. Como é
+o código que liga uma demanda à outra, essa conversão quebraria a rede de
+dependências inteira — e de forma silenciosa, porque a planilha continuaria
+parecendo correta.
+
+A letra na frente faz a planilha tratar o valor como texto. Qualquer prefixo de
+até três letras funciona; o modelo usa `E`, de eixo.
 
 ## Dependências
 
@@ -47,15 +58,15 @@ estiver concluído — e é assim que o painel identifica os gargalos.
 
 ```
 Cod_Task  Tarefa                          Depende de
-3.1.1     Levantar acervos do Iphan
-3.1.2     Definir o crosswalk              3.1.1
-3.1.3     Executar a coleta                3.1.2
+E3.1.1    Levantar acervos do Iphan
+E3.1.2    Definir o crosswalk              E3.1.1
+E3.1.3    Executar a coleta                E3.1.2
 ```
 
-Isso vira uma cadeia de três passos. Se `3.1.1` não estiver concluída, as duas
-seguintes aparecem travadas, e `3.1.1` aparece como gargalo.
+Isso vira uma cadeia de três passos. Se `E3.1.1` não estiver concluída, as duas
+seguintes aparecem travadas, e `E3.1.1` aparece como gargalo.
 
-Para depender de mais de uma: `3.1.1; 2.4.2`.
+Para depender de mais de uma: `E3.1.1; E2.4.2`.
 
 ## Prazos
 
@@ -101,8 +112,11 @@ começo o gráfico terá um ponto só.
 1. No Google Sheets: **Arquivo → Compartilhar → Publicar na web**.
 2. Escolha a aba, formato **CSV**, e publique.
 3. Copie o ID da planilha, que está na URL entre `/d/` e `/edit`.
-4. Coloque esse ID no workflow `.github/workflows/sync-planilha.yml`, no lugar
-   de `COLOQUE_AQUI_O_ID_DA_PLANILHA`.
+4. No repositório, em **Settings → Secrets and variables → Actions →
+   Variables**, crie a variável `PLANILHA_ID` com esse valor.
+
+Opcionalmente, crie também `PROXIMA_REUNIAO` (no formato `AAAA-MM-DD`) e
+`GUARDIA` — as duas preenchem o cartão de atualização do painel.
 
 A sincronização roda todo dia às 6h de Brasília e também pode ser disparada à
 mão em Actions → *Sincronizar planilha dos eixos* → *Run workflow*.
