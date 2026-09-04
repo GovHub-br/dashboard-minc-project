@@ -102,3 +102,83 @@ function legendaAcessivel(series) {
   );
   return `Evolução entre relatórios. ${partes.join('; ')}.`;
 }
+
+/* Matriz de riscos: probabilidade (y) por impacto (x), 3×3. */
+function desenhaRiscos(seletor, riscos) {
+  const alvo = d3.select(seletor);
+  alvo.selectAll('*').remove();
+
+  const NIVEIS = ['Baixo', 'Médio', 'Alto'];
+  const margem = { topo: 20, direita: 20, base: 52, esquerda: 90 };
+  const lado = 108;
+  const largura = margem.esquerda + lado * 3 + margem.direita;
+  const altura = margem.topo + lado * 3 + margem.base;
+
+  const svg = alvo.append('svg')
+    .attr('viewBox', `0 0 ${largura} ${altura}`)
+    .attr('width', '100%')
+    .attr('role', 'img')
+    .attr('aria-label',
+      `Matriz de riscos, ${riscos.length} riscos por probabilidade e impacto.`);
+
+  const x = (nivel) => margem.esquerda + NIVEIS.indexOf(nivel) * lado;
+  // Probabilidade cresce para cima.
+  const y = (nivel) => margem.topo + (2 - NIVEIS.indexOf(nivel)) * lado;
+
+  // Células, tingidas pela severidade combinada.
+  for (const p of NIVEIS) {
+    for (const i of NIVEIS) {
+      const severidade = NIVEIS.indexOf(p) + NIVEIS.indexOf(i);
+      svg.append('rect')
+        .attr('class', `celula sev-${severidade}`)
+        .attr('x', x(i)).attr('y', y(p))
+        .attr('width', lado - 4).attr('height', lado - 4)
+        .attr('rx', 6);
+    }
+  }
+
+  // Eixos.
+  NIVEIS.forEach((n) => {
+    svg.append('text').attr('class', 'rotulo-eixo')
+      .attr('x', x(n) + (lado - 4) / 2).attr('y', altura - 26)
+      .attr('text-anchor', 'middle').text(n);
+    svg.append('text').attr('class', 'rotulo-eixo')
+      .attr('x', margem.esquerda - 12).attr('y', y(n) + (lado - 4) / 2)
+      .attr('dy', '0.35em').attr('text-anchor', 'end').text(n);
+  });
+
+  svg.append('text').attr('class', 'titulo-eixo')
+    .attr('x', margem.esquerda + lado * 1.5).attr('y', altura - 6)
+    .attr('text-anchor', 'middle').text('Impacto');
+
+  svg.append('text').attr('class', 'titulo-eixo')
+    .attr('transform', `translate(18, ${margem.topo + lado * 1.5}) rotate(-90)`)
+    .attr('text-anchor', 'middle').text('Probabilidade');
+
+  // Pontos, numerados na ordem do relatório e distribuídos dentro da célula.
+  const porCelula = {};
+  riscos.forEach((r, indice) => {
+    const chave = `${r.probabilidade}|${r.impacto}`;
+    (porCelula[chave] = porCelula[chave] || []).push(indice);
+  });
+
+  Object.entries(porCelula).forEach(([chave, indices]) => {
+    const [prob, imp] = chave.split('|');
+    if (!NIVEIS.includes(prob) || !NIVEIS.includes(imp)) return;
+
+    const cx = x(imp) + (lado - 4) / 2;
+    const cy = y(prob) + (lado - 4) / 2;
+    const passo = 34;
+    const inicio = -((indices.length - 1) * passo) / 2;
+
+    indices.forEach((indice, ordem) => {
+      const g = svg.append('g')
+        .attr('transform', `translate(${cx + inicio + ordem * passo}, ${cy})`);
+      g.append('circle').attr('class', 'ponto-risco').attr('r', 15);
+      g.append('text').attr('class', 'numero-risco')
+        .attr('text-anchor', 'middle').attr('dy', '0.35em')
+        .text(indice + 1);
+      g.append('title').text(riscos[indice].risco);
+    });
+  });
+}

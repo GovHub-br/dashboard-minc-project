@@ -245,6 +245,122 @@ function montaArtefatos(acervo) {
   desenha();
 }
 
+/* ----------------------------------------------------------- cronograma */
+
+const ORDEM_DESTRAVA = ['MinC', 'MinC + UnB', 'UnB', '—'];
+
+function montaCronograma(acervo) {
+  const alvo = document.getElementById('lista-cronograma');
+  const total = acervo.metas.reduce((s, m) => s + m.encaminhamentos.length, 0);
+
+  const trilhas = acervo.metas
+    .filter((m) => m.encaminhamentos.length)
+    .map((m) => `
+      <article class="trilha-meta">
+        <h3><span class="numero-meta">Meta ${m.num}</span>${escapaHtml(m.nome)}</h3>
+        <ul>${m.encaminhamentos.map((e) => `<li>${escapaHtml(e)}</li>`).join('')}</ul>
+      </article>
+    `).join('');
+
+  // Pendências agrupadas por quem destrava.
+  const grupos = {};
+  for (const p of acervo.pendencias) {
+    (grupos[p.quem] = grupos[p.quem] || []).push(p);
+  }
+
+  const chaves = ORDEM_DESTRAVA.filter((k) => grupos[k]);
+  const soUnb = (grupos['UnB'] || []).length;
+  const naoSoUnb = acervo.pendencias.length - soUnb;
+
+  const blocos = chaves.map((quem) => `
+    <div class="grupo-destrava">
+      <span class="quem">Destrava: ${escapaHtml(quem)}</span>
+      ${grupos[quem].map((p) => `
+        <div class="pendencia">
+          <div class="titulo-pendencia">
+            ${escapaHtml(p.artefato)}
+            <span class="etiqueta ${classeDe(p.situacao)}">${escapaHtml(p.situacao)}</span>
+          </div>
+          <div class="detalhe"><strong>Falta:</strong> ${escapaHtml(p.falta)}</div>
+          <div class="detalhe"><strong>Destrava:</strong> ${escapaHtml(p.destrava)}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  alvo.innerHTML = `
+    <p class="secao-intro">
+      Os ${total} encaminhamentos registrados no relatório para o próximo
+      período avaliativo, e as ${acervo.pendencias.length} pendências do quadro
+      com o que destrava cada uma.
+    </p>
+    <span class="janela">${escapaHtml(acervo.origem.proximo_periodo)}</span>
+    ${trilhas}
+    <h3 class="subtitulo-secao">O que está pendente, e o que destrava</h3>
+    <p class="secao-intro">
+      ${naoSoUnb} das ${acervo.pendencias.length} pendências dependem de decisão
+      ou de infraestrutura do Ministério, isoladamente ou em conjunto com a
+      Universidade. As ${soUnb} restantes são de execução da equipe da UnB.
+    </p>
+    ${blocos}`;
+}
+
+/* ---------------------------------------------------------------- riscos */
+
+function montaRiscos(acervo) {
+  const alvo = document.getElementById('matriz-riscos');
+
+  const lista = acervo.riscos.map((r, i) => `
+    <article class="risco">
+      <div class="indice">${i + 1}</div>
+      <div>
+        <div class="texto-risco">${escapaHtml(r.risco)}</div>
+        <div class="grau">
+          Probabilidade ${escapaHtml(r.probabilidade.toLowerCase())} ·
+          impacto ${escapaHtml(r.impacto.toLowerCase())}
+        </div>
+        <div class="mitigacao">
+          <strong>Medida mitigadora:</strong> ${escapaHtml(r.mitigacao)}
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  alvo.innerHTML = `
+    <p class="secao-intro">
+      Os ${acervo.riscos.length} riscos identificados no período, com as medidas
+      mitigadoras já em andamento.
+    </p>
+    <div class="painel-riscos">
+      <div id="svg-riscos"></div>
+      <div>${lista}</div>
+    </div>`;
+
+  desenhaRiscos('#svg-riscos', acervo.riscos);
+}
+
+/* ------------------------------------------------------------ documentos */
+
+function montaDocumentos(acervo) {
+  const alvo = document.getElementById('lista-documentos');
+
+  const cartoes = acervo.documentos.map((d) => `
+    <div class="documento">
+      <code>${escapaHtml(d.arquivo)}</code>
+      <span class="anexo">${escapaHtml(d.anexo)}</span>
+    </div>
+  `).join('');
+
+  alvo.innerHTML = `
+    <p class="secao-intro">
+      Os ${acervo.documentos.length} documentos técnicos produzidos, versionados
+      no repositório público da plataforma. Todos são gerados a partir do código,
+      e não redigidos sobre ele — divergência entre documento e plataforma é
+      detectável, e corrigível na fonte.
+    </p>
+    <div class="grade-documentos">${cartoes}</div>`;
+}
+
 /* ------------------------------------------------------------- inicialização */
 
 async function inicia() {
@@ -255,6 +371,9 @@ async function inicia() {
     montaEvolucao(acervo);
     montaMetas(acervo);
     montaArtefatos(acervo);
+    montaCronograma(acervo);
+    montaRiscos(acervo);
+    montaDocumentos(acervo);
   } catch (erro) {
     console.error(erro);
     document.getElementById('grade-indicadores').innerHTML =
