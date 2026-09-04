@@ -1,0 +1,84 @@
+# Sincroniza a planilha dos 8 eixos do PNC com dados/eixos.json.
+#
+# PRÉ-REQUISITO, uma vez: publicar a planilha no Google Sheets
+# (Arquivo → Compartilhar → Publicar na web, formato CSV) e registrar o ID em
+# Settings → Secrets and variables → Actions → Variables, com o nome
+# PLANILHA_ID. O ID está na URL da planilha, entre /d/ e /edit.
+#
+# Sem essa variável o workflow encerra com aviso, sem falhar: é ausência de
+# configuração, não erro de código.
+name: Sincronizar planilha dos eixos
+
+on:
+  schedule:
+    # 6h de Brasília (UTC-3).
+    - cron: "0 9 * * *"
+  push:
+    branches: [main]
+    # Sem os dados na lista, o commit do próprio bot dispararia o workflow.
+    paths-ignore:
+      - "dados/eixos.json"
+      - "dados/historico.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sincroniza:
+    name: Baixar e converter
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verificar se a planilha está configurada
+        id: config
+        run: |
+          if [ -z "${{ vars.PLANILHA_ID }}" ]; then
+            echo "configurada=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::PLANILHA_ID não definida. Cadastre a variável em Settings → Secrets and variables → Actions → Variables. Veja planilha/COMO-PREENCHER.md."
+          else
+            echo "configurada=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Baixar a planilha
+        if: steps.config.outputs.configurada == 'true'
+        run: |
+          curl -sL --fail \
+            "https://docs.google.com/spreadsheets/d/${{ vars.PLANILHA_ID }}/export?format=csv" \
+            -o /tmp/planilha.csv
+          echo "Planilha baixada: $(wc -l < /tmp/planilha.csv) linhas."
+
+      - name: Converter para JSON
+        if: steps.config.outputs.configurada == 'true'
+        run: |
+          python3 scripts/planilha_para_json.py \
+            --csv /tmp/planilha.csv \
+            --out dados/eixos.json \
+            --historico dados/historico.json \
+            --proxima-reuniao "${{ vars.PROXIMA_REUNIAO }}" \
+            --guardia "${{ vars.GUARDIA }}"
+
+      - name: Rodar os testes
+        if: steps.config.outputs.configurada == 'true'
+        run: python3 -m unittest discover -s tests
+
+      - name: Commitar se houve mudança
+        if: steps.config.outputs.configurada == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados/eixos.json dados/historico.json
+          if git diff --cached --quiet; then
+            echo "Nada mudou desde a última sincronização."
+          else
+            git commit -m "chore: sincroniza planilha dos eixos [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+            git push
+            echo "Dados atualizados."
+          fi

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trabalho nos 8 Eixos do PNC — MinC</title>
+  <meta name="description"
+        content="Acompanhamento das demandas do Gov Hub nos oito eixos do Plano Nacional de Cultura 2026-2036.">
+  <link rel="stylesheet" href="assets/tema.css">
+  <link rel="stylesheet" href="assets/eixos.css">
+</head>
+<body>
+
+  <nav class="navegacao">
+    <div class="container">
+      <a href="index.html">Entregas do TED</a>
+      <a href="eixos.html" class="ativo" aria-current="page">Trabalho nos 8 eixos</a>
+    </div>
+  </nav>
+
+  <header class="topo">
+    <div class="container">
+      <p class="eyebrow">Plano Nacional de Cultura 2026&ndash;2036</p>
+      <h1>Trabalho nos 8 Eixos</h1>
+      <p>
+        As demandas conduzidas pelo Gov Hub em cada eixo do Plano, com a
+        situação de cada uma, o que depende do quê e o que está travado.
+      </p>
+      <p class="carimbo" id="carimbo"></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="secao" id="visao-geral" aria-labelledby="t-visao">
+      <div class="container">
+        <h2 id="t-visao" class="oculto-visual">Visão geral</h2>
+        <div class="grade-visao">
+          <article class="cartao" aria-labelledby="t-consolidado">
+            <h3 id="t-consolidado">Status consolidado</h3>
+            <div id="donut-status"></div>
+          </article>
+
+          <article class="cartao" aria-labelledby="t-por-eixo">
+            <h3 id="t-por-eixo">Progresso por eixo</h3>
+            <div id="barras-eixos"></div>
+          </article>
+
+          <article class="cartao" aria-labelledby="t-atualizacao">
+            <h3 id="t-atualizacao">Atualização</h3>
+            <div id="cartao-atualizacao"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="alertas" aria-labelledby="t-alertas">
+      <div class="container">
+        <h2 id="t-alertas" class="titulo-alerta">Alertas</h2>
+        <div id="lista-alertas"></div>
+      </div>
+    </section>
+
+    <section class="secao secao-alt" id="rede" aria-labelledby="t-rede">
+      <div class="container">
+        <h2 id="t-rede" class="titulo-rede">Rede de dependências das entregas</h2>
+        <div id="painel-rede"></div>
+      </div>
+    </section>
+
+    <section class="secao" id="evolucao-eixos" aria-labelledby="t-evolucao-eixos">
+      <div class="container">
+        <h2 id="t-evolucao-eixos">Evolução ao longo do tempo</h2>
+        <div id="painel-evolucao"></div>
+      </div>
+    </section>
+
+    <section class="secao secao-alt" id="demandas" aria-labelledby="t-demandas">
+      <div class="container">
+        <h2 id="t-demandas">Demandas por eixo</h2>
+        <div id="painel-demandas"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p id="rodape-origem"></p>
+      <p>
+        Projeto Gov Hub · Lab Livre · Faculdade do Gama, Universidade de Brasília
+        · <a href="https://github.com/GovHub-br/dashboard-minc-project">código-fonte</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/d3.v7.min.js"></script>
+  <script src="assets/graficos-eixos.js"></script>
+  <script src="assets/eixos.js"></script>
+</body>
+</html>

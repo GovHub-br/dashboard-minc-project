@@ -1,0 +1,29 @@
+{
+  "origem": {
+    "fonte": "Planilha dos 8 eixos do PNC",
+    "sincronizado_em": "2026-09-04T02:30:08+00:00",
+    "proxima_reuniao": "",
+    "guardia": ""
+  },
+  "rotulos_status": {
+    "concluido": "Concluído",
+    "em_andamento": "Em andamento",
+    "bloqueado": "Bloqueado",
+    "em_risco": "Em risco",
+    "nao_iniciado": "Não iniciado"
+  },
+  "resumo": {
+    "total": 0,
+    "por_status": {},
+    "progresso_medio": 0,
+    "travadas": 0,
+    "prontas": 0,
+    "encadeadas": 0,
+    "vinculos": 0,
+    "cadeia_mais_longa": 0,
+    "sem_prazo": 0,
+    "gargalo": null
+  },
+  "eixos": [],
+  "alertas": []
+}

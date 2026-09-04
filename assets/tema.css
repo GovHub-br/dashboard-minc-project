@@ -507,3 +507,33 @@ table.quadro .etiqueta {
   color: var(--primary-purple);
   white-space: nowrap;
 }
+
+/* ------------------------------------------------------------- navegação */
+
+.navegacao {
+  background: var(--text-strong);
+  padding: 0;
+}
+
+.navegacao .container {
+  display: flex;
+  gap: 4px;
+}
+
+.navegacao a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.navegacao a:hover { color: var(--bg-white); }
+
+.navegacao a.ativo {
+  color: var(--bg-white);
+  font-weight: 600;
+  border-bottom-color: var(--secondary-purple);
+}
