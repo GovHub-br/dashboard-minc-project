@@ -1,0 +1,29 @@
+# Verifica a consistência do acervo a cada alteração. Falha o CI em vez de
+# deixar publicar número que não fecha.
+name: Validação do acervo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  valida:
+    name: Consistência
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rodar os testes
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Validar o acervo
+        run: python3 scripts/valida.py
