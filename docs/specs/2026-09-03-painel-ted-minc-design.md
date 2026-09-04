@@ -156,8 +156,17 @@ como precisão e não como correção silenciosa. Corrigir o `conteudo.py` do
 
 ### 4.3 As seis metas
 
-Um cartão por meta, com o rótulo, o balanço do período em uma frase e o status agregado dos
-seus produtos. Clicar abre o detalhe: produtos, situação e lastro.
+Um cartão por meta, com o rótulo, o balanço do período extraído do capítulo de conclusões e
+a quantidade de encaminhamentos para o próximo período.
+
+**Sem detalhe por produto.** A matriz Meta × Produto exigiria a lista de produtos de cada
+uma das seis metas, e essa lista não existe em fonte estável: aparece no `ESQUELETO.md` —
+arquivo de trabalho, não o relatório — e apenas para as Metas 02 a 05. Construí-la à mão
+criaria justamente a segunda fonte da verdade que a seção 2 existe para evitar. O quadro dos
+20 artefatos (seção 4.4) já entrega a granularidade que o Ministério precisa, com lastro.
+
+Fica registrado como candidato a uma versão futura, se o TED ou o próximo relatório
+publicarem a matriz de produtos em forma citável.
 
 Meta 01 · Diagnóstico e mapeamento — Meta 02 · Integração e jornada dos dados do PNC —
 Meta 03 · Governança, adoção e transferência de tecnologia — Meta 04 · Agentes de IA —
