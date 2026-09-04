@@ -2,46 +2,46 @@ Prioridade	Eixo	Processo	Atividade	Cod_Task	Tarefa	Depende de	Responsável	Prazo
 Alta	1 · Gestão e Participação Social	Ingestão de dados	Siconfi	E1.1.1	Fazer a ingestão da API do Siconfi		UnB	18/09/2026	Em andamento
 Alta	1 · Gestão e Participação Social	Acesso ao dado	SIOP	E1.1.2	Viabilizar o acesso ao dado do SIOP		MinC	18/09/2026	Não iniciado
 Alta	1 · Gestão e Participação Social	Ingestão de dados	SIOP	E1.1.3	Fazer a ingestão dos dados do SIOP	E1.1.2	UnB	18/09/2026	Não iniciado
-Alta	1 · Gestão e Participação Social	Ingestão de dados	Enriquecimento	E1.1.4	Definir bases de enriquecimento para o eixo		UnB	18/09/2026	Não iniciado
+Alta	1 · Gestão e Participação Social	Ingestão de dados	Enriquecimento	E1.1.4	Definir bases de enriquecimento para o eixo		MinC + UnB	18/09/2026	Não iniciado
 Alta	1 · Gestão e Participação Social	Ingestão de dados	Enriquecimento	E1.1.5	Ingestão das bases de enriquecimento	E1.1.4	UnB	18/09/2026	Não iniciado
 Alta	1 · Gestão e Participação Social	Ingestão de dados	Enriquecimento	E1.1.6	Enriquecimento do datalakehouse	E1.1.5	UnB	18/09/2026	Não iniciado
 Alta	1 · Gestão e Participação Social	Pipeline	Reescrita	E1.2.1	Reescrita do pipeline do repositório cultura-em-numeros-eixo-1 na arquitetura do projeto	E1.1.1; E1.1.3	UnB	não definido ainda	Não iniciado
 Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.2	Desenvolvimento das Bronzes dos dados ingeridos	E1.2.1	UnB	não definido ainda	Não iniciado
 Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.3	Desenvolvimento das Silvers dos dados ingeridos	E1.2.2	UnB	não definido ainda	Não iniciado
-Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.4	Desenvolvimento das Golds dos dados ingeridos	E1.2.3	UnB	não definido ainda	Não iniciado
-Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.5	Cruzamento do datalakehouse com as bases de enriquecimento	E1.1.6; E1.2.4	UnB	não definido ainda	Não iniciado
-Média	1 · Gestão e Participação Social	Visualização	Dashboard	E1.3.1	Aplicação da visualização das Golds produzidas	E1.2.4		não definido ainda	Não iniciado
-Média	1 · Gestão e Participação Social	IA	Documentação	E1.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E1.2.4		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Análise de dados	Exploração	E2.1.1	Análise dos dados a partir das metas definidas			não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.1	Desenvolvimento das Bronzes dos dados ingeridos	E2.1.1		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.2	Desenvolvimento das Silvers dos dados ingeridos	E2.2.1		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.3	Desenvolvimento das Golds dos dados ingeridos	E2.2.2		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Visualização	Dashboard	E2.3.1	Aplicação da visualização das Golds produzidas	E2.2.3		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	IA	Documentação	E2.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E2.2.3		não definido ainda	Não iniciado
-Alta	2 · Fomento à Cultura	Validação	Oficina	E2.5.1	Oficina de discussão e validação do que foi produzido	E2.3.1		não definido ainda	Não iniciado
-Alta	3 · Patrimônio e Memória	Definição de escopo	Discussão	E3.1.1	Definição de metas e objetivos do eixo para guiar exploração			não definido ainda	Não iniciado
-Alta	4 · Formação	Definição de escopo	Discussão	E4.1.1	Definição de metas e objetivos do eixo para guiar exploração			não definido ainda	Não iniciado
-Alta	4 · Formação	Ingestão de dados	Fonte a definir	E4.2.1	Ingestão da fonte de dados do eixo	E4.1.1		não definido ainda	Não iniciado
-Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.2	Definir bases de enriquecimento para o eixo	E4.1.1		não definido ainda	Não iniciado
-Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.3	Ingestão das bases de enriquecimento	E4.2.2		não definido ainda	Não iniciado
-Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.4	Enriquecimento do datalakehouse	E4.2.3		não definido ainda	Não iniciado
-Alta	4 · Formação	Pipeline	Transformação	E4.3.1	Desenvolvimento das Bronzes dos dados ingeridos	E4.2.1		não definido ainda	Não iniciado
-Alta	4 · Formação	Pipeline	Transformação	E4.3.2	Desenvolvimento das Silvers dos dados ingeridos	E4.3.1		não definido ainda	Não iniciado
-Alta	4 · Formação	Pipeline	Transformação	E4.3.3	Desenvolvimento das Golds dos dados ingeridos	E4.3.2		não definido ainda	Não iniciado
-Alta	4 · Formação	Pipeline	Transformação	E4.3.4	Cruzamento do datalakehouse com as bases de enriquecimento	E4.2.4; E4.3.3		não definido ainda	Não iniciado
-Alta	4 · Formação	Visualização	Dashboard	E4.4.1	Aplicação da visualização das Golds produzidas	E4.3.3		não definido ainda	Não iniciado
-Alta	4 · Formação	IA	Documentação	E4.5.1	Documentação de cada etapa de transformação do padrão da camada semântica	E4.3.3		não definido ainda	Não iniciado
-Alta	5 · Infraestrutura, Equipamentos e Espaços Culturais	Definição de escopo	Discussão	E5.1.1	Definição de metas e objetivos do eixo para guiar exploração			não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Acesso ao dado	RAIS	E6.1.1	Viabilizar o acesso ao dado da RAIS			não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	RAIS	E6.1.2	Fazer a ingestão dos dados da RAIS	E6.1.1		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.3	Definir bases de enriquecimento para o eixo			não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.4	Ingestão das bases de enriquecimento	E6.1.3		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.5	Enriquecimento do datalakehouse	E6.1.4		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.1	Desenvolvimento das Bronzes dos dados ingeridos	E6.1.2		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.2	Desenvolvimento das Silvers dos dados ingeridos	E6.2.1		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.3	Desenvolvimento das Golds dos dados ingeridos	E6.2.2		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.4	Cruzamento do datalakehouse com as bases de enriquecimento	E6.1.5; E6.2.3		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Visualização	Dashboard	E6.3.1	Aplicação da visualização das Golds produzidas	E6.2.3		não definido ainda	Não iniciado
-Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	IA	Documentação	E6.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E6.2.3		não definido ainda	Não iniciado
-Alta	7 · Cultura, Bem Viver e Ação Climática	Definição de escopo	Discussão	E7.1.1	Definição de metas e objetivos do eixo para guiar exploração			não definido ainda	Não iniciado
-Alta	8 · Cultura Digital e Direitos Digitais	Definição de escopo	Discussão	E8.1.1	Definição de metas e objetivos do eixo para guiar exploração			não definido ainda	Não iniciado
+Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.4	Cruzamento do datalakehouse com as bases de enriquecimento	E1.1.6; E1.2.3	UnB	não definido ainda	Não iniciado
+Média	1 · Gestão e Participação Social	Pipeline	Transformação	E1.2.5	Desenvolvimento das Golds dos dados ingeridos	E1.2.4	UnB	não definido ainda	Não iniciado
+Média	1 · Gestão e Participação Social	Visualização	Dashboard	E1.3.1	Aplicação da visualização das Golds produzidas	E1.2.5	UnB	não definido ainda	Não iniciado
+Média	1 · Gestão e Participação Social	IA	Documentação	E1.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E1.2.5	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Análise de dados	Exploração	E2.1.1	Análise dos dados a partir das metas definidas		UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.1	Desenvolvimento das Bronzes dos dados ingeridos	E2.1.1	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.2	Desenvolvimento das Silvers dos dados ingeridos	E2.2.1	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Pipeline	Transformação	E2.2.3	Desenvolvimento das Golds dos dados ingeridos	E2.2.2	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Visualização	Dashboard	E2.3.1	Aplicação da visualização das Golds produzidas	E2.2.3	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	IA	Documentação	E2.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E2.2.3	UnB	não definido ainda	Não iniciado
+Alta	2 · Fomento à Cultura	Validação	Oficina	E2.5.1	Oficina de discussão e validação do que foi produzido	E2.3.1	MinC + UnB	não definido ainda	Não iniciado
+Alta	3 · Patrimônio e Memória	Definição de escopo	Discussão	E3.1.1	Definição de metas e objetivos do eixo para guiar exploração		MinC + UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Definição de escopo	Discussão	E4.1.1	Definição de metas e objetivos do eixo para guiar exploração		MinC + UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Ingestão de dados	Fonte a definir	E4.2.1	Ingestão da fonte de dados do eixo	E4.1.1	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.2	Definir bases de enriquecimento para o eixo	E4.1.1	MinC + UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.3	Ingestão das bases de enriquecimento	E4.2.2	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Ingestão de dados	Enriquecimento	E4.2.4	Enriquecimento do datalakehouse	E4.2.3	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Pipeline	Transformação	E4.3.1	Desenvolvimento das Bronzes dos dados ingeridos	E4.2.1	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Pipeline	Transformação	E4.3.2	Desenvolvimento das Silvers dos dados ingeridos	E4.3.1	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Pipeline	Transformação	E4.3.3	Cruzamento do datalakehouse com as bases de enriquecimento	E4.2.4; E4.3.2	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Pipeline	Transformação	E4.3.4	Desenvolvimento das Golds dos dados ingeridos	E4.3.3	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	Visualização	Dashboard	E4.4.1	Aplicação da visualização das Golds produzidas	E4.3.4	UnB	não definido ainda	Não iniciado
+Alta	4 · Formação	IA	Documentação	E4.5.1	Documentação de cada etapa de transformação do padrão da camada semântica	E4.3.4	UnB	não definido ainda	Não iniciado
+Alta	5 · Infraestrutura, Equipamentos e Espaços Culturais	Definição de escopo	Discussão	E5.1.1	Definição de metas e objetivos do eixo para guiar exploração		MinC + UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Acesso ao dado	RAIS	E6.1.1	Viabilizar o acesso ao dado da RAIS		MinC	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	RAIS	E6.1.2	Fazer a ingestão dos dados da RAIS	E6.1.1	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.3	Definir bases de enriquecimento para o eixo		MinC + UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.4	Ingestão das bases de enriquecimento	E6.1.3	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Ingestão de dados	Enriquecimento	E6.1.5	Enriquecimento do datalakehouse	E6.1.4	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.1	Desenvolvimento das Bronzes dos dados ingeridos	E6.1.2	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.2	Desenvolvimento das Silvers dos dados ingeridos	E6.2.1	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.3	Cruzamento do datalakehouse com as bases de enriquecimento	E6.1.5; E6.2.2	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Pipeline	Transformação	E6.2.4	Desenvolvimento das Golds dos dados ingeridos	E6.2.3	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	Visualização	Dashboard	E6.3.1	Aplicação da visualização das Golds produzidas	E6.2.4	UnB	não definido ainda	Não iniciado
+Alta	6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social	IA	Documentação	E6.4.1	Documentação de cada etapa de transformação do padrão da camada semântica	E6.2.4	UnB	não definido ainda	Não iniciado
+Alta	7 · Cultura, Bem Viver e Ação Climática	Definição de escopo	Discussão	E7.1.1	Definição de metas e objetivos do eixo para guiar exploração		MinC + UnB	não definido ainda	Não iniciado
+Alta	8 · Cultura Digital e Direitos Digitais	Definição de escopo	Discussão	E8.1.1	Definição de metas e objetivos do eixo para guiar exploração		MinC + UnB	não definido ainda	Não iniciado
