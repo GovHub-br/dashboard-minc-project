@@ -13,6 +13,11 @@ function escapa(texto) {
   return div.innerHTML;
 }
 
+/* Plural simples: o painel é institucional, "1 cadeia(s)" não passa. */
+function plural(n, singular, plural_) {
+  return `${n} ${n === 1 ? singular : plural_}`;
+}
+
 function porExtenso(iso) {
   if (!iso) return '';
   const [ano, mes, dia] = iso.slice(0, 10).split('-');
@@ -36,8 +41,10 @@ async function carregaJson(caminho) {
 function montaCabecalho(dados) {
   const o = dados.origem;
   const r = dados.resumo;
+  const nEixos = dados.eixos.length;
   document.getElementById('carimbo').textContent =
-    `${r.total} demandas em ${dados.eixos.length} eixos · ` +
+    `${plural(r.total, 'demanda', 'demandas')} em ` +
+    `${plural(nEixos, 'eixo', 'eixos')} · ` +
     `sincronizado em ${porExtenso(o.sincronizado_em)}.`;
 
   document.getElementById('rodape-origem').textContent =
@@ -301,7 +308,9 @@ function montaRede(dados) {
     ['Prontas para iniciar', r.prontas, 'pré-requisitos cumpridos, execução liberada', 'verde'],
     ['Cadeia mais longa', `${r.cadeia_mais_longa} passos`, 'maior sequência de entregas em série', 'roxo'],
     ['Principal gargalo', r.gargalo ? r.gargalo.cod : '—',
-      r.gargalo ? `segura ${r.gargalo.segura} entrega(s) · ${r.gargalo.resp || 'sem responsável'}` : 'nenhum',
+      r.gargalo
+        ? `segura ${plural(r.gargalo.segura, 'entrega', 'entregas')} · ${r.gargalo.resp || 'sem responsável'}`
+        : 'nenhum',
       'laranja'],
   ];
 
@@ -310,7 +319,7 @@ function montaRede(dados) {
   alvo.innerHTML = `
     <p class="secao-intro">
       ${r.encadeadas} das ${r.total} demandas estão encadeadas em
-      ${cadeias.length} cadeia(s) de pré-requisitos. Cada seta liga uma demanda
+      ${plural(cadeias.length, 'cadeia', 'cadeias')} de pré-requisitos. Cada seta liga uma demanda
       ao que precisa acontecer antes dela —
       <strong class="destaque-vermelho">setas vermelhas tracejadas</strong>
       apontam onde o fluxo está parado.
@@ -486,7 +495,7 @@ function montaEvolucao(dados, historico) {
     <p class="secao-intro">
       ${unico
         ? 'Primeira medição registrada. A série se forma a cada sincronização — amanhã haverá dois pontos.'
-        : `${retratos.length} medições, de ${curta(retratos[0].data)} a ${curta(retratos[retratos.length - 1].data)}.`}
+        : `${plural(retratos.length, 'medição', 'medições')}, de ${curta(retratos[0].data)} a ${curta(retratos[retratos.length - 1].data)}.`}
     </p>
     <div class="grade-evolucao">
       <article class="cartao">

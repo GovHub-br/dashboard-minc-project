@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-09-04T02:30:08+00:00",
+    "sincronizado_em": "2026-09-04T02:39:28+00:00",
     "proxima_reuniao": "",
     "guardia": ""
   },
@@ -13,17 +13,94 @@
     "nao_iniciado": "Não iniciado"
   },
   "resumo": {
-    "total": 0,
-    "por_status": {},
-    "progresso_medio": 0,
-    "travadas": 0,
+    "total": 3,
+    "por_status": {
+      "nao_iniciado": 3
+    },
+    "progresso_medio": 0.0,
+    "travadas": 1,
     "prontas": 0,
-    "encadeadas": 0,
-    "vinculos": 0,
-    "cadeia_mais_longa": 0,
-    "sem_prazo": 0,
-    "gargalo": null
+    "encadeadas": 3,
+    "vinculos": 2,
+    "cadeia_mais_longa": 2,
+    "sem_prazo": 3,
+    "gargalo": {
+      "cod": "E1.1.1",
+      "tarefa": "Ingestão do SICONFI",
+      "segura": 1,
+      "resp": ""
+    }
   },
-  "eixos": [],
+  "eixos": [
+    {
+      "id": 1,
+      "nome": "Gestão e Participação Social",
+      "total": 3,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 3
+      },
+      "tarefas": [
+        {
+          "cod": "E1.1.1",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de fontes",
+          "atividade": "",
+          "tarefa": "Ingestão do SICONFI",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E1.1.2",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de fontes",
+          "atividade": "",
+          "tarefa": "Ingestão do SIOP",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E1.1.3",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de fontes",
+          "atividade": "",
+          "tarefa": "Reescrita do pipeline na arquitetura do projeto",
+          "depende_de": [
+            "E1.1.1",
+            "E1.1.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    }
+  ],
   "alertas": []
 }

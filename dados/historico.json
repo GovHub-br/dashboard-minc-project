@@ -2,10 +2,18 @@
   "retratos": [
     {
       "data": "2026-09-04",
-      "total": 0,
-      "por_status": {},
-      "progresso_medio": 0,
-      "por_eixo": []
+      "total": 3,
+      "por_status": {
+        "nao_iniciado": 3
+      },
+      "progresso_medio": 0.0,
+      "por_eixo": [
+        {
+          "id": 1,
+          "progresso": 0.0,
+          "total": 3
+        }
+      ]
     }
   ]
 }

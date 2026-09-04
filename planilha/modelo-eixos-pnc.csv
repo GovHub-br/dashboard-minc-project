@@ -1,10 +1,4 @@
 Prioridade,Eixo,Processo,Atividade,Cod_Task,Tarefa,Depende de,Responsável,Prazo,Status
-Alta,1 · Gestão e Participação Social,,,E1.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Média,1 · Gestão e Participação Social,,,E1.1.2,Exemplo de tarefa que só começa depois da anterior,E1.1.1,,não definido ainda,Não iniciado
-Alta,2 · Fomento à Cultura,,,E2.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,3 · Patrimônio e Memória,,,E3.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,4 · Formação,,,E4.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,"5 · Infraestrutura, Equipamentos e Espaços Culturais",,,E5.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,"6 · Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",,,E6.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,"7 · Cultura, Bem Viver e Ação Climática",,,E7.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
-Alta,8 · Cultura Digital e Direitos Digitais,,,E8.1.1,Substituir por uma demanda real deste eixo,,,não definido ainda,Não iniciado
+Alta,1 · Gestão e Participação Social,Ingestão de fontes,,E1.1.1,Ingestão do SICONFI,,,não definido ainda,Não iniciado
+Alta,1 · Gestão e Participação Social,Ingestão de fontes,,E1.1.2,Ingestão do SIOP,,,não definido ainda,Não iniciado
+Alta,1 · Gestão e Participação Social,Ingestão de fontes,,E1.1.3,Reescrita do pipeline na arquitetura do projeto,E1.1.1; E1.1.2,,não definido ainda,Não iniciado
