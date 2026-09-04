@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-09-04T02:39:28+00:00",
+    "sincronizado_em": "2026-09-04T03:05:09+00:00",
     "proxima_reuniao": "",
     "guardia": ""
   },
@@ -13,21 +13,22 @@
     "nao_iniciado": "Não iniciado"
   },
   "resumo": {
-    "total": 3,
+    "total": 46,
     "por_status": {
-      "nao_iniciado": 3
+      "em_andamento": 1,
+      "nao_iniciado": 45
     },
-    "progresso_medio": 0.0,
-    "travadas": 1,
+    "progresso_medio": 1.1,
+    "travadas": 35,
     "prontas": 0,
-    "encadeadas": 3,
-    "vinculos": 2,
-    "cadeia_mais_longa": 2,
-    "sem_prazo": 3,
+    "encadeadas": 42,
+    "vinculos": 39,
+    "cadeia_mais_longa": 7,
+    "sem_prazo": 40,
     "gargalo": {
-      "cod": "E1.1.1",
-      "tarefa": "Ingestão do SICONFI",
-      "segura": 1,
+      "cod": "E4.1.1",
+      "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+      "segura": 10,
       "resp": ""
     }
   },
@@ -35,38 +36,289 @@
     {
       "id": 1,
       "nome": "Gestão e Participação Social",
-      "total": 3,
+      "total": 13,
       "concluidas": 0,
-      "progresso": 0.0,
+      "progresso": 3.8,
       "por_status": {
-        "nao_iniciado": 3
+        "em_andamento": 1,
+        "nao_iniciado": 12
       },
       "tarefas": [
         {
           "cod": "E1.1.1",
           "eixo": 1,
           "eixo_nome": "Gestão e Participação Social",
-          "processo": "Ingestão de fontes",
-          "atividade": "",
-          "tarefa": "Ingestão do SICONFI",
+          "processo": "Ingestão de dados",
+          "atividade": "Siconfi",
+          "tarefa": "Fazer a ingestão da API do Siconfi",
           "depende_de": [],
-          "resp": "",
-          "prazo": "",
-          "status": "nao_iniciado",
+          "resp": "UnB",
+          "prazo": "2026-09-18",
+          "status": "em_andamento",
           "prioridade": "alta",
-          "progresso": 0,
+          "progresso": 50,
           "passo": 0,
           "travada": false,
           "pronta": false,
-          "segura": 1
+          "segura": 7
         },
         {
           "cod": "E1.1.2",
           "eixo": 1,
           "eixo_nome": "Gestão e Participação Social",
-          "processo": "Ingestão de fontes",
-          "atividade": "",
-          "tarefa": "Ingestão do SIOP",
+          "processo": "Acesso ao dado",
+          "atividade": "SIOP",
+          "tarefa": "Viabilizar o acesso ao dado do SIOP",
+          "depende_de": [],
+          "resp": "MinC",
+          "prazo": "2026-09-18",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 8
+        },
+        {
+          "cod": "E1.1.4",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Definir bases de enriquecimento para o eixo",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-09-18",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E1.1.3",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de dados",
+          "atividade": "SIOP",
+          "tarefa": "Fazer a ingestão dos dados do SIOP",
+          "depende_de": [
+            "E1.1.2"
+          ],
+          "resp": "UnB",
+          "prazo": "2026-09-18",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 7
+        },
+        {
+          "cod": "E1.1.5",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Ingestão das bases de enriquecimento",
+          "depende_de": [
+            "E1.1.4"
+          ],
+          "resp": "UnB",
+          "prazo": "2026-09-18",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 2
+        },
+        {
+          "cod": "E1.1.6",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Enriquecimento do datalakehouse",
+          "depende_de": [
+            "E1.1.5"
+          ],
+          "resp": "UnB",
+          "prazo": "2026-09-18",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E1.2.1",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Reescrita",
+          "tarefa": "Reescrita do pipeline do repositório cultura-em-numeros-eixo-1 na arquitetura do projeto",
+          "depende_de": [
+            "E1.1.1",
+            "E1.1.3"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 6
+        },
+        {
+          "cod": "E1.2.2",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Bronzes dos dados ingeridos",
+          "depende_de": [
+            "E1.2.1"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 3,
+          "travada": true,
+          "pronta": false,
+          "segura": 5
+        },
+        {
+          "cod": "E1.2.3",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Silvers dos dados ingeridos",
+          "depende_de": [
+            "E1.2.2"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 4,
+          "travada": true,
+          "pronta": false,
+          "segura": 4
+        },
+        {
+          "cod": "E1.2.4",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds dos dados ingeridos",
+          "depende_de": [
+            "E1.2.3"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E1.2.5",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Cruzamento do datalakehouse com as bases de enriquecimento",
+          "depende_de": [
+            "E1.1.6",
+            "E1.2.4"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 6,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E1.3.1",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Visualização",
+          "atividade": "Dashboard",
+          "tarefa": "Aplicação da visualização das Golds produzidas",
+          "depende_de": [
+            "E1.2.4"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 6,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E1.4.1",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "IA",
+          "atividade": "Documentação",
+          "tarefa": "Documentação de cada etapa de transformação do padrão da camada semântica",
+          "depende_de": [
+            "E1.2.4"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 6,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Fomento à Cultura",
+      "total": 7,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 7
+      },
+      "tarefas": [
+        {
+          "cod": "E2.1.1",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Análise de dados",
+          "atividade": "Exploração",
+          "tarefa": "Análise dos dados a partir das metas definidas",
           "depende_de": [],
           "resp": "",
           "prazo": "",
@@ -76,18 +328,17 @@
           "passo": 0,
           "travada": false,
           "pronta": false,
-          "segura": 1
+          "segura": 6
         },
         {
-          "cod": "E1.1.3",
-          "eixo": 1,
-          "eixo_nome": "Gestão e Participação Social",
-          "processo": "Ingestão de fontes",
-          "atividade": "",
-          "tarefa": "Reescrita do pipeline na arquitetura do projeto",
+          "cod": "E2.2.1",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Bronzes dos dados ingeridos",
           "depende_de": [
-            "E1.1.1",
-            "E1.1.2"
+            "E2.1.1"
           ],
           "resp": "",
           "prazo": "",
@@ -96,6 +347,686 @@
           "progresso": 0,
           "passo": 1,
           "travada": true,
+          "pronta": false,
+          "segura": 5
+        },
+        {
+          "cod": "E2.2.2",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Silvers dos dados ingeridos",
+          "depende_de": [
+            "E2.2.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 4
+        },
+        {
+          "cod": "E2.2.3",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds dos dados ingeridos",
+          "depende_de": [
+            "E2.2.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 3,
+          "travada": true,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E2.3.1",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Visualização",
+          "atividade": "Dashboard",
+          "tarefa": "Aplicação da visualização das Golds produzidas",
+          "depende_de": [
+            "E2.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 4,
+          "travada": true,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E2.4.1",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "IA",
+          "atividade": "Documentação",
+          "tarefa": "Documentação de cada etapa de transformação do padrão da camada semântica",
+          "depende_de": [
+            "E2.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 4,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E2.5.1",
+          "eixo": 2,
+          "eixo_nome": "Fomento à Cultura",
+          "processo": "Validação",
+          "atividade": "Oficina",
+          "tarefa": "Oficina de discussão e validação do que foi produzido",
+          "depende_de": [
+            "E2.3.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Patrimônio e Memória",
+      "total": 1,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 1
+      },
+      "tarefas": [
+        {
+          "cod": "E3.1.1",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Definição de escopo",
+          "atividade": "Discussão",
+          "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Formação",
+      "total": 11,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 11
+      },
+      "tarefas": [
+        {
+          "cod": "E4.1.1",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Definição de escopo",
+          "atividade": "Discussão",
+          "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 10
+        },
+        {
+          "cod": "E4.2.1",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Ingestão de dados",
+          "atividade": "Fonte a definir",
+          "tarefa": "Ingestão da fonte de dados do eixo",
+          "depende_de": [
+            "E4.1.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 6
+        },
+        {
+          "cod": "E4.2.2",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Definir bases de enriquecimento para o eixo",
+          "depende_de": [
+            "E4.1.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E4.2.3",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Ingestão das bases de enriquecimento",
+          "depende_de": [
+            "E4.2.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 2
+        },
+        {
+          "cod": "E4.3.1",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Bronzes dos dados ingeridos",
+          "depende_de": [
+            "E4.2.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 5
+        },
+        {
+          "cod": "E4.2.4",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Enriquecimento do datalakehouse",
+          "depende_de": [
+            "E4.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 3,
+          "travada": true,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E4.3.2",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Silvers dos dados ingeridos",
+          "depende_de": [
+            "E4.3.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 3,
+          "travada": true,
+          "pronta": false,
+          "segura": 4
+        },
+        {
+          "cod": "E4.3.3",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds dos dados ingeridos",
+          "depende_de": [
+            "E4.3.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 4,
+          "travada": true,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E4.3.4",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Cruzamento do datalakehouse com as bases de enriquecimento",
+          "depende_de": [
+            "E4.2.4",
+            "E4.3.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E4.4.1",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Visualização",
+          "atividade": "Dashboard",
+          "tarefa": "Aplicação da visualização das Golds produzidas",
+          "depende_de": [
+            "E4.3.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E4.5.1",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "IA",
+          "atividade": "Documentação",
+          "tarefa": "Documentação de cada etapa de transformação do padrão da camada semântica",
+          "depende_de": [
+            "E4.3.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+      "total": 1,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 1
+      },
+      "tarefas": [
+        {
+          "cod": "E5.1.1",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Definição de escopo",
+          "atividade": "Discussão",
+          "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+      "total": 11,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 11
+      },
+      "tarefas": [
+        {
+          "cod": "E6.1.1",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Acesso ao dado",
+          "atividade": "RAIS",
+          "tarefa": "Viabilizar o acesso ao dado da RAIS",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 7
+        },
+        {
+          "cod": "E6.1.3",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Definir bases de enriquecimento para o eixo",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E6.1.2",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Ingestão de dados",
+          "atividade": "RAIS",
+          "tarefa": "Fazer a ingestão dos dados da RAIS",
+          "depende_de": [
+            "E6.1.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 6
+        },
+        {
+          "cod": "E6.1.4",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Ingestão das bases de enriquecimento",
+          "depende_de": [
+            "E6.1.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 2
+        },
+        {
+          "cod": "E6.1.5",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Ingestão de dados",
+          "atividade": "Enriquecimento",
+          "tarefa": "Enriquecimento do datalakehouse",
+          "depende_de": [
+            "E6.1.4"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E6.2.1",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Bronzes dos dados ingeridos",
+          "depende_de": [
+            "E6.1.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 2,
+          "travada": true,
+          "pronta": false,
+          "segura": 5
+        },
+        {
+          "cod": "E6.2.2",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Silvers dos dados ingeridos",
+          "depende_de": [
+            "E6.2.1"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 3,
+          "travada": true,
+          "pronta": false,
+          "segura": 4
+        },
+        {
+          "cod": "E6.2.3",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds dos dados ingeridos",
+          "depende_de": [
+            "E6.2.2"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 4,
+          "travada": true,
+          "pronta": false,
+          "segura": 3
+        },
+        {
+          "cod": "E6.2.4",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Cruzamento do datalakehouse com as bases de enriquecimento",
+          "depende_de": [
+            "E6.1.5",
+            "E6.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E6.3.1",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "Visualização",
+          "atividade": "Dashboard",
+          "tarefa": "Aplicação da visualização das Golds produzidas",
+          "depende_de": [
+            "E6.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E6.4.1",
+          "eixo": 6,
+          "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+          "processo": "IA",
+          "atividade": "Documentação",
+          "tarefa": "Documentação de cada etapa de transformação do padrão da camada semântica",
+          "depende_de": [
+            "E6.2.3"
+          ],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 5,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Cultura, Bem Viver e Ação Climática",
+      "total": 1,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 1
+      },
+      "tarefas": [
+        {
+          "cod": "E7.1.1",
+          "eixo": 7,
+          "eixo_nome": "Cultura, Bem Viver e Ação Climática",
+          "processo": "Definição de escopo",
+          "atividade": "Discussão",
+          "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Cultura Digital e Direitos Digitais",
+      "total": 1,
+      "concluidas": 0,
+      "progresso": 0.0,
+      "por_status": {
+        "nao_iniciado": 1
+      },
+      "tarefas": [
+        {
+          "cod": "E8.1.1",
+          "eixo": 8,
+          "eixo_nome": "Cultura Digital e Direitos Digitais",
+          "processo": "Definição de escopo",
+          "atividade": "Discussão",
+          "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
+          "depende_de": [],
+          "resp": "",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
           "pronta": false,
           "segura": 0
         }

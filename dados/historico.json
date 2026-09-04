@@ -2,16 +2,52 @@
   "retratos": [
     {
       "data": "2026-09-04",
-      "total": 3,
+      "total": 46,
       "por_status": {
-        "nao_iniciado": 3
+        "em_andamento": 1,
+        "nao_iniciado": 45
       },
-      "progresso_medio": 0.0,
+      "progresso_medio": 1.1,
       "por_eixo": [
         {
           "id": 1,
+          "progresso": 3.8,
+          "total": 13
+        },
+        {
+          "id": 2,
           "progresso": 0.0,
-          "total": 3
+          "total": 7
+        },
+        {
+          "id": 3,
+          "progresso": 0.0,
+          "total": 1
+        },
+        {
+          "id": 4,
+          "progresso": 0.0,
+          "total": 11
+        },
+        {
+          "id": 5,
+          "progresso": 0.0,
+          "total": 1
+        },
+        {
+          "id": 6,
+          "progresso": 0.0,
+          "total": 11
+        },
+        {
+          "id": 7,
+          "progresso": 0.0,
+          "total": 1
+        },
+        {
+          "id": 8,
+          "progresso": 0.0,
+          "total": 1
         }
       ]
     }
