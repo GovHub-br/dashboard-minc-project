@@ -150,6 +150,101 @@ function montaEvolucao(acervo) {
   desenhaEvolucao('#svg-evolucao', series);
 }
 
+/* ---------------------------------------------------------------- metas */
+
+function montaMetas(acervo) {
+  const alvo = document.getElementById('grade-metas');
+
+  const intro = `
+    <p class="secao-intro">
+      As seis metas pactuadas no Termo, com o balanço do período de
+      ${acervo.origem.periodo}.
+    </p>`;
+
+  const cartoes = acervo.metas.map((m) => `
+    <article class="meta">
+      <div class="numero-meta">Meta ${m.num}</div>
+      <h3>${escapaHtml(m.nome)}</h3>
+      <p>${escapaHtml(m.balanco)}</p>
+      <p class="contagem">
+        ${m.encaminhamentos.length}
+        ${m.encaminhamentos.length === 1 ? 'encaminhamento' : 'encaminhamentos'}
+        para ${acervo.origem.proximo_periodo}
+      </p>
+    </article>
+  `).join('');
+
+  alvo.innerHTML = intro + `<div class="grade-metas">${cartoes}</div>`;
+}
+
+/* ------------------------------------------------------------- artefatos */
+
+/* O campo "onde" traz nomes de arquivo. Marca-os como código, depois de
+   escapar o restante. */
+function formataOnde(texto) {
+  return escapaHtml(texto).replace(
+    /([\w-]+\.(?:pdf|md|json|yml|lock))/g,
+    '<code>$1</code>'
+  );
+}
+
+function montaArtefatos(acervo) {
+  const alvo = document.getElementById('quadro-artefatos');
+  let filtro = 'Todos';
+
+  const opcoes = ['Todos', ...SITUACOES];
+
+  function linhas() {
+    const visiveis = filtro === 'Todos'
+      ? acervo.artefatos
+      : acervo.artefatos.filter((a) => a.agora === filtro);
+
+    if (!visiveis.length) {
+      return '<tr><td colspan="4" class="vazio">Nenhum artefato nesta situação.</td></tr>';
+    }
+
+    return visiveis.map((a) => `
+      <tr>
+        <td class="nome-artefato">${escapaHtml(a.nome)}</td>
+        <td>${escapaHtml(a.antes)}</td>
+        <td><span class="etiqueta ${classeDe(a.agora)}">${escapaHtml(a.agora)}</span></td>
+        <td class="onde">${a.onde ? formataOnde(a.onde) : '—'}</td>
+      </tr>
+    `).join('');
+  }
+
+  function desenha() {
+    alvo.innerHTML = `
+      <p class="secao-intro">
+        Os ${acervo.artefatos.length} artefatos do quadro de acompanhamento, com
+        a situação anterior, a atual e a localização de cada um.
+      </p>
+      <div class="filtros" role="group" aria-label="Filtrar por situação">
+        ${opcoes.map((o) => `
+          <button class="filtro" type="button" data-situacao="${escapaHtml(o)}"
+                  aria-pressed="${o === filtro}">${escapaHtml(o)}</button>
+        `).join('')}
+      </div>
+      <div class="rolagem">
+        <table class="quadro">
+          <thead>
+            <tr><th>Artefato</th><th>2º Relatório</th><th>3º Relatório</th><th>Onde está</th></tr>
+          </thead>
+          <tbody>${linhas()}</tbody>
+        </table>
+      </div>`;
+
+    alvo.querySelectorAll('.filtro').forEach((botao) => {
+      botao.addEventListener('click', () => {
+        filtro = botao.dataset.situacao;
+        desenha();
+      });
+    });
+  }
+
+  desenha();
+}
+
 /* ------------------------------------------------------------- inicialização */
 
 async function inicia() {
@@ -158,6 +253,8 @@ async function inicia() {
     montaCabecalho(acervo);
     montaIndicadores(acervo);
     montaEvolucao(acervo);
+    montaMetas(acervo);
+    montaArtefatos(acervo);
   } catch (erro) {
     console.error(erro);
     document.getElementById('grade-indicadores').innerHTML =
