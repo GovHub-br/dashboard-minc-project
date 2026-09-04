@@ -93,6 +93,63 @@ function montaIndicadores(acervo) {
   `).join('');
 }
 
+/* -------------------------------------------------------------- evolução */
+
+/* O quadro anterior marcava três artefatos como "Falta artefato". O relatório
+   os agrega em "Não entregue", chegando a 14. O painel faz o mesmo, e a nota
+   registra a agregação. */
+function contaAntesAgregado(artefatos) {
+  const contagem = contaSituacoes(artefatos, 'antes');
+  const falta = contagem['Falta artefato'] || 0;
+  if (falta) {
+    contagem['Não entregue'] = (contagem['Não entregue'] || 0) + falta;
+    delete contagem['Falta artefato'];
+  }
+  return contagem;
+}
+
+function montaEvolucao(acervo) {
+  const antes = contaAntesAgregado(acervo.artefatos);
+  const agora = contaSituacoes(acervo.artefatos);
+
+  const series = SITUACOES.map((s) => ({
+    situacao: s,
+    antes: antes[s] || 0,
+    agora: agora[s] || 0,
+    classe: classeDe(s),
+  }));
+
+  const alvo = document.getElementById('grafico-evolucao');
+  alvo.innerHTML = `
+    <p class="secao-intro">
+      O que mudou do 2º para o 3º Relatório Parcial, artefato a artefato.
+    </p>
+    <div id="svg-evolucao"></div>
+    <div class="nota">
+      <p>
+        A mudança decorre menos de trabalho novo que de <strong>publicação</strong>:
+        parte do que a avaliação anterior não localizou existia como código, e não
+        como documento. O período foi dedicado a derivar documentos do próprio
+        repositório, de modo que cada afirmação pudesse ser conferida na fonte.
+      </p>
+      <p>
+        Os ${antes['Não entregue'] || 0} não entregues do 2º Relatório reúnem os
+        assim marcados e os três com a marcação <em>falta apresentar artefato</em>,
+        conforme o próprio documento agrega.
+      </p>
+      <p>
+        <strong>Sobre a contagem.</strong> O texto do 3º Relatório Parcial declara
+        12 entregues e 6 parciais. A conferência item a item do quadro dá
+        ${agora['Entregue']} entregues, ${agora['Entregue como proposta']} entregues
+        como proposta e ${agora['Parcial']} parciais — os mesmos 20 artefatos, nas
+        mesmas situações, com as arquiteturas propostas contadas à parte para
+        preservar a distinção entre o que opera e o que está projetado.
+      </p>
+    </div>`;
+
+  desenhaEvolucao('#svg-evolucao', series);
+}
+
 /* ------------------------------------------------------------- inicialização */
 
 async function inicia() {
@@ -100,6 +157,7 @@ async function inicia() {
     const acervo = await carrega();
     montaCabecalho(acervo);
     montaIndicadores(acervo);
+    montaEvolucao(acervo);
   } catch (erro) {
     console.error(erro);
     document.getElementById('grade-indicadores').innerHTML =

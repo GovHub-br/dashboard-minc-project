@@ -172,3 +172,42 @@ body {
   .secao, .topo { padding: 16px 0; }
   .topo { background: var(--primary-purple) !important; -webkit-print-color-adjust: exact; }
 }
+
+/* ------------------------------------------------------------- gráficos */
+
+.barra-antes { fill: #D6D3E4; }
+
+.barra-agora.sit-entregue          { fill: var(--color-success); }
+.barra-agora.sit-entregue-proposta { fill: var(--secondary-purple); }
+.barra-agora.sit-parcial           { fill: var(--color-warm); }
+.barra-agora.sit-nao-entregue      { fill: var(--color-ausente); }
+
+.rotulo-situacao {
+  font-size: 0.9rem;
+  font-weight: 600;
+  fill: var(--text-body);
+}
+
+.valor { font-size: 0.85rem; fill: var(--text-muted); }
+.valor-forte { font-weight: 700; fill: var(--text-strong); }
+.rotulo-legenda { font-size: 0.8rem; fill: var(--text-muted); }
+
+/* ----------------------------------------------------------------- nota */
+
+.nota {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--bg-white);
+  border-left: 4px solid var(--accent-orange);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: var(--text-body);
+}
+
+.nota strong { color: var(--text-strong); }
+.nota p { margin: 0 0 8px; }
+.nota p:last-child { margin-bottom: 0; }
+
+/* O SVG acompanha a largura do container até este limite. Sem o limite, o
+   viewBox seria esticado e as fontes ampliadas junto. */
+#svg-evolucao { max-width: 860px; }
