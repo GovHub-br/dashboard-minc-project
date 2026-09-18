@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-09-17T13:49:29+00:00",
+    "sincronizado_em": "2026-09-18T13:11:43+00:00",
     "proxima_reuniao": "Toda quinta às 16h.",
     "guardia": "Luiza Maluf"
   },
@@ -15,13 +15,14 @@
   "resumo": {
     "total": 46,
     "por_status": {
-      "em_andamento": 10,
-      "bloqueado": 2,
-      "em_risco": 2,
-      "nao_iniciado": 32
+      "em_andamento": 11,
+      "concluido": 1,
+      "nao_iniciado": 32,
+      "bloqueado": 1,
+      "em_risco": 1
     },
-    "progresso_medio": 13.0,
-    "travadas": 35,
+    "progresso_medio": 15.2,
+    "travadas": 34,
     "prontas": 0,
     "encadeadas": 42,
     "vinculos": 43,
@@ -39,12 +40,11 @@
       "id": 1,
       "nome": "Gestão e Participação Social",
       "total": 13,
-      "concluidas": 0,
-      "progresso": 7.7,
+      "concluidas": 1,
+      "progresso": 15.4,
       "por_status": {
-        "em_andamento": 1,
-        "bloqueado": 1,
-        "em_risco": 1,
+        "em_andamento": 2,
+        "concluido": 1,
         "nao_iniciado": 10
       },
       "tarefas": [
@@ -76,9 +76,9 @@
           "depende_de": [],
           "resp": "MinC",
           "prazo": "2026-09-18",
-          "status": "bloqueado",
+          "status": "concluido",
           "prioridade": "alta",
-          "progresso": 25,
+          "progresso": 100,
           "passo": 0,
           "travada": false,
           "pronta": false,
@@ -114,11 +114,11 @@
           ],
           "resp": "UnB",
           "prazo": "2026-09-18",
-          "status": "em_risco",
+          "status": "em_andamento",
           "prioridade": "alta",
-          "progresso": 25,
+          "progresso": 50,
           "passo": 1,
-          "travada": true,
+          "travada": false,
           "pronta": false,
           "segura": 7
         },
@@ -1047,15 +1047,6 @@
   ],
   "alertas": [
     {
-      "cod": "E1.1.2",
-      "tarefa": "Viabilizar o acesso ao dado do SIOP",
-      "eixo": 1,
-      "eixo_nome": "Gestão e Participação Social",
-      "motivo": "bloqueada",
-      "prazo": "2026-09-18",
-      "resp": "MinC"
-    },
-    {
       "cod": "E6.1.1",
       "tarefa": "Viabilizar o acesso ao dado da RAIS",
       "eixo": 6,
@@ -1063,15 +1054,6 @@
       "motivo": "bloqueada",
       "prazo": "2026-09-18",
       "resp": "MinC"
-    },
-    {
-      "cod": "E1.1.3",
-      "tarefa": "Fazer a ingestão dos dados do SIOP",
-      "eixo": 1,
-      "eixo_nome": "Gestão e Participação Social",
-      "motivo": "em risco",
-      "prazo": "2026-09-18",
-      "resp": "UnB"
     },
     {
       "cod": "E6.1.2",
