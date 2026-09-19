@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-09-18T13:11:43+00:00",
+    "sincronizado_em": "2026-09-19T12:43:14+00:00",
     "proxima_reuniao": "Toda quinta às 16h.",
     "guardia": "Luiza Maluf"
   },
@@ -1054,6 +1054,33 @@
       "motivo": "bloqueada",
       "prazo": "2026-09-18",
       "resp": "MinC"
+    },
+    {
+      "cod": "E1.1.1",
+      "tarefa": "Fazer a ingestão da API do Siconfi",
+      "eixo": 1,
+      "eixo_nome": "Gestão e Participação Social",
+      "motivo": "prazo vencido",
+      "prazo": "2026-09-18",
+      "resp": "UnB"
+    },
+    {
+      "cod": "E1.1.3",
+      "tarefa": "Fazer a ingestão dos dados do SIOP",
+      "eixo": 1,
+      "eixo_nome": "Gestão e Participação Social",
+      "motivo": "prazo vencido",
+      "prazo": "2026-09-18",
+      "resp": "UnB"
+    },
+    {
+      "cod": "E1.1.4",
+      "tarefa": "Definir bases de enriquecimento para o eixo",
+      "eixo": 1,
+      "eixo_nome": "Gestão e Participação Social",
+      "motivo": "prazo vencido",
+      "prazo": "2026-09-18",
+      "resp": "MinC + UnB"
     },
     {
       "cod": "E6.1.2",
