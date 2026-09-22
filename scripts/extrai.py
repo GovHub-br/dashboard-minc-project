@@ -15,6 +15,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import produtos as tabela_produtos  # noqa: E402
+
 # --------------------------------------------------------------------------
 # Quem destrava cada pendência. Derivado da coluna "o que destrava" do
 # doc-acompanhamento; a classificação é do painel, não do documento.
@@ -186,6 +189,15 @@ def main():
     artefatos, pendencias, documentos = extrai_acompanhamento(raiz)
     metas, riscos = extrai_relatorio(raiz)
 
+    # Artefato novo no quadro é artefato sem meta no painel: falha alto.
+    orfaos = tabela_produtos.sem_vinculo(artefatos)
+    if orfaos:
+        sys.exit(
+            "Artefatos sem produto em scripts/produtos.py: "
+            + ", ".join(orfaos)
+        )
+    relatorios, produtos = tabela_produtos.monta(artefatos)
+
     acervo = {
         "ted": {
             "numero": "01/2026/SGE/SE/MINC",
@@ -202,11 +214,13 @@ def main():
             "proximo_periodo": "setembro a novembro de 2026",
             "apurado_em": "2026-08-31",
         },
+        "relatorios": relatorios,
         "metas": metas,
         "artefatos": artefatos,
         "pendencias": pendencias,
         "riscos": riscos,
         "documentos": documentos,
+        "produtos": produtos,
     }
 
     print(json.dumps(acervo, ensure_ascii=False, indent=2))

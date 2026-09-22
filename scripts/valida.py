@@ -15,7 +15,9 @@ import sys
 from pathlib import Path
 
 TOTAL_ARTEFATOS = 20
+TOTAL_PRODUTOS = 19
 CAMPOS_ORIGEM = ("relatorio", "periodo", "apurado_em")
+TIPOS_COBERTURA = ("secao", "mencao")
 
 
 def valida(acervo):
@@ -71,6 +73,67 @@ def valida(acervo):
             f"apurado_em deve estar em AAAA-MM-DD; veio {data!r}."
         )
 
+    # 5. Fechamento dos produtos pactuados.
+    produtos = acervo.get("produtos", [])
+    if len(produtos) != TOTAL_PRODUTOS:
+        problemas.append(
+            f"O Termo pactua {TOTAL_PRODUTOS} produtos; o acervo traz "
+            f"{len(produtos)}."
+        )
+
+    nums_relatorio = {str(r.get("num")) for r in acervo.get("relatorios", [])}
+    if not nums_relatorio:
+        problemas.append("O acervo não declara relatório algum.")
+
+    # 6. Cobertura: só relatório existente, só tipo conhecido, com localização.
+    for p in produtos:
+        rotulo = f"Meta {p.get('meta')} · Produto {p.get('num')}"
+        for num, c in (p.get("cobertura") or {}).items():
+            if num not in nums_relatorio:
+                problemas.append(
+                    f"{rotulo} declara cobertura no relatório {num}, que não "
+                    f"consta de relatorios."
+                )
+            if c.get("tipo") not in TIPOS_COBERTURA:
+                problemas.append(
+                    f"{rotulo} tem cobertura de tipo {c.get('tipo')!r} no "
+                    f"relatório {num}."
+                )
+            if not c.get("onde"):
+                problemas.append(
+                    f"{rotulo} declara cobertura no relatório {num} sem dizer "
+                    f"onde."
+                )
+
+    # 7. Todo artefato do quadro pertence a exatamente um produto, e com a
+    #    situação que o quadro declara.
+    vinculados = {}
+    for p in produtos:
+        for a in p.get("artefatos", []):
+            nome = a.get("nome")
+            if nome in vinculados:
+                problemas.append(
+                    f"Artefato {nome!r} vinculado a mais de um produto."
+                )
+            vinculados[nome] = a
+
+    for a in artefatos:
+        nome = a.get("nome")
+        vinculo = vinculados.get(nome)
+        if vinculo is None:
+            problemas.append(f"Artefato {nome!r} não pertence a produto algum.")
+        elif vinculo.get("situacao") != a.get("agora"):
+            problemas.append(
+                f"Artefato {nome!r} consta como {vinculo.get('situacao')!r} no "
+                f"produto e {a.get('agora')!r} no quadro."
+            )
+
+    for nome in vinculados:
+        if nome not in por_nome:
+            problemas.append(
+                f"Produto vincula artefato inexistente no quadro: {nome!r}."
+            )
+
     return problemas
 
 
@@ -90,6 +153,8 @@ def main():
 
     print(
         f"Acervo consistente: {len(acervo['artefatos'])} artefatos, "
+        f"{len(acervo.get('produtos', []))} produtos em "
+        f"{len(acervo.get('relatorios', []))} relatórios, "
         f"{len(acervo['pendencias'])} pendências, "
         f"apurado em {acervo['origem']['apurado_em']}."
     )

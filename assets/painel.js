@@ -150,6 +150,131 @@ function montaEvolucao(acervo) {
   desenhaEvolucao('#svg-evolucao', series);
 }
 
+/* -------------------------------------------------------------- produtos */
+
+/* Os 19 produtos pactuados no Termo, meta a meta, com a cobertura em cada
+   relatório. A cobertura vem do sumário de cada relatório: "secao" quando o
+   produto tem seção própria, "mencao" quando foi tratado sob outro produto. */
+
+const MARCAS = {
+  secao: { glifo: '●', classe: 'marca-secao', diz: 'seção própria' },
+  mencao: { glifo: '○', classe: 'marca-mencao', diz: 'tratado sob outro produto' },
+};
+
+function celulaCobertura(produto, num) {
+  const c = produto.cobertura[String(num)];
+  if (!c) {
+    return '<td class="marca"><span class="marca-ausente" '
+      + 'aria-label="não tratado">–</span></td>';
+  }
+  const m = MARCAS[c.tipo];
+  const onde = c.pagina ? `${c.onde} · p. ${c.pagina}` : c.onde;
+  const titulo = escapaHtml(`${m.diz} — ${onde}${c.nota ? ' · ' + c.nota : ''}`);
+  return `<td class="marca"><span class="${m.classe}" title="${titulo}" `
+    + `aria-label="${titulo}">${m.glifo}</span></td>`;
+}
+
+function etiquetasArtefatos(produto) {
+  if (!produto.artefatos.length) {
+    return '<span class="sem-artefato">—</span>';
+  }
+  return produto.artefatos.map((a) => {
+    const titulo = escapaHtml(
+      a.situacao
+      + (a.evidencia === 'TED'
+        ? ' · nomeado na redação do produto no TED'
+        : ' · vínculo derivado do 3º Relatório')
+      + (a.nota ? ' · ' + a.nota : '')
+    );
+    return `<span class="artefato-pil ${classeDe(a.situacao)}" title="${titulo}">`
+      + `${escapaHtml(a.nome)}</span>`;
+  }).join('');
+}
+
+function montaProdutos(acervo) {
+  const alvo = document.getElementById('matriz-produtos');
+  const rels = acervo.relatorios;
+
+  const tratados = (r) => acervo.produtos
+    .filter((p) => p.cobertura[String(r.num)]).length;
+
+  const resumo = rels.map((r) => `
+    <div class="indicador">
+      <div class="numero">${tratados(r)}</div>
+      <div class="rotulo">produtos no ${r.rotulo.toLowerCase()}<br>
+        <span class="periodo">${escapaHtml(r.periodo)}</span></div>
+    </div>
+  `).join('');
+
+  const metas = [...new Set(acervo.produtos.map((p) => p.meta))];
+
+  const quadros = metas.map((num) => {
+    const daMeta = acervo.produtos.filter((p) => p.meta === num);
+    const linhas = daMeta.map((p) => `
+      <tr>
+        <td class="nome-produto">
+          <strong>Produto ${p.num}</strong> ${escapaHtml(p.nome)}
+          ${p.redacao === p.nome ? ''
+            : `<span class="redacao">${escapaHtml(p.redacao)}.</span>`}
+        </td>
+        ${rels.map((r) => celulaCobertura(p, r.num)).join('')}
+        <td class="artefatos-do-produto">${etiquetasArtefatos(p)}</td>
+      </tr>
+    `).join('');
+
+    return `
+      <article class="quadro-meta">
+        <h3><span class="numero-meta">Meta ${num}</span>${escapaHtml(daMeta[0].meta_nome)}</h3>
+        <div class="rolagem">
+          <table class="quadro quadro-produtos">
+            <thead>
+              <tr>
+                <th>Produto pactuado</th>
+                ${rels.map((r) => `<th class="col-rel" scope="col"
+                  title="${escapaHtml(`${r.rotulo} · ${r.periodo}`)}">${r.num}º</th>`).join('')}
+                <th>Artefatos do quadro</th>
+              </tr>
+            </thead>
+            <tbody>${linhas}</tbody>
+          </table>
+        </div>
+      </article>`;
+  }).join('');
+
+  alvo.innerHTML = `
+    <p class="secao-intro">
+      Os ${acervo.produtos.length} produtos pactuados no Termo, meta a meta, e em
+      que relatório cada um foi tratado.
+    </p>
+    <div class="indicadores indicadores-3">${resumo}</div>
+    <p class="legenda-marcas">
+      <span class="marca-secao">●</span> seção própria no relatório ·
+      <span class="marca-mencao">○</span> tratado sob outro produto ·
+      <span class="marca-ausente">–</span> não tratado.
+      Cada marca guarda a seção e a página; o cursor as revela.
+    </p>
+    ${quadros}
+    <div class="nota">
+      <p>
+        A cobertura vem do sumário de cada relatório, e diz onde o assunto foi
+        tratado — não que o produto esteja concluído. A situação de entrega é a
+        do quadro de acompanhamento, nas etiquetas dos artefatos e na seção
+        seguinte.
+      </p>
+      <p>
+        <strong>Sobre o vínculo.</strong> Cada artefato do quadro é ligado ao
+        produto que o nomeia na redação do Termo. Onde o Termo não o nomeia, o
+        vínculo vem do lugar em que o 3º Relatório o documenta, e a classificação
+        é do painel, não do documento — a etiqueta registra qual dos dois casos é.
+      </p>
+      <p>
+        O 1º Relatório trata apenas da Meta 01; o quadro de acompanhamento de
+        produtos começa a ser apurado no 2º, e por isso a situação de cada
+        artefato tem dois pontos no tempo, e não três.
+      </p>
+    </div>`;
+}
+
 /* ---------------------------------------------------------------- metas */
 
 function montaMetas(acervo) {
@@ -369,6 +494,7 @@ async function inicia() {
     montaCabecalho(acervo);
     montaIndicadores(acervo);
     montaEvolucao(acervo);
+    montaProdutos(acervo);
     montaMetas(acervo);
     montaArtefatos(acervo);
     montaCronograma(acervo);
