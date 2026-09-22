@@ -537,3 +537,93 @@ table.quadro .etiqueta {
   font-weight: 600;
   border-bottom-color: var(--secondary-purple);
 }
+
+/* ------------------------------------------------- entregas por meta */
+
+.indicadores-3 { margin-bottom: 20px; }
+.indicadores-3 .rotulo { line-height: 1.35; }
+.indicadores-3 .periodo { color: var(--text-muted); font-size: 0.78rem; }
+
+.legenda-marcas {
+  margin: 0 0 24px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.marca-secao   { color: var(--primary-purple); font-size: 1.05rem; cursor: help; }
+.marca-mencao  { color: var(--color-warm);     font-size: 1.05rem; cursor: help; }
+.marca-ausente { color: #C9C9C9;               font-size: 1.05rem; }
+
+.quadro-meta { margin-bottom: 28px; }
+.quadro-meta:last-of-type { margin-bottom: 0; }
+
+.quadro-meta h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: var(--text-strong);
+}
+
+.quadro-meta h3 .numero-meta {
+  background: var(--primary-purple);
+  color: var(--bg-white);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Cinco colunas: o produto, uma por relatório, e os artefatos. Sobrescreve as
+   larguras de quatro colunas de table.quadro. */
+table.quadro-produtos { min-width: 720px; }
+table.quadro-produtos th:nth-child(1),
+table.quadro-produtos td:nth-child(1) { width: 40%; }
+table.quadro-produtos th.col-rel,
+table.quadro-produtos td.marca { width: 7%; text-align: center; }
+table.quadro-produtos th:nth-child(5),
+table.quadro-produtos td:nth-child(5) { width: 39%; }
+
+table.quadro-produtos td { padding: 9px 12px; }
+table.quadro-produtos th { padding: 10px 12px; }
+table.quadro-produtos .nome-produto { color: var(--text-body); line-height: 1.35; }
+table.quadro-produtos .nome-produto strong {
+  color: var(--text-strong);
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-purple);
+}
+table.quadro-produtos .redacao {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.artefato-pil {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--bg-white);
+  cursor: help;
+}
+.artefato-pil.sit-entregue          { background: var(--color-success); }
+.artefato-pil.sit-entregue-proposta { background: var(--secondary-purple); }
+.artefato-pil.sit-parcial           { background: var(--color-warm); color: var(--text-strong); }
+.artefato-pil.sit-nao-entregue      { background: var(--color-ausente); }
+
+.sem-artefato { color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .quadro-meta h3 { flex-wrap: wrap; }
+}
