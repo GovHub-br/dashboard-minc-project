@@ -33,6 +33,501 @@
       "periodo_declarado": true
     }
   ],
+  "produtos": [
+    {
+      "meta": "01",
+      "num": 1,
+      "nome": "Oficinas de facilitação e escuta qualificada",
+      "redacao": "Oficinas de facilitação e escuta qualificada sobre os dados ligados ao PNC, de forma a definir os eixos prioritários para integração e qualificação de dados e desenvolvimento da plataforma",
+      "cobertura": {
+        "1": {
+          "tipo": "secao",
+          "onde": "Descrição das atividades · Produto 1"
+        },
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 3.1"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 01 · Produto 1",
+          "pagina": 12
+        }
+      },
+      "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
+      "balanco": "Vinte e dois encontros de trabalho por eixo do Plano, com o Ministério e a equipe de pesquisa, cumprindo a escuta qualificada prevista. Seis dos oito eixos percorridos.",
+      "entregas": []
+    },
+    {
+      "meta": "01",
+      "num": 2,
+      "nome": "Relatório de diagnóstico técnico e institucional",
+      "redacao": "Relatório de diagnóstico técnico e institucional, contendo análise da arquitetura atual, gargalos identificados e direcionamentos para aplicação de técnicas de engenharia de dados por eixos do Plano Nacional de Cultura",
+      "cobertura": {
+        "1": {
+          "tipo": "secao",
+          "onde": "Descrição das atividades · Produto 2"
+        },
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 3.2"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 01 · Produto 2",
+          "pagina": 17
+        }
+      },
+      "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
+      "balanco": "Catálogo de fontes de dados, levantamento a partir do código, arquitetura comum de ingestão e visão consolidada das fontes, com ênfase no Eixo 2, que inaugurou a integração.",
+      "entregas": [
+        {
+          "nome": "Catálogo de fontes de dados",
+          "situacao": "Entregue",
+          "evidencia": "R3",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "02",
+      "num": 1,
+      "nome": "Relatório Informacional do PNC com painéis interativos",
+      "redacao": "Relatório executivo acompanhado de painéis interativos para monitoramento dos indicadores relevantes para o Plano Nacional de Cultura, com visualizações consolidadas, filtros temáticos, séries históricas e análises comparativas",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 4.1"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 02 · Produto 1",
+          "pagina": 24
+        }
+      },
+      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
+      "balanco": "Camada semântica sobre as tabelas de consumo, com doze métricas nomeadas. Os painéis propriamente ditos aguardam a reunião de requisitos com o Ministério.",
+      "entregas": []
+    },
+    {
+      "meta": "02",
+      "num": 2,
+      "nome": "Arquitetura Técnica da Plataforma",
+      "redacao": "Documento de arquitetura lógica, física e de segurança da plataforma, incluindo fluxos de dados, camadas de processamento, governança e integração",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 4.2"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 02 · Produto 2",
+          "pagina": 25
+        }
+      },
+      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
+      "balanco": "Os três níveis: arquitetura lógica em operação (Figuras 1 e 2), física proposta (Figura 3) e de segurança, somadas aos fluxos de dados do Anexo III.",
+      "entregas": [
+        {
+          "nome": "Arquitetura lógica",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Arquitetura física",
+          "situacao": "Entregue como proposta",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Arquitetura de segurança",
+          "situacao": "Entregue como proposta",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Diagramas dos fluxos de dados",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "02",
+      "num": 3,
+      "nome": "Modelo Integrado de Dados",
+      "redacao": "Especificação do modelo conceitual, lógico e físico dos dados integrados, incluindo dicionário de dados e metadados",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 4.3"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 02 · Produto 3",
+          "pagina": 32
+        }
+      },
+      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
+      "balanco": "Modelo conceitual, lógico e físico do Eixo 2, dicionário de dados e metadados. Especificação completa no Anexo IV.",
+      "entregas": [
+        {
+          "nome": "Dicionário de dados",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Metadados",
+          "situacao": "Parcial",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Modelo conceitual, lógico e físico",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "02",
+      "num": 4,
+      "nome": "Modelo de Governança de Dados",
+      "redacao": "Documento com definição de papéis, responsabilidades, fluxos decisórios, políticas de acesso e critérios de qualidade",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 4.4"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 02 · Produto 4",
+          "pagina": 42
+        }
+      },
+      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
+      "balanco": "Critérios de qualidade convertidos em testes automáticos em cinco dimensões, com 858 verificações inventariadas. Papéis, responsabilidades e políticas de acesso seguem em elaboração.",
+      "entregas": [
+        {
+          "nome": "Matriz de papéis e responsabilidades",
+          "situacao": "Não entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Políticas de acesso",
+          "situacao": "Parcial",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Critérios de qualidade dos dados",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Evidências de testes e validação",
+          "situacao": "Parcial",
+          "evidencia": "R3",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "02",
+      "num": 5,
+      "nome": "Repositório Público de Código-Fonte e Documentação",
+      "redacao": "Repositório versionado contendo todo o código, documentação técnica e exemplos de uso, sob licença aberta",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 4.5"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 02 · Produto 5",
+          "pagina": 44
+        }
+      },
+      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
+      "balanco": "Repositório público sob licença MIT, com ficha técnica de treze das dezesseis rotinas em operação e os exemplos de uso do Anexo VI.",
+      "entregas": [
+        {
+          "nome": "Documentação dos pipelines",
+          "situacao": "Entregue",
+          "evidencia": "R3",
+          "nota": ""
+        },
+        {
+          "nome": "Exemplos de uso",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "03",
+      "num": 1,
+      "nome": "Motor de Governança e Autorização de Acesso a Dados",
+      "redacao": "Componente funcional para controle de perfis, permissões, auditoria, rastreabilidade e conformidade com LGPD e políticas institucionais",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 03 · Produto 1",
+          "pagina": 46
+        }
+      },
+      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
+      "balanco": "Especificado na arquitetura de segurança do Produto 2 da Meta 02, e não implantado: o motor pressupõe fronteira administrativa única, que o ambiente de produção ainda não oferece.",
+      "entregas": []
+    },
+    {
+      "meta": "03",
+      "num": 2,
+      "nome": "Arquitetura de Referência da Solução",
+      "redacao": "Documento técnico com visão lógica, física e de segurança da arquitetura, incluindo fluxos de dados, agentes de IA, camadas de governança e integração",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 03 · Produto 2",
+          "pagina": 47
+        }
+      },
+      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
+      "balanco": "Atendido pelo conjunto do Produto 2 da Meta 02 — os três níveis de arquitetura — somado aos fluxos de dados derivados da linhagem dos modelos.",
+      "entregas": []
+    },
+    {
+      "meta": "03",
+      "num": 3,
+      "nome": "Repositório Público de Código-Fonte",
+      "redacao": "Repositório versionado contendo código, pipelines, modelos, agentes de IA, scripts de implantação e exemplos de uso, sob licença aberta",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 03 · Produto 3",
+          "pagina": 48
+        }
+      },
+      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
+      "balanco": "Repositório público sob licença MIT, com os scripts e procedimentos de implantação do Anexo VIII e o manual de evolução do Anexo IX.",
+      "entregas": [
+        {
+          "nome": "Scripts de implantação",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Procedimentos de implantação",
+          "situacao": "Entregue",
+          "evidencia": "R3",
+          "nota": ""
+        },
+        {
+          "nome": "Relação de componentes e versões",
+          "situacao": "Parcial",
+          "evidencia": "R3",
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "meta": "03",
+      "num": 4,
+      "nome": "Oficinas de capacitação e transferência de tecnologia",
+      "redacao": "Oficinas de capacitação e transferência de tecnologia para as equipes do Ministério da Cultura",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 03 · Produto 4",
+          "pagina": 52,
+          "nota": "O relatório declara as oficinas não executadas no período."
+        }
+      },
+      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
+      "balanco": "Nenhuma oficina realizada no período. A atividade segue prevista, apoiada nos documentos de implantação e de evolução do Produto 3.",
+      "entregas": []
+    },
+    {
+      "meta": "04",
+      "num": 1,
+      "nome": "Conjunto de Agentes Especializados por Domínio",
+      "redacao": "Agentes treinados para áreas temáticas específicas, com fontes documentais validadas",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 5.1",
+          "nota": "Em estágio de estudo."
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 04 · Produto 1",
+          "pagina": 53
+        }
+      },
+      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
+      "balanco": "Agente de domínio operando de ponta a ponta desde agosto de 2026, com recuperação por busca híbrida sobre base vetorial, fundida por posto recíproco.",
+      "entregas": []
+    },
+    {
+      "meta": "04",
+      "num": 2,
+      "nome": "Mecanismo de Geração Automática de Indicadores e Métricas",
+      "redacao": "Serviço para extração, consolidação e cálculo de indicadores a partir de textos, relatórios e documentos institucionais",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 04 · Produto 2",
+          "pagina": 56
+        }
+      },
+      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
+      "balanco": "Camada de entrega em quatro estágios: uma pergunta em português produz as bases consultadas, a consulta, o gráfico, a explicação e o relatório.",
+      "entregas": []
+    },
+    {
+      "meta": "04",
+      "num": 3,
+      "nome": "Documentação Técnica e Metodológica",
+      "redacao": "Guias de arquitetura, uso, manutenção, evolução e replicação da solução em outros contextos institucionais, incluindo documentação do agente de IA, oficinas de capacitação e publicação de um livro",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 04 · Produto 3",
+          "pagina": 57
+        }
+      },
+      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
+      "balanco": "Dezesseis decisões de arquitetura registradas entre 21 de julho e 19 de agosto, planejamento datado, suíte de testes e ambiente de avaliação versionado. Visão geral no Anexo X.",
+      "entregas": [
+        {
+          "nome": "Manual de uso",
+          "situacao": "Parcial",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Manual de manutenção",
+          "situacao": "Não entregue",
+          "evidencia": "TED",
+          "nota": ""
+        },
+        {
+          "nome": "Manual de evolução",
+          "situacao": "Entregue",
+          "evidencia": "TED",
+          "nota": "O 3º Relatório o documenta sob a Meta 03 · Produto 3."
+        }
+      ]
+    },
+    {
+      "meta": "05",
+      "num": 1,
+      "nome": "Integrações com ferramentas livres de governança",
+      "redacao": "Documentação técnica e código-fonte das integrações com ferramentas livres de governança e publicação de dados abertos",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 6.1"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 05 · Produto 1",
+          "pagina": 59
+        }
+      },
+      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
+      "balanco": "OpenMetadata adotado como catálogo institucional, alimentado por declaração versionada do projeto de transformação. Integração implantada e em operação.",
+      "entregas": []
+    },
+    {
+      "meta": "05",
+      "num": 2,
+      "nome": "Oficina sobre governança de dados descentralizada",
+      "redacao": "Oficina sobre governança de dados descentralizada",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 6.2"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 05 · Produto 2",
+          "pagina": 60
+        }
+      },
+      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
+      "balanco": "Oficina realizada em junho de 2026 junto à STII do Ministério, sobre o motor de consulta distribuído e o componente de governança e autorização de acesso.",
+      "entregas": []
+    },
+    {
+      "meta": "05",
+      "num": 3,
+      "nome": "Datathon para formulação dos indicadores do PNC",
+      "redacao": "Atividade colaborativa e intensiva com diferentes instituições especialistas em dados culturais para contribuição nos indicadores associados a cada meta",
+      "cobertura": {
+        "1": {
+          "tipo": "mencao",
+          "onde": "Anexos 2 e 3, sob a Meta 01 · Produto 1"
+        },
+        "2": {
+          "tipo": "mencao",
+          "onde": "§ 6.2 e Anexo III"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 05 · Produto 3",
+          "pagina": 61
+        }
+      },
+      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
+      "balanco": "Planejamento, produção e mobilização do evento: dois dias em Brasília, oito oficinas preparatórias — uma por eixo — e grupos de trabalho por eixo. Detalhamento no Anexo XI.",
+      "entregas": []
+    },
+    {
+      "meta": "05",
+      "num": 4,
+      "nome": "Documento analítico do processo de modelagem",
+      "redacao": "Construção estruturada de um arranjo normativo, institucional e operacional do SNIIC",
+      "cobertura": {
+        "2": {
+          "tipo": "secao",
+          "onde": "§ 6.3"
+        },
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 05 · Produto 4",
+          "pagina": 64
+        }
+      },
+      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
+      "balanco": "Proposta de estrutura construída em reuniões da equipe da Universidade, alinhamentos com o Ministério e contribuições do Comitê Gestor do SNIIC.",
+      "entregas": []
+    },
+    {
+      "meta": "06",
+      "num": 1,
+      "nome": "Repositório Digital Brasiliana Cultura",
+      "redacao": "Catálogo integrado de todos os acervos culturais do sistema MinC",
+      "cobertura": {
+        "3": {
+          "tipo": "secao",
+          "onde": "Meta 06 · Produto 1",
+          "pagina": 66
+        }
+      },
+      "meta_nome": "Brasiliana Cultura — catálogo integrado dos acervos culturais do sistema MinC",
+      "balanco": "Diagnóstico da gestão da informação dos acervos das seis instituições do sistema MinC e estudo comparativo de vocabulários. Portal em construção; coleta ainda por iniciar.",
+      "entregas": []
+    }
+  ],
   "metas": [
     {
       "num": "01",
@@ -99,7 +594,7 @@
       ]
     }
   ],
-  "artefatos": [
+  "entregas": [
     {
       "nome": "Arquitetura lógica",
       "antes": "Parcial",
@@ -223,49 +718,49 @@
   ],
   "pendencias": [
     {
-      "artefato": "Metadados",
+      "entrega": "Metadados",
       "situacao": "Parcial",
       "falta": "O documento de catálogo com a contagem correta",
       "destrava": "Sincronizar o domínio de cotas com o catálogo institucional: dos 49 modelos do projeto, 23 constam do catálogo",
       "quem": "UnB"
     },
     {
-      "artefato": "Políticas de acesso",
+      "entrega": "Políticas de acesso",
       "situacao": "Parcial",
       "falta": "As políticas propriamente ditas",
       "destrava": "Implantar o componente de governança de acesso, que pressupõe fronteira administrativa única",
       "quem": "MinC"
     },
     {
-      "artefato": "Manual de uso",
+      "entrega": "Manual de uso",
       "situacao": "Parcial",
       "falta": "Guia dirigido ao usuário final",
       "destrava": "Definir o público e o ponto de acesso, hoje condicionados aos painéis",
       "quem": "MinC"
     },
     {
-      "artefato": "Evidências de testes e validação",
+      "entrega": "Evidências de testes e validação",
       "situacao": "Parcial",
       "falta": "Relatório consolidado de homologação",
       "destrava": "Ambiente de homologação com aceite formal",
       "quem": "MinC"
     },
     {
-      "artefato": "Relação de componentes e versões",
+      "entrega": "Relação de componentes e versões",
       "situacao": "Parcial",
       "falta": "Inventário com versão de cada componente",
       "destrava": "Versionar o poetry.lock, hoje fora do controle de versão",
       "quem": "UnB"
     },
     {
-      "artefato": "Manual de manutenção",
+      "entrega": "Manual de manutenção",
       "situacao": "Não entregue",
       "falta": "O documento",
       "destrava": "Ambiente de produção definido",
       "quem": "MinC"
     },
     {
-      "artefato": "Matriz de papéis e responsabilidades",
+      "entrega": "Matriz de papéis e responsabilidades",
       "situacao": "Não entregue",
       "falta": "O documento",
       "destrava": "Declarado em elaboração na Meta 02 · Produto 4",
@@ -277,569 +772,126 @@
       "risco": "Inexistência de infraestrutura de produção; o ambiente disponível é de homologação e a topologia definitiva permanece em estudo",
       "probabilidade": "Alto",
       "impacto": "Alto",
-      "mitigacao": "Arquitetura física e de segurança já propostas e documentadas; diretrizes de infraestrutura produzidas; diretriz firmada de que a totalidade dos dados resida na infraestrutura do Ministério"
+      "mitigacao": "Arquitetura física e de segurança já propostas e documentadas; diretrizes de infraestrutura produzidas; diretriz firmada de que a totalidade dos dados resida na infraestrutura do Ministério",
+      "meta": "03",
+      "produto": 1,
+      "produto_nome": "Motor de Governança e Autorização de Acesso a Dados"
     },
     {
       "risco": "Documentação de coluna do SALIC parcial: 12,6% das 5.064 colunas com definição de negócio herdada do sistema de origem",
       "probabilidade": "Alto",
       "impacto": "Médio",
-      "mitigacao": "Documentação progressiva a partir da exploração; enriquecimento na camada silver; ausência de definição registrada explicitamente, e não omitida"
+      "mitigacao": "Documentação progressiva a partir da exploração; enriquecimento na camada silver; ausência de definição registrada explicitamente, e não omitida",
+      "meta": "02",
+      "produto": 3,
+      "produto_nome": "Modelo Integrado de Dados"
     },
     {
       "risco": "Definição dos painéis condicionada a acordo prévio com o Ministério quanto ao que deve ser aferido",
       "probabilidade": "Alto",
       "impacto": "Médio",
-      "mitigacao": "Camada semântica construída à frente, de modo que cada indicador acordado se torne imediatamente disponível; reunião dedicada de requisitos já pactuada; aproveitamento das escolhas validadas no Cultura em Números"
+      "mitigacao": "Camada semântica construída à frente, de modo que cada indicador acordado se torne imediatamente disponível; reunião dedicada de requisitos já pactuada; aproveitamento das escolhas validadas no Cultura em Números",
+      "meta": "02",
+      "produto": 1,
+      "produto_nome": "Relatório Informacional do PNC com painéis interativos"
     },
     {
       "risco": "Cadeia do BB Ágil com extração ativa e transformação desabilitada, impedindo a conciliação entre valor repassado e valor pago",
       "probabilidade": "Médio",
       "impacto": "Alto",
-      "mitigacao": "Modelos escritos e versionados à espera da disponibilização da fonte; lacuna documentada de forma explícita no modelo de dados"
+      "mitigacao": "Modelos escritos e versionados à espera da disponibilização da fonte; lacuna documentada de forma explícita no modelo de dados",
+      "meta": "02",
+      "produto": 3,
+      "produto_nome": "Modelo Integrado de Dados"
     },
     {
       "risco": "Sincronização manual entre a plataforma e o catálogo institucional de metadados",
       "probabilidade": "Médio",
       "impacto": "Médio",
-      "mitigacao": "Cadeia de geração integralmente reexecutável e versionada; execução do conector e avaliação de rotina automatizada encaminhadas à equipe"
+      "mitigacao": "Cadeia de geração integralmente reexecutável e versionada; execução do conector e avaliação de rotina automatizada encaminhadas à equipe",
+      "meta": "05",
+      "produto": 1,
+      "produto_nome": "Integrações com ferramentas livres de governança"
     },
     {
       "risco": "Meta 06: 90% dos itens do sistema MinC indisponíveis para coleta computacional, com o volume concentrado numa única instituição",
       "probabilidade": "Alto",
       "impacto": "Alto",
-      "mitigacao": "Priorização das três instituições que hoje expõem interfaces abertas; frente de articulação institucional específica, a cargo do GT de Acervos do SNIIC"
+      "mitigacao": "Priorização das três instituições que hoje expõem interfaces abertas; frente de articulação institucional específica, a cargo do GT de Acervos do SNIIC",
+      "meta": "06",
+      "produto": 1,
+      "produto_nome": "Repositório Digital Brasiliana Cultura"
     },
     {
       "risco": "Custos, prazos e logística de produção do Datathon",
       "probabilidade": "Médio",
       "impacto": "Médio",
-      "mitigacao": "Planejamento, produção e mobilização conduzidos no período; materiais e programação em elaboração"
+      "mitigacao": "Planejamento, produção e mobilização conduzidos no período; materiais e programação em elaboração",
+      "meta": "05",
+      "produto": 3,
+      "produto_nome": "Datathon para formulação dos indicadores do PNC"
     }
   ],
   "documentos": [
     {
       "arquivo": "catalogo-de-fontes-de-dados.pdf",
-      "anexo": "Anexo I"
+      "anexo": "Anexo I",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/catalogo-de-fontes-de-dados.pdf"
     },
     {
       "arquivo": "mapeamento-eixo-2-pnc.pdf",
-      "anexo": "Anexo II"
+      "anexo": "Anexo II",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/mapeamento-eixo-2-pnc.pdf"
     },
     {
       "arquivo": "diagramas-de-fluxos-de-dados.pdf",
-      "anexo": "Anexo III"
+      "anexo": "Anexo III",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/diagramas-de-fluxos-de-dados.pdf"
     },
     {
       "arquivo": "modelo-conceitual-logico-fisico.pdf",
-      "anexo": "Anexo IV"
+      "anexo": "Anexo IV",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/modelo-conceitual-logico-fisico.pdf"
     },
     {
       "arquivo": "dicionario-de-dados.pdf",
-      "anexo": "Anexo V"
+      "anexo": "Anexo V",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/dicionario-de-dados.pdf"
     },
     {
       "arquivo": "exemplos-de-uso.pdf",
-      "anexo": "Anexo VI"
+      "anexo": "Anexo VI",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/exemplos-de-uso.pdf"
     },
     {
       "arquivo": "diretrizes-infraestrutura-trino.pdf",
-      "anexo": "Anexo VII"
+      "anexo": "Anexo VII",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/diretrizes-infraestrutura-trino.pdf"
     },
     {
       "arquivo": "scripts-de-implantacao.pdf",
-      "anexo": "Anexo VIII"
+      "anexo": "Anexo VIII",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/scripts-de-implantacao.pdf"
     },
     {
       "arquivo": "manual-de-evolucao.pdf",
-      "anexo": "Anexo IX"
+      "anexo": "Anexo IX",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/manual-de-evolucao.pdf"
     },
     {
       "arquivo": "criterios-de-qualidade-dos-dados.pdf",
-      "anexo": "— (no repositório)"
+      "anexo": "— (no repositório)",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/criterios-de-qualidade-dos-dados.pdf"
     },
     {
       "arquivo": "fichas-de-pipeline.pdf",
-      "anexo": "— (no repositório)"
+      "anexo": "— (no repositório)",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/fichas-de-pipeline.pdf"
     },
     {
       "arquivo": "catalogo-de-metadados.pdf",
-      "anexo": "— (aguarda sincronização)"
-    }
-  ],
-  "produtos": [
-    {
-      "meta": "01",
-      "num": 1,
-      "nome": "Oficinas de facilitação e escuta qualificada",
-      "redacao": "Oficinas de facilitação e escuta qualificada sobre os dados ligados ao PNC, de forma a definir os eixos prioritários para integração e qualificação de dados e desenvolvimento da plataforma",
-      "cobertura": {
-        "1": {
-          "tipo": "secao",
-          "onde": "Descrição das atividades · Produto 1"
-        },
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 3.1"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 01 · Produto 1",
-          "pagina": 12
-        }
-      },
-      "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
-      "artefatos": []
-    },
-    {
-      "meta": "01",
-      "num": 2,
-      "nome": "Relatório de diagnóstico técnico e institucional",
-      "redacao": "Relatório de diagnóstico técnico e institucional, contendo análise da arquitetura atual, gargalos identificados e direcionamentos para aplicação de técnicas de engenharia de dados por eixos do Plano Nacional de Cultura",
-      "cobertura": {
-        "1": {
-          "tipo": "secao",
-          "onde": "Descrição das atividades · Produto 2"
-        },
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 3.2"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 01 · Produto 2",
-          "pagina": 17
-        }
-      },
-      "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
-      "artefatos": [
-        {
-          "nome": "Catálogo de fontes de dados",
-          "situacao": "Entregue",
-          "evidencia": "R3",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "02",
-      "num": 1,
-      "nome": "Relatório Informacional do PNC com painéis interativos",
-      "redacao": "Relatório executivo acompanhado de painéis interativos para monitoramento dos indicadores relevantes para o Plano Nacional de Cultura, com visualizações consolidadas, filtros temáticos, séries históricas e análises comparativas",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 4.1"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 02 · Produto 1",
-          "pagina": 24
-        }
-      },
-      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
-      "artefatos": []
-    },
-    {
-      "meta": "02",
-      "num": 2,
-      "nome": "Arquitetura Técnica da Plataforma",
-      "redacao": "Documento de arquitetura lógica, física e de segurança da plataforma, incluindo fluxos de dados, camadas de processamento, governança e integração",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 4.2"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 02 · Produto 2",
-          "pagina": 25
-        }
-      },
-      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
-      "artefatos": [
-        {
-          "nome": "Arquitetura lógica",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Arquitetura física",
-          "situacao": "Entregue como proposta",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Arquitetura de segurança",
-          "situacao": "Entregue como proposta",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Diagramas dos fluxos de dados",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "02",
-      "num": 3,
-      "nome": "Modelo Integrado de Dados",
-      "redacao": "Especificação do modelo conceitual, lógico e físico dos dados integrados, incluindo dicionário de dados e metadados",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 4.3"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 02 · Produto 3",
-          "pagina": 32
-        }
-      },
-      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
-      "artefatos": [
-        {
-          "nome": "Dicionário de dados",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Metadados",
-          "situacao": "Parcial",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Modelo conceitual, lógico e físico",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "02",
-      "num": 4,
-      "nome": "Modelo de Governança de Dados",
-      "redacao": "Documento com definição de papéis, responsabilidades, fluxos decisórios, políticas de acesso e critérios de qualidade",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 4.4"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 02 · Produto 4",
-          "pagina": 42
-        }
-      },
-      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
-      "artefatos": [
-        {
-          "nome": "Matriz de papéis e responsabilidades",
-          "situacao": "Não entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Políticas de acesso",
-          "situacao": "Parcial",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Critérios de qualidade dos dados",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Evidências de testes e validação",
-          "situacao": "Parcial",
-          "evidencia": "R3",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "02",
-      "num": 5,
-      "nome": "Repositório Público de Código-Fonte e Documentação",
-      "redacao": "Repositório versionado contendo todo o código, documentação técnica e exemplos de uso, sob licença aberta",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 4.5"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 02 · Produto 5",
-          "pagina": 44
-        }
-      },
-      "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
-      "artefatos": [
-        {
-          "nome": "Documentação dos pipelines",
-          "situacao": "Entregue",
-          "evidencia": "R3",
-          "nota": ""
-        },
-        {
-          "nome": "Exemplos de uso",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "03",
-      "num": 1,
-      "nome": "Motor de Governança e Autorização de Acesso a Dados",
-      "redacao": "Componente funcional para controle de perfis, permissões, auditoria, rastreabilidade e conformidade com LGPD e políticas institucionais",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 03 · Produto 1",
-          "pagina": 46
-        }
-      },
-      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
-      "artefatos": []
-    },
-    {
-      "meta": "03",
-      "num": 2,
-      "nome": "Arquitetura de Referência da Solução",
-      "redacao": "Documento técnico com visão lógica, física e de segurança da arquitetura, incluindo fluxos de dados, agentes de IA, camadas de governança e integração",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 03 · Produto 2",
-          "pagina": 47
-        }
-      },
-      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
-      "artefatos": []
-    },
-    {
-      "meta": "03",
-      "num": 3,
-      "nome": "Repositório Público de Código-Fonte",
-      "redacao": "Repositório versionado contendo código, pipelines, modelos, agentes de IA, scripts de implantação e exemplos de uso, sob licença aberta",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 03 · Produto 3",
-          "pagina": 48
-        }
-      },
-      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
-      "artefatos": [
-        {
-          "nome": "Scripts de implantação",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Procedimentos de implantação",
-          "situacao": "Entregue",
-          "evidencia": "R3",
-          "nota": ""
-        },
-        {
-          "nome": "Relação de componentes e versões",
-          "situacao": "Parcial",
-          "evidencia": "R3",
-          "nota": ""
-        }
-      ]
-    },
-    {
-      "meta": "03",
-      "num": 4,
-      "nome": "Oficinas de capacitação e transferência de tecnologia",
-      "redacao": "Oficinas de capacitação e transferência de tecnologia para as equipes do Ministério da Cultura",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 03 · Produto 4",
-          "pagina": 52,
-          "nota": "O relatório declara as oficinas não executadas no período."
-        }
-      },
-      "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
-      "artefatos": []
-    },
-    {
-      "meta": "04",
-      "num": 1,
-      "nome": "Conjunto de Agentes Especializados por Domínio",
-      "redacao": "Agentes treinados para áreas temáticas específicas, com fontes documentais validadas",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 5.1",
-          "nota": "Em estágio de estudo."
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 04 · Produto 1",
-          "pagina": 53
-        }
-      },
-      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
-      "artefatos": []
-    },
-    {
-      "meta": "04",
-      "num": 2,
-      "nome": "Mecanismo de Geração Automática de Indicadores e Métricas",
-      "redacao": "Serviço para extração, consolidação e cálculo de indicadores a partir de textos, relatórios e documentos institucionais",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 04 · Produto 2",
-          "pagina": 56
-        }
-      },
-      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
-      "artefatos": []
-    },
-    {
-      "meta": "04",
-      "num": 3,
-      "nome": "Documentação Técnica e Metodológica",
-      "redacao": "Guias de arquitetura, uso, manutenção, evolução e replicação da solução em outros contextos institucionais, incluindo documentação do agente de IA, oficinas de capacitação e publicação de um livro",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 04 · Produto 3",
-          "pagina": 57
-        }
-      },
-      "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
-      "artefatos": [
-        {
-          "nome": "Manual de uso",
-          "situacao": "Parcial",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Manual de manutenção",
-          "situacao": "Não entregue",
-          "evidencia": "TED",
-          "nota": ""
-        },
-        {
-          "nome": "Manual de evolução",
-          "situacao": "Entregue",
-          "evidencia": "TED",
-          "nota": "O 3º Relatório o documenta sob a Meta 03 · Produto 3."
-        }
-      ]
-    },
-    {
-      "meta": "05",
-      "num": 1,
-      "nome": "Integrações com ferramentas livres de governança",
-      "redacao": "Documentação técnica e código-fonte das integrações com ferramentas livres de governança e publicação de dados abertos",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 6.1"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 05 · Produto 1",
-          "pagina": 59
-        }
-      },
-      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
-      "artefatos": []
-    },
-    {
-      "meta": "05",
-      "num": 2,
-      "nome": "Oficina sobre governança de dados descentralizada",
-      "redacao": "Oficina sobre governança de dados descentralizada",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 6.2"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 05 · Produto 2",
-          "pagina": 60
-        }
-      },
-      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
-      "artefatos": []
-    },
-    {
-      "meta": "05",
-      "num": 3,
-      "nome": "Datathon para formulação dos indicadores do PNC",
-      "redacao": "Atividade colaborativa e intensiva com diferentes instituições especialistas em dados culturais para contribuição nos indicadores associados a cada meta",
-      "cobertura": {
-        "1": {
-          "tipo": "mencao",
-          "onde": "Anexos 2 e 3, sob a Meta 01 · Produto 1"
-        },
-        "2": {
-          "tipo": "mencao",
-          "onde": "§ 6.2 e Anexo III"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 05 · Produto 3",
-          "pagina": 61
-        }
-      },
-      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
-      "artefatos": []
-    },
-    {
-      "meta": "05",
-      "num": 4,
-      "nome": "Documento analítico do processo de modelagem",
-      "redacao": "Construção estruturada de um arranjo normativo, institucional e operacional do SNIIC",
-      "cobertura": {
-        "2": {
-          "tipo": "secao",
-          "onde": "§ 6.3"
-        },
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 05 · Produto 4",
-          "pagina": 64
-        }
-      },
-      "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
-      "artefatos": []
-    },
-    {
-      "meta": "06",
-      "num": 1,
-      "nome": "Repositório Digital Brasiliana Cultura",
-      "redacao": "Catálogo integrado de todos os acervos culturais do sistema MinC",
-      "cobertura": {
-        "3": {
-          "tipo": "secao",
-          "onde": "Meta 06 · Produto 1",
-          "pagina": 66
-        }
-      },
-      "meta_nome": "Brasiliana Cultura — catálogo integrado dos acervos culturais do sistema MinC",
-      "artefatos": []
+      "anexo": "— (aguarda sincronização)",
+      "url": "https://github.com/GovHub-br/data-application-minc/blob/main/docs/documentos/catalogo-de-metadados.pdf"
     }
   ]
 }

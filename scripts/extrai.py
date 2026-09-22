@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 """Extrai o acervo do painel a partir dos geradores do 3º Relatório Parcial.
 
+O quadro de acompanhamento da CGIIC chama "artefato" o que o Termo chama
+entrega. A extração lê a palavra da fonte e grava a do Termo, que é a do
+painel — ver scripts/produtos.py.
+
 Roda uma vez, na máquina de quem tem o relatório. O resultado é versionado em
 dados/ted.json e passa a ser a fonte do painel.
 
@@ -63,13 +67,13 @@ def tabelas(bls, primeira_coluna):
 
 
 # --------------------------------------------------------------------------
-# doc-acompanhamento: artefatos, pendências, documentos
+# doc-acompanhamento: entregas, pendências, documentos
 # --------------------------------------------------------------------------
 def extrai_acompanhamento(raiz):
     mod = carrega(raiz / "doc-acompanhamento" / "conteudo.py")
     caps = mod.CAPITULOS
 
-    artefatos = [
+    entregas = [
         {
             "nome": texto(l[0]),
             "antes": texto(l[1]),
@@ -86,11 +90,11 @@ def extrai_acompanhamento(raiz):
         # artefatos e reaparece aqui entre os parciais. A tabela dos vinte é a
         # fonte; a duplicidade está registrada na seção 4.2.1 do desenho.
         situacao = next(
-            (a["agora"] for a in artefatos if a["nome"] == nome), None
+            (a["agora"] for a in entregas if a["nome"] == nome), None
         )
         pendencias.append(
             {
-                "artefato": nome,
+                "entrega": nome,
                 "situacao": situacao,
                 "falta": texto(l[1]),
                 "destrava": texto(l[2]),
@@ -99,13 +103,13 @@ def extrai_acompanhamento(raiz):
         )
 
     # Os dois não entregues não têm linha de tabela: vêm dos h4 do capítulo 04.
-    for a in artefatos:
+    for a in entregas:
         if a["agora"] == "Não entregue" and not any(
-            p["artefato"] == a["nome"] for p in pendencias
+            p["entrega"] == a["nome"] for p in pendencias
         ):
             pendencias.append(
                 {
-                    "artefato": a["nome"],
+                    "entrega": a["nome"],
                     "situacao": "Não entregue",
                     "falta": "O documento",
                     "destrava": a["onde"],
@@ -114,11 +118,15 @@ def extrai_acompanhamento(raiz):
             )
 
     documentos = [
-        {"arquivo": texto(l[0]), "anexo": texto(l[1])}
+        {
+            "arquivo": texto(l[0]),
+            "anexo": texto(l[1]),
+            "url": tabela_produtos.BASE_DOCUMENTOS + texto(l[0]),
+        }
         for l in tabelas(blocos(caps, "05"), "Arquivo no repositório")
     ]
 
-    return artefatos, pendencias, documentos
+    return entregas, pendencias, documentos
 
 
 # --------------------------------------------------------------------------
@@ -186,17 +194,22 @@ def main():
         sys.exit(__doc__)
     raiz = Path(sys.argv[1]).expanduser()
 
-    artefatos, pendencias, documentos = extrai_acompanhamento(raiz)
+    entregas, pendencias, documentos = extrai_acompanhamento(raiz)
     metas, riscos = extrai_relatorio(raiz)
 
-    # Artefato novo no quadro é artefato sem meta no painel: falha alto.
-    orfaos = tabela_produtos.sem_vinculo(artefatos)
+    # Entrega ou risco novo sem classificação é buraco no painel: falha alto,
+    # em vez de publicar uma linha órfã.
+    orfaos = tabela_produtos.sem_vinculo(entregas)
     if orfaos:
         sys.exit(
-            "Artefatos sem produto em scripts/produtos.py: "
-            + ", ".join(orfaos)
+            "Entregas sem produto em scripts/produtos.py: " + ", ".join(orfaos)
         )
-    relatorios, produtos = tabela_produtos.monta(artefatos)
+    soltos = tabela_produtos.sem_produto(riscos)
+    if soltos:
+        sys.exit(
+            "Riscos sem produto em scripts/produtos.py: " + ", ".join(soltos)
+        )
+    relatorios, produtos = tabela_produtos.monta(entregas, riscos)
 
     acervo = {
         "ted": {
@@ -215,12 +228,12 @@ def main():
             "apurado_em": "2026-08-31",
         },
         "relatorios": relatorios,
+        "produtos": produtos,
         "metas": metas,
-        "artefatos": artefatos,
+        "entregas": entregas,
         "pendencias": pendencias,
         "riscos": riscos,
         "documentos": documentos,
-        "produtos": produtos,
     }
 
     print(json.dumps(acervo, ensure_ascii=False, indent=2))

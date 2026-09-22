@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-TOTAL_ARTEFATOS = 20
+TOTAL_ENTREGAS = 20
 TOTAL_PRODUTOS = 19
 CAMPOS_ORIGEM = ("relatorio", "periodo", "apurado_em")
 TIPOS_COBERTURA = ("secao", "mencao")
@@ -23,43 +23,43 @@ TIPOS_COBERTURA = ("secao", "mencao")
 def valida(acervo):
     """Devolve a lista de problemas encontrados. Vazia significa consistente."""
     problemas = []
-    artefatos = acervo.get("artefatos", [])
+    entregas = acervo.get("entregas", [])
 
     # 1. Fechamento do quadro.
-    if len(artefatos) != TOTAL_ARTEFATOS:
+    if len(entregas) != TOTAL_ENTREGAS:
         problemas.append(
-            f"O quadro tem {len(artefatos)} artefatos; deveria fechar em "
-            f"{TOTAL_ARTEFATOS}."
+            f"O quadro tem {len(entregas)} entregas; deveria fechar em "
+            f"{TOTAL_ENTREGAS}."
         )
 
     vistos = set()
-    for a in artefatos:
+    for a in entregas:
         nome = a.get("nome", "")
         if nome in vistos:
-            problemas.append(f"Artefato duplicado no quadro: {nome!r}.")
+            problemas.append(f"Entrega duplicada no quadro: {nome!r}.")
         vistos.add(nome)
 
     # 2. Lastro obrigatório para o que é declarado entregue.
-    for a in artefatos:
+    for a in entregas:
         if a.get("agora", "").startswith("Entregue") and not a.get("onde"):
             problemas.append(
-                f"Artefato {a.get('nome')!r} consta como "
+                f"Entrega {a.get('nome')!r} consta como "
                 f"{a.get('agora')!r} e está sem lastro."
             )
 
     # 3. Integridade de referência das pendências.
-    por_nome = {a.get("nome"): a for a in artefatos}
+    por_nome = {a.get("nome"): a for a in entregas}
     for p in acervo.get("pendencias", []):
-        nome = p.get("artefato")
-        artefato = por_nome.get(nome)
-        if artefato is None:
-            problemas.append(f"Pendência de artefato inexistente: {nome!r}.")
+        nome = p.get("entrega")
+        entrega = por_nome.get(nome)
+        if entrega is None:
+            problemas.append(f"Pendência de entrega inexistente: {nome!r}.")
             continue
-        if p.get("situacao") != artefato.get("agora"):
+        if p.get("situacao") != entrega.get("agora"):
             problemas.append(
                 f"Pendência {nome!r} diverge do quadro: declara "
                 f"{p.get('situacao')!r}, o quadro diz "
-                f"{artefato.get('agora')!r}."
+                f"{entrega.get('agora')!r}."
             )
 
     # 4. Carimbo de origem.
@@ -105,34 +105,45 @@ def valida(acervo):
                     f"onde."
                 )
 
-    # 7. Todo artefato do quadro pertence a exatamente um produto, e com a
+    # 7. Toda entrega do quadro pertence a exatamente um produto, e com a
     #    situação que o quadro declara.
     vinculados = {}
     for p in produtos:
-        for a in p.get("artefatos", []):
+        for a in p.get("entregas", []):
             nome = a.get("nome")
             if nome in vinculados:
                 problemas.append(
-                    f"Artefato {nome!r} vinculado a mais de um produto."
+                    f"Entrega {nome!r} vinculada a mais de um produto."
                 )
             vinculados[nome] = a
 
-    for a in artefatos:
+    for a in entregas:
         nome = a.get("nome")
         vinculo = vinculados.get(nome)
         if vinculo is None:
-            problemas.append(f"Artefato {nome!r} não pertence a produto algum.")
+            problemas.append(f"Entrega {nome!r} não pertence a produto algum.")
         elif vinculo.get("situacao") != a.get("agora"):
             problemas.append(
-                f"Artefato {nome!r} consta como {vinculo.get('situacao')!r} no "
+                f"Entrega {nome!r} consta como {vinculo.get('situacao')!r} no "
                 f"produto e {a.get('agora')!r} no quadro."
             )
 
     for nome in vinculados:
         if nome not in por_nome:
             problemas.append(
-                f"Produto vincula artefato inexistente no quadro: {nome!r}."
+                f"Produto vincula entrega inexistente no quadro: {nome!r}."
             )
+
+    # 8. Todo produto diz o que entregou, e todo documento sabe onde está.
+    for p in produtos:
+        if not p.get("balanco"):
+            problemas.append(
+                f"Meta {p.get('meta')} · Produto {p.get('num')} sem balanço."
+            )
+
+    for d in acervo.get("documentos", []):
+        if not d.get("url"):
+            problemas.append(f"Documento {d.get('arquivo')!r} sem endereço.")
 
     return problemas
 
@@ -152,7 +163,7 @@ def main():
         sys.exit(1)
 
     print(
-        f"Acervo consistente: {len(acervo['artefatos'])} artefatos, "
+        f"Acervo consistente: {len(acervo['entregas'])} entregas, "
         f"{len(acervo.get('produtos', []))} produtos em "
         f"{len(acervo.get('relatorios', []))} relatórios, "
         f"{len(acervo['pendencias'])} pendências, "

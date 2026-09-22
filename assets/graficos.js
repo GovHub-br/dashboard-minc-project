@@ -77,7 +77,9 @@ function desenhaEvolucao(seletor, series) {
     .attr('dy', '0.35em')
     .text((d) => d.agora);
 
-  // Legenda.
+  // Legenda. A barra do 3º relatório não tem cor única: cada uma sai na cor
+  // da sua situação. Por isso a amostra é a tira das quatro cores, e não um
+  // quadrado só — que fazia a legenda parecer dizer "3º relatório é verde".
   const legenda = svg.append('g')
     .attr('transform', `translate(${margem.esquerda}, ${altura - 16})`);
 
@@ -88,19 +90,23 @@ function desenhaEvolucao(seletor, series) {
     .attr('class', 'rotulo-legenda').attr('x', 20)
     .text('2º Relatório Parcial');
 
-  legenda.append('rect')
-    .attr('class', 'barra-agora sit-entregue')
-    .attr('x', 160).attr('width', 14).attr('height', 14).attr('y', -11);
+  const tira = legenda.append('g').attr('transform', 'translate(160, 0)');
+  series.forEach((d, i) => {
+    tira.append('rect')
+      .attr('class', `barra-agora ${d.classe}`)
+      .attr('x', i * 15).attr('width', 14).attr('height', 14).attr('y', -11);
+  });
   legenda.append('text')
-    .attr('class', 'rotulo-legenda').attr('x', 180)
-    .text('3º Relatório Parcial');
+    .attr('class', 'rotulo-legenda')
+    .attr('x', 160 + series.length * 15 + 6)
+    .text('3º Relatório Parcial, na cor de cada situação');
 }
 
 function legendaAcessivel(series) {
   const partes = series.map(
     (d) => `${d.situacao}: ${d.antes} no 2º relatório, ${d.agora} no 3º`
   );
-  return `Evolução entre relatórios. ${partes.join('; ')}.`;
+  return `Evolução das entregas entre relatórios. ${partes.join('; ')}.`;
 }
 
 /* Matriz de riscos: probabilidade (y) por impacto (x), 3×3. */

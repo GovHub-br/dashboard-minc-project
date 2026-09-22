@@ -20,16 +20,24 @@ Reúne numa página o estado de execução que estava espalhado pelo quadro de
 acompanhamento de produtos da CGIIC, pelo corpo do 3º Relatório Parcial e pelo
 repositório público da plataforma.
 
-Oito seções: indicadores, evolução entre relatórios, as entregas por meta, as
-seis metas, o quadro dos 20 artefatos com lastro, o cronograma de setembro a
-novembro de 2026, a matriz de riscos e a relação dos documentos produzidos.
+Oito seções, nesta ordem: as entregas por meta, a situação das entregas, o
+balanço das seis metas, a evolução entre relatórios, o quadro das 20 entregas
+com lastro, o que vem no próximo período, os riscos e a relação dos documentos
+produzidos.
 
-**Entregas por meta** cruza os 19 produtos pactuados no Termo com os três
-relatórios de atividades: em qual deles cada produto foi tratado, e quais
-artefatos do quadro pertencem a cada produto. A cobertura vem do sumário de cada
-relatório; o vínculo artefato→produto vem da redação do Termo, e só onde o Termo
-não nomeia o artefato é que vem do lugar em que o 3º Relatório o documenta — a
-etiqueta registra qual dos dois casos é.
+**Entregas por meta** abre a página. Cruza os 19 produtos pactuados no Termo com
+os três relatórios de atividades: o que cada produto entregou até aqui, em qual
+relatório foi tratado, e quais entregas do quadro de acompanhamento lhe
+pertencem. A cobertura vem do sumário de cada relatório; o texto do que foi
+entregue vem da seção correspondente do 3º Relatório; o vínculo entrega→produto
+vem da redação do Termo, e só onde o Termo não nomeia a entrega é que vem do
+lugar em que o 3º Relatório a documenta — a etiqueta registra qual dos dois casos
+é.
+
+**Sobre a palavra "entrega".** O quadro de acompanhamento da CGIIC chama
+*artefato* o que o Termo chama entrega. O painel adota a palavra do Termo: fazer
+o leitor conciliar vinte artefatos com dezenove produtos era o principal ruído da
+versão anterior. A extração lê a palavra da fonte e grava a do Termo.
 
 **Fonte:** `dados/ted.json`, extraído uma vez dos geradores do 3º Relatório
 Parcial por `scripts/extrai.py`. Atualiza-se a cada relatório parcial.
@@ -76,7 +84,7 @@ Depois, abrir <http://localhost:8000>.
 | `dados/` | Os acervos: `ted.json`, `eixos.json`, `historico.json`. |
 | `assets/` | Tema visual, scripts das páginas e a biblioteca D3, versionada. |
 | `planilha/` | Modelo da planilha dos eixos e o guia de preenchimento. |
-| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED e sua cobertura por relatório. |
+| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório e a classificação dos riscos. |
 | `tests/` | Testes dos dois conversores. |
 | `docs/` | Documento de desenho e plano de implementação. |
 

@@ -12,15 +12,33 @@ PRODUTOS        os 19 produtos do TED, com a redação do Termo. A cobertura
                 ("secao") ou foi tratado sob outro produto ("mencao"), com a
                 localização. Vem do sumário de cada relatório.
 
-ARTEFATO_PRODUTO  a que produto pertence cada um dos 20 artefatos do quadro de
-                acompanhamento. A evidência é "TED" quando o artefato é
-                nomeado na redação do produto, e "R3" quando o vínculo vem do
-                lugar em que o 3º Relatório o documenta. Como o QUEM_DESTRAVA
-                do extrai.py, a classificação "R3" é do painel, não do
-                documento — e está marcada como tal na página.
+BALANCO         o que cada produto entregou no período, derivado da seção
+                correspondente do 3º Relatório, com a página de origem.
+
+ENTREGA_PRODUTO a que produto pertence cada uma das 20 entregas do quadro de
+                acompanhamento. A evidência é "TED" quando a entrega é nomeada
+                na redação do produto, e "R3" quando o vínculo vem do lugar em
+                que o 3º Relatório a documenta. Como o QUEM_DESTRAVA do
+                extrai.py, a classificação "R3" é do painel, não do documento —
+                e está marcada como tal na página.
+
+RISCO_PRODUTO   a que produto cada um dos sete riscos se refere. Classificação
+                do painel, pelo assunto do risco e da sua medida mitigadora; o
+                relatório não faz essa ligação.
+
+O quadro de acompanhamento da CGIIC chama "artefato" o que o Termo chama
+entrega. O painel adota a palavra do Termo: fazer o leitor conciliar vinte
+artefatos com dezenove produtos era o principal ruído da versão anterior.
 
 Importado por extrai.py. Não roda sozinho.
 """
+
+# Onde ficam os documentos produzidos, versionados no repositório da
+# plataforma. O painel liga cada documento citado a este endereço.
+BASE_DOCUMENTOS = (
+    "https://github.com/GovHub-br/data-application-minc/blob/main/"
+    "docs/documentos/"
+)
 
 RELATORIOS = [
     {
@@ -261,11 +279,11 @@ PRODUTOS = [
     },
 ]
 
-# artefato do quadro de acompanhamento -> (meta, produto, evidência, nota)
+# entrega do quadro de acompanhamento -> (meta, produto, evidência, nota)
 #
-# "TED": o artefato é nomeado na redação do produto.
-# "R3":  o vínculo vem do lugar em que o 3º Relatório documenta o artefato.
-ARTEFATO_PRODUTO = {
+# "TED": a entrega é nomeada na redação do produto.
+# "R3":  o vínculo vem do lugar em que o 3º Relatório documenta a entrega.
+ENTREGA_PRODUTO = {
     "Catálogo de fontes de dados": ("01", 2, "R3", ""),
     "Arquitetura lógica": ("02", 2, "TED", ""),
     "Arquitetura física": ("02", 2, "TED", ""),
@@ -290,15 +308,100 @@ ARTEFATO_PRODUTO = {
 }
 
 
-def monta(artefatos):
+# (meta, produto) -> o que o produto entregou no período.
+#
+# Transcrito da seção correspondente do 3º Relatório Parcial, em uma frase.
+# A página consta da cobertura do produto; quem quiser conferir vai direto a
+# ela. Nenhuma linha afirma coisa que o relatório não diga.
+BALANCO = {
+    ("01", 1): "Vinte e dois encontros de trabalho por eixo do Plano, com o "
+               "Ministério e a equipe de pesquisa, cumprindo a escuta "
+               "qualificada prevista. Seis dos oito eixos percorridos.",
+    ("01", 2): "Catálogo de fontes de dados, levantamento a partir do código, "
+               "arquitetura comum de ingestão e visão consolidada das fontes, "
+               "com ênfase no Eixo 2, que inaugurou a integração.",
+    ("02", 1): "Camada semântica sobre as tabelas de consumo, com doze métricas "
+               "nomeadas. Os painéis propriamente ditos aguardam a reunião de "
+               "requisitos com o Ministério.",
+    ("02", 2): "Os três níveis: arquitetura lógica em operação (Figuras 1 e 2), "
+               "física proposta (Figura 3) e de segurança, somadas aos fluxos "
+               "de dados do Anexo III.",
+    ("02", 3): "Modelo conceitual, lógico e físico do Eixo 2, dicionário de "
+               "dados e metadados. Especificação completa no Anexo IV.",
+    ("02", 4): "Critérios de qualidade convertidos em testes automáticos em "
+               "cinco dimensões, com 858 verificações inventariadas. Papéis, "
+               "responsabilidades e políticas de acesso seguem em elaboração.",
+    ("02", 5): "Repositório público sob licença MIT, com ficha técnica de treze "
+               "das dezesseis rotinas em operação e os exemplos de uso do "
+               "Anexo VI.",
+    ("03", 1): "Especificado na arquitetura de segurança do Produto 2 da Meta "
+               "02, e não implantado: o motor pressupõe fronteira "
+               "administrativa única, que o ambiente de produção ainda não "
+               "oferece.",
+    ("03", 2): "Atendido pelo conjunto do Produto 2 da Meta 02 — os três níveis "
+               "de arquitetura — somado aos fluxos de dados derivados da "
+               "linhagem dos modelos.",
+    ("03", 3): "Repositório público sob licença MIT, com os scripts e "
+               "procedimentos de implantação do Anexo VIII e o manual de "
+               "evolução do Anexo IX.",
+    ("03", 4): "Nenhuma oficina realizada no período. A atividade segue "
+               "prevista, apoiada nos documentos de implantação e de evolução "
+               "do Produto 3.",
+    ("04", 1): "Agente de domínio operando de ponta a ponta desde agosto de "
+               "2026, com recuperação por busca híbrida sobre base vetorial, "
+               "fundida por posto recíproco.",
+    ("04", 2): "Camada de entrega em quatro estágios: uma pergunta em português "
+               "produz as bases consultadas, a consulta, o gráfico, a "
+               "explicação e o relatório.",
+    ("04", 3): "Dezesseis decisões de arquitetura registradas entre 21 de julho "
+               "e 19 de agosto, planejamento datado, suíte de testes e ambiente "
+               "de avaliação versionado. Visão geral no Anexo X.",
+    ("05", 1): "OpenMetadata adotado como catálogo institucional, alimentado "
+               "por declaração versionada do projeto de transformação. "
+               "Integração implantada e em operação.",
+    ("05", 2): "Oficina realizada em junho de 2026 junto à STII do Ministério, "
+               "sobre o motor de consulta distribuído e o componente de "
+               "governança e autorização de acesso.",
+    ("05", 3): "Planejamento, produção e mobilização do evento: dois dias em "
+               "Brasília, oito oficinas preparatórias — uma por eixo — e grupos "
+               "de trabalho por eixo. Detalhamento no Anexo XI.",
+    ("05", 4): "Proposta de estrutura construída em reuniões da equipe da "
+               "Universidade, alinhamentos com o Ministério e contribuições do "
+               "Comitê Gestor do SNIIC.",
+    ("06", 1): "Diagnóstico da gestão da informação dos acervos das seis "
+               "instituições do sistema MinC e estudo comparativo de "
+               "vocabulários. Portal em construção; coleta ainda por iniciar.",
+}
+
+# risco (pelo início do texto) -> (meta, produto) que ele ameaça.
+RISCO_PRODUTO = {
+    "Inexistência de infraestrutura de produção": ("03", 1),
+    "Documentação de coluna do SALIC parcial": ("02", 3),
+    "Definição dos painéis condicionada": ("02", 1),
+    "Cadeia do BB Ágil": ("02", 3),
+    "Sincronização manual entre a plataforma": ("05", 1),
+    "Meta 06": ("06", 1),
+    "Custos, prazos e logística": ("05", 3),
+}
+
+
+def produto_do_risco(texto):
+    """(meta, produto) do risco, ou None se a tabela não o classifica."""
+    for chave, alvo in RISCO_PRODUTO.items():
+        if texto.startswith(chave):
+            return alvo
+    return None
+
+
+def monta(entregas, riscos=None):
     """Devolve os blocos `relatorios` e `produtos` do acervo.
 
-    Cada produto recebe a lista dos artefatos do quadro que lhe pertencem, com
+    Cada produto recebe a lista das entregas do quadro que lhe pertencem, com
     a situação apurada no relatório mais recente.
     """
     por_produto = {}
-    for a in artefatos:
-        vinculo = ARTEFATO_PRODUTO.get(a["nome"])
+    for a in entregas:
+        vinculo = ENTREGA_PRODUTO.get(a["nome"])
         if not vinculo:
             continue
         meta, num, evidencia, nota = vinculo
@@ -314,12 +417,29 @@ def monta(artefatos):
         produtos.append({
             **p,
             "meta_nome": METAS_TED[p["meta"]],
-            "artefatos": por_produto.get((p["meta"], p["num"]), []),
+            "balanco": BALANCO[(p["meta"], p["num"])],
+            "entregas": por_produto.get((p["meta"], p["num"]), []),
         })
+
+    # Cada risco ganha o produto que ameaça, para que a seção de riscos leia
+    # na mesma chave do resto da página.
+    for r in riscos or []:
+        alvo = produto_do_risco(r["risco"])
+        if alvo:
+            r["meta"], r["produto"] = alvo
+            r["produto_nome"] = next(
+                p["nome"] for p in PRODUTOS
+                if p["meta"] == alvo[0] and p["num"] == alvo[1]
+            )
 
     return RELATORIOS, produtos
 
 
-def sem_vinculo(artefatos):
-    """Artefatos do quadro que a tabela não vincula a produto algum."""
-    return [a["nome"] for a in artefatos if a["nome"] not in ARTEFATO_PRODUTO]
+def sem_produto(riscos):
+    """Riscos que a tabela não classifica."""
+    return [r["risco"] for r in riscos if not produto_do_risco(r["risco"])]
+
+
+def sem_vinculo(entregas):
+    """Entregas do quadro que a tabela não vincula a produto algum."""
+    return [a["nome"] for a in entregas if a["nome"] not in ENTREGA_PRODUTO]
