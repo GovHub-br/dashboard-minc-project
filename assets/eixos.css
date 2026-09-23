@@ -1,12 +1,13 @@
 /* Painel do trabalho nos 8 eixos do PNC.
    Herda os tokens e a base de tema.css; aqui só o que é próprio desta página. */
 
-/* Cores de situação das tarefas. Cada uma sempre acompanhada de rótulo. */
+/* Cores de situação das tarefas, na paleta do Lab Livre herdada de tema.css.
+   Cada uma sempre acompanhada de rótulo. */
 :root {
-  --st-concluido:    #10B981;
-  --st-andamento:    #7A34F3;
-  --st-bloqueado:    #C2410C;
-  --st-risco:        #F19F42;
+  --st-concluido:    var(--color-success);
+  --st-andamento:    var(--primary-purple);
+  --st-bloqueado:    var(--dark-navy);
+  --st-risco:        var(--accent-pink);
   --st-nao-iniciado: #B9BBC6;
 }
 

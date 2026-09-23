@@ -8,9 +8,9 @@ const ORDEM_STATUS = [
 
 const COR_STATUS = {
   concluido: '#10B981',
-  em_andamento: '#7A34F3',
-  bloqueado: '#C2410C',
-  em_risco: '#F19F42',
+  em_andamento: '#7023E8',
+  bloqueado: '#080056',
+  em_risco: '#F46B2F',
   nao_iniciado: '#B9BBC6',
 };
 

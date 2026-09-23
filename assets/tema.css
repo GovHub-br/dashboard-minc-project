@@ -1,31 +1,63 @@
 /* Painel de Entregas e Status do TED — MinC
-   Identidade visual Gov Hub. A fonte Inter é referenciada com fallback de
-   sistema, sem @import: o painel precisa abrir em rede restrita. */
+
+   Identidade visual do Lab Livre, conforme a skill lablivre-visual-identity
+   (Manual de Identidade Visual da marca). Os nomes dos tokens são os da
+   skill, de modo que o artefato troque de marca trocando só este :root.
+
+   Duas escolhas que se afastam da leitura literal da skill, e por quê:
+
+   1. A skill traz as fontes Reddit Sans e Oswald por @import do Google
+      Fonts. Este painel não carrega nada de CDN — precisa abrir em rede
+      restrita —, então a pilha nomeia as fontes da marca e cai no
+      fallback de sistema quando elas não estão instaladas.
+
+   2. O magenta não é usado como fundo de etiqueta: #E52E70 dá 4,24 de
+      contraste com branco e 4,33 com o navy, abaixo do mínimo AA para
+      texto pequeno. Fica no papel que o MIV lhe dá — acento e transição
+      de gradiente. As quatro situações usam navy, roxo, laranja e verde,
+      todas acima de 6. */
 
 :root {
-  --primary-purple:   #7A34F3;
-  --secondary-purple: #8B5CF6;
-  --accent-orange:    #F97316;
-  --purple-600:       #7C3AAD;
-  --purple-700:       #5B21B6;
+  /* Paleta oficial (MIV Lab Livre) */
+  --primary-purple:  #7023E8; /* roxo — cor-assinatura */
+  --dark-navy:       #080056; /* azul profundo — contraste máximo */
+  --accent-magenta:  #E52E70; /* rosa-choque — acento, gradiente */
+  --accent-pink:     #F46B2F; /* laranja — acento quente pontual */
+  --bg-peach:        #FFE7E1; /* rosa claro — fundo de marca */
+  --text-white:      #FFFFFF;
 
+  /* Estados derivados do primário */
+  --purple-600: #5F1EC5;
+  --purple-700: #4A17A0;
+
+  /* Neutros / texto */
   --text-strong: #202020;
   --text-body:   #2D3748;
   --text-muted:  #666666;
 
+  /* Fundos */
   --bg-white:  #FFFFFF;
   --bg-light:  #F7F7F7;
   --bg-subtle: #F8F9FA;
 
+  /* Divisores */
+  --border-soft: #E6DCFB;
+
+  /* Semânticas */
   --color-success: #10B981;
-  --color-warm:    #F19F42;
-  --color-ausente: #C2410C;
 
-  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 10px rgba(8, 0, 86, 0.10);
+  --shadow-lg: 0 4px 20px rgba(8, 0, 86, 0.12);
+  --radius-sm: 6px;
   --radius-md: 10px;
+  --radius-lg: 16px;
 
-  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-               Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Reddit Sans e Oswald são as fontes da marca; sem CDN, a pilha só as
+     nomeia — quem as tiver instaladas vê a marca, os demais veem o
+     fallback de sistema. */
+  --font-base: 'Reddit Sans', 'Open Sans', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-titulo: 'Oswald', 'Reddit Sans', 'Open Sans', var(--font-base);
 
   --largura: 1140px;
 }
@@ -48,8 +80,10 @@ body {
 
 /* ---------------------------------------------------------------- cabeçalho */
 
+/* Degradê da marca: sempre do frio para o quente, como manda o MIV. */
 .topo {
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  background: linear-gradient(135deg,
+    var(--dark-navy) 0%, var(--primary-purple) 55%, var(--accent-magenta) 100%);
   color: var(--bg-white);
   padding: 48px 0 40px;
 }
@@ -63,7 +97,11 @@ body {
   margin: 0 0 8px;
 }
 
+.topo .eyebrow { font-family: var(--font-titulo); }
+
 .topo h1 {
+  font-family: var(--font-titulo);
+  letter-spacing: 0.01em;
   margin: 0 0 12px;
   font-size: 2.1rem;
   font-weight: 700;
@@ -127,9 +165,9 @@ body {
 }
 
 .indicador.sit-entregue           { border-top-color: var(--color-success); }
-.indicador.sit-entregue-proposta  { border-top-color: var(--secondary-purple); }
-.indicador.sit-parcial            { border-top-color: var(--color-warm); }
-.indicador.sit-nao-entregue       { border-top-color: var(--color-ausente); }
+.indicador.sit-entregue-proposta  { border-top-color: var(--primary-purple); }
+.indicador.sit-parcial            { border-top-color: var(--accent-pink); }
+.indicador.sit-nao-entregue       { border-top-color: var(--dark-navy); }
 
 /* ---------------------------------------------------------------- etiquetas */
 
@@ -143,26 +181,55 @@ body {
   color: var(--bg-white);
 }
 
-.etiqueta.sit-entregue          { background: var(--color-success); }
-.etiqueta.sit-entregue-proposta { background: var(--secondary-purple); }
-.etiqueta.sit-parcial           { background: var(--color-warm); color: var(--text-strong); }
-.etiqueta.sit-nao-entregue      { background: var(--color-ausente); }
+.etiqueta.sit-entregue          { background: var(--color-success); color: var(--dark-navy); }
+.etiqueta.sit-entregue-proposta { background: var(--primary-purple); }
+.etiqueta.sit-parcial           { background: var(--accent-pink); color: var(--dark-navy); }
+.etiqueta.sit-nao-entregue      { background: var(--dark-navy); }
 
 /* ------------------------------------------------------------------ rodapé */
 
 .rodape {
-  background: var(--text-strong);
+  background: var(--dark-navy);
   color: var(--bg-white);
   padding: 32px 0;
   font-size: 0.88rem;
 }
 
-.rodape a { color: var(--secondary-purple); }
+/* Assinatura horizontal do Lab Livre. A área de não-interferência do MIV é a
+   altura do ícone: daí a margem de 34px ao redor, para 34px de altura. */
+.assinatura {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.assinatura img {
+  height: 34px;      /* bem acima da redução mínima de 3 cm em impressão */
+  width: auto;
+  margin: 0 34px 0 0;
+  display: block;
+}
+
+.assinatura .quem {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rodape a { color: var(--border-soft); }
 
 /* --------------------------------------------------------------- responsivo */
 
 @media (max-width: 640px) {
-  .topo h1 { font-size: 1.5rem; }
+  .topo .eyebrow { font-family: var(--font-titulo); }
+
+.topo h1 {
+  font-family: var(--font-titulo);
+  letter-spacing: 0.01em; font-size: 1.5rem; }
   .secao { padding: 32px 0; }
   .indicador .numero { font-size: 1.9rem; }
 }
@@ -175,12 +242,12 @@ body {
 
 /* ------------------------------------------------------------- gráficos */
 
-.barra-antes { fill: #D6D3E4; }
+.barra-antes { fill: var(--border-soft); }
 
 .barra-agora.sit-entregue          { fill: var(--color-success); }
-.barra-agora.sit-entregue-proposta { fill: var(--secondary-purple); }
-.barra-agora.sit-parcial           { fill: var(--color-warm); }
-.barra-agora.sit-nao-entregue      { fill: var(--color-ausente); }
+.barra-agora.sit-entregue-proposta { fill: var(--primary-purple); }
+.barra-agora.sit-parcial           { fill: var(--accent-pink); }
+.barra-agora.sit-nao-entregue      { fill: var(--dark-navy); }
 
 .rotulo-situacao {
   font-size: 0.9rem;
@@ -198,7 +265,7 @@ body {
   margin-top: 24px;
   padding: 16px 20px;
   background: var(--bg-white);
-  border-left: 4px solid var(--accent-orange);
+  border-left: 4px solid var(--accent-pink);
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   color: var(--text-body);
@@ -460,7 +527,7 @@ table.quadro .etiqueta {
 /* ------------------------------------------------------------- navegação */
 
 .navegacao {
-  background: var(--text-strong);
+  background: var(--dark-navy);
   padding: 0;
 }
 
@@ -484,7 +551,7 @@ table.quadro .etiqueta {
 .navegacao a.ativo {
   color: var(--bg-white);
   font-weight: 600;
-  border-bottom-color: var(--secondary-purple);
+  border-bottom-color: var(--primary-purple);
 }
 
 /* --------------------------------------- acompanhamento por meta e produto */
@@ -542,9 +609,9 @@ table.quadro .etiqueta {
   overflow: hidden;
   white-space: nowrap;
 }
-.barra-estados .estado-entregue  { background: var(--color-success); color: var(--bg-white); }
-.barra-estados .estado-andamento { background: var(--color-warm);    color: var(--text-strong); }
-.barra-estados .estado-previsto  { background: #D6D3E4;              color: var(--text-body); }
+.barra-estados .estado-entregue  { background: var(--color-success); color: var(--dark-navy); }
+.barra-estados .estado-andamento { background: var(--accent-pink);   color: var(--dark-navy); }
+.barra-estados .estado-previsto  { background: var(--bg-peach);      color: var(--dark-navy); }
 
 .sob-barra {
   margin: 8px 0 20px;
@@ -580,7 +647,7 @@ table.quadro .etiqueta {
   text-align: center;
 }
 .marca-secao  { background: var(--primary-purple); color: var(--bg-white); cursor: help; }
-.marca-mencao { background: var(--color-warm);     color: var(--text-strong); cursor: help; }
+.marca-mencao { background: var(--accent-pink);   color: var(--dark-navy); cursor: help; }
 .marca-ausente { background: var(--bg-light);      color: #B0B0B0; }
 
 .bloco-meta { margin-bottom: 28px; }
@@ -661,9 +728,9 @@ details.produto[open] > summary { background: var(--bg-subtle); }
   font-weight: 700;
   white-space: nowrap;
 }
-.selo.estado-entregue  { background: var(--color-success); color: var(--bg-white); }
-.selo.estado-andamento { background: var(--color-warm);    color: var(--text-strong); }
-.selo.estado-previsto  { background: var(--bg-light);      color: var(--text-muted); }
+.selo.estado-entregue  { background: var(--color-success); color: var(--dark-navy); }
+.selo.estado-andamento { background: var(--accent-pink);   color: var(--dark-navy); }
+.selo.estado-previsto  { background: var(--bg-peach);      color: var(--dark-navy); }
 .selo.estado-vazio {
   background: transparent;
   color: var(--text-muted);
@@ -782,10 +849,10 @@ ul.encaminhamentos-produto li { margin-bottom: 4px; }
   font-size: 0.95rem;
   min-width: 34px;
 }
-.barra-situacao .sit-entregue          { background: var(--color-success); }
-.barra-situacao .sit-entregue-proposta { background: var(--secondary-purple); }
-.barra-situacao .sit-parcial           { background: var(--color-warm); color: var(--text-strong); }
-.barra-situacao .sit-nao-entregue      { background: var(--color-ausente); }
+.barra-situacao .sit-entregue          { background: var(--color-success); color: var(--dark-navy); }
+.barra-situacao .sit-entregue-proposta { background: var(--primary-purple); }
+.barra-situacao .sit-parcial           { background: var(--accent-pink); color: var(--dark-navy); }
+.barra-situacao .sit-nao-entregue      { background: var(--dark-navy); }
 
 ul.legenda-situacao { margin: 0; padding: 0; list-style: none; }
 ul.legenda-situacao li {
@@ -803,9 +870,9 @@ ul.legenda-situacao li:last-child { border-bottom: none; }
   width: 12px; height: 12px; border-radius: 3px; align-self: center;
 }
 .legenda-situacao .ponto.sit-entregue          { background: var(--color-success); }
-.legenda-situacao .ponto.sit-entregue-proposta { background: var(--secondary-purple); }
-.legenda-situacao .ponto.sit-parcial           { background: var(--color-warm); }
-.legenda-situacao .ponto.sit-nao-entregue      { background: var(--color-ausente); }
+.legenda-situacao .ponto.sit-entregue-proposta { background: var(--primary-purple); }
+.legenda-situacao .ponto.sit-parcial           { background: var(--accent-pink); }
+.legenda-situacao .ponto.sit-nao-entregue      { background: var(--dark-navy); }
 
 .legenda-situacao .quanto { font-weight: 700; color: var(--text-strong); }
 .legenda-situacao .qual { font-weight: 600; color: var(--text-strong); }

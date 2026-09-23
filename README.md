@@ -92,14 +92,38 @@ Depois, abrir <http://localhost:8000>.
 | `index.html` | Painel do TED. |
 | `eixos.html` | Painel dos 8 eixos do PNC. |
 | `dados/` | Os acervos: `ted.json`, `eixos.json`, `historico.json`. |
-| `assets/` | Tema visual, scripts das páginas e a biblioteca D3, versionada. |
+| `assets/` | Tema visual, scripts das páginas, a marca do Lab Livre e a biblioteca D3, versionada. |
 | `planilha/` | Modelo da planilha dos eixos e o guia de preenchimento. |
-| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório, o estado de entrega e a classificação dos riscos. |
+| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório, o estado de entrega e o vínculo entre artefatos e produtos. |
 | `tests/` | Testes dos dois conversores. |
 | `docs/` | Documento de desenho e plano de implementação. |
 
 Não há etapa de compilação. O GitHub Pages serve o diretório como está, e nada
 é carregado de CDN — o painel abre em rede restrita.
+
+## Identidade visual
+
+A do Lab Livre, conforme a skill `lablivre-visual-identity`: roxo `#7023E8` como
+cor-assinatura, azul profundo `#080056` para contraste máximo, laranja `#F46B2F`
+como acento quente e rosa-choque `#E52E70` no degradê do cabeçalho — sempre do
+frio para o quente, como manda o manual. Os tokens estão no `:root` de
+`assets/tema.css`, com os nomes da skill: a página troca de marca trocando só
+esse bloco.
+
+Dois pontos em que a aplicação se afasta da leitura literal da skill, e ambos
+estão comentados no CSS:
+
+- **A tipografia da marca não é carregada.** A skill traz Reddit Sans e Oswald
+  por `@import` do Google Fonts, e este repositório não carrega nada de CDN. A
+  pilha de fontes nomeia as duas e cai no fallback de sistema para quem não as
+  tem instaladas.
+- **O rosa-choque não vira fundo de etiqueta.** `#E52E70` dá 4,24 de contraste
+  com branco e 4,33 com o azul profundo, abaixo do mínimo AA para texto pequeno.
+  Fica no papel que o manual lhe dá, de acento e transição de gradiente; as
+  quatro situações usam azul profundo, roxo, laranja e verde, todas acima de 6.
+
+A conferência de contraste cobre as 173 combinações de texto e fundo da página,
+e todas passam em AA.
 
 ## Automação
 
