@@ -122,8 +122,14 @@ estão comentados no CSS:
   Fica no papel que o manual lhe dá, de acento e transição de gradiente; as
   quatro situações usam azul profundo, roxo, laranja e verde, todas acima de 6.
 
-A conferência de contraste cobre as 173 combinações de texto e fundo da página,
-e todas passam em AA.
+O verde e o laranja funcionam como fundo, mas como **cor de texto** sobre branco
+dão 2,54 e 3,00. Para número e rótulo há `--success-texto` e `--pink-texto`,
+escurecidos até 4,5; o fundo continua usando as cores oficiais.
+
+A conferência de contraste varre todo elemento com texto das duas páginas — 763
+no painel do TED com as fichas abertas, 515 no dos eixos — e todos passam em AA.
+Elementos sobre o degradê do cabeçalho ficam fora da conta: a razão de contraste
+não é definida contra um fundo que varia.
 
 ## Automação
 

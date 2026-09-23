@@ -46,6 +46,13 @@
   /* Semânticas */
   --color-success: #10B981;
 
+  /* Versões de texto do verde e do laranja. As cores de marca funcionam como
+     fundo, mas como cor de texto sobre branco dão 2,54 e 3,00 — abaixo de AA.
+     Estes tons, escurecidos até 4,5, valem só para número e rótulo; o fundo
+     continua usando as cores oficiais. */
+  --success-texto: #0C855D;
+  --pink-texto:    #D1470B;
+
   --shadow-md: 0 2px 10px rgba(8, 0, 86, 0.10);
   --shadow-lg: 0 4px 20px rgba(8, 0, 86, 0.12);
   --radius-sm: 6px;
@@ -648,7 +655,7 @@ table.quadro .etiqueta {
 }
 .marca-secao  { background: var(--primary-purple); color: var(--bg-white); cursor: help; }
 .marca-mencao { background: var(--accent-pink);   color: var(--dark-navy); cursor: help; }
-.marca-ausente { background: var(--bg-light);      color: #B0B0B0; }
+.marca-ausente { background: var(--bg-light);      color: var(--text-muted); }
 
 .bloco-meta { margin-bottom: 28px; }
 .bloco-meta:last-of-type { margin-bottom: 0; }

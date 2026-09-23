@@ -2,7 +2,11 @@
    Herda os tokens e a base de tema.css; aqui só o que é próprio desta página. */
 
 /* Cores de situação das tarefas, na paleta do Lab Livre herdada de tema.css.
-   Cada uma sempre acompanhada de rótulo. */
+   Cada uma sempre acompanhada de rótulo.
+
+   Os neutros de apoio desta página — bordas, trilhos de barra, grade dos
+   gráficos — usam --border-soft, o lilás claro da paleta, em vez dos cinzas
+   que havia antes. O fundo dos alertas usa --bg-peach, o rosa claro de marca. */
 :root {
   --st-concluido:    var(--color-success);
   --st-andamento:    var(--primary-purple);
@@ -115,7 +119,7 @@
 }
 
 .barra-eixo .trilho {
-  background: #E9E9EF;
+  background: var(--border-soft);
   border-radius: 999px;
   height: 12px;
   overflow: hidden;
@@ -126,7 +130,7 @@
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: var(--accent-orange);
+  background: var(--accent-pink);
   transition: width 0.4s ease;
 }
 
@@ -134,7 +138,7 @@
 
 .barra-eixo .pct {
   font-weight: 700;
-  color: var(--accent-orange);
+  color: var(--pink-texto);
   text-align: right;
 }
 
@@ -169,7 +173,7 @@
 /* --------------------------------------------------------------- alertas */
 
 .titulo-alerta::before { content: "⚠ "; }
-.titulo-alerta { border-bottom: 2px solid var(--color-ausente); padding-bottom: 10px; }
+.titulo-alerta { border-bottom: 2px solid var(--dark-navy); padding-bottom: 10px; }
 
 .grade-alertas {
   display: grid;
@@ -178,20 +182,20 @@
 }
 
 .alerta {
-  background: #FDF2F0;
-  border-left: 4px solid var(--color-ausente);
+  background: var(--bg-peach);
+  border-left: 4px solid var(--dark-navy);
   border-radius: var(--radius-md);
   padding: 14px 18px;
 }
 
 .alerta .tarefa-alerta {
   font-weight: 600;
-  color: var(--color-ausente);
+  color: var(--dark-navy);
   margin-bottom: 4px;
 }
 
 .alerta .meta-alerta { font-size: 0.82rem; color: var(--text-muted); }
-.alerta .motivo { font-weight: 700; color: var(--color-ausente); }
+.alerta .motivo { font-weight: 700; color: var(--dark-navy); }
 
 .sem-alertas {
   background: #E8F5EE;
@@ -205,7 +209,7 @@
 
 .aviso-vazio {
   background: var(--bg-white);
-  border: 1px dashed #CCC;
+  border: 1px dashed var(--border-soft);
   border-radius: var(--radius-md);
   padding: 28px;
   text-align: center;
@@ -222,7 +226,7 @@
 /* ============================================================ rede */
 
 .titulo-rede::before { content: "🔗 "; }
-.destaque-vermelho { color: var(--color-ausente); }
+.destaque-vermelho { color: var(--dark-navy); }
 
 .indicadores-rede {
   display: grid;
@@ -242,7 +246,7 @@
 .ind-rede.verde    { border-left-color: var(--st-concluido); }
 .ind-rede.vermelho { border-left-color: var(--st-bloqueado); }
 .ind-rede.roxo     { border-left-color: var(--primary-purple); }
-.ind-rede.laranja  { border-left-color: var(--accent-orange); }
+.ind-rede.laranja  { border-left-color: var(--accent-pink); }
 
 .ind-rede .rot-ind {
   font-size: 0.7rem;
@@ -260,10 +264,10 @@
   margin: 4px 0 2px;
 }
 
-.ind-rede.verde    .val-ind { color: var(--st-concluido); }
+.ind-rede.verde    .val-ind { color: var(--success-texto); }
 .ind-rede.vermelho .val-ind { color: var(--st-bloqueado); }
 .ind-rede.roxo     .val-ind { color: var(--primary-purple); }
-.ind-rede.laranja  .val-ind { color: var(--accent-orange); }
+.ind-rede.laranja  .val-ind { color: var(--pink-texto); }
 
 .ind-rede .sub-ind { font-size: 0.76rem; color: var(--text-muted); }
 
@@ -272,7 +276,7 @@
 .abas-rede { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
 
 .aba {
-  border: 1px solid #DDD;
+  border: 1px solid var(--border-soft);
   background: var(--bg-white);
   color: var(--text-body);
   border-radius: 999px;
@@ -305,7 +309,7 @@
 
 .tracinho { width: 22px; height: 0; border-top: 2px solid var(--st-concluido); }
 .tracinho.aguardando {
-  border-top: 2px dashed var(--color-ausente);
+  border-top: 2px dashed var(--dark-navy);
 }
 
 /* grade das cadeias */
@@ -334,14 +338,14 @@
   left: -14px;
   top: 50%;
   width: 26px;
-  border-top: 2px dashed var(--color-ausente);
+  border-top: 2px dashed var(--dark-navy);
 }
 
 .seta::after {
   content: "";
   position: absolute;
   right: -1px; top: -4px;
-  border-left: 6px solid var(--color-ausente);
+  border-left: 6px solid var(--dark-navy);
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
 }
@@ -377,9 +381,9 @@
 }
 
 .marca { font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
-.marca.travada { color: var(--color-ausente); }
+.marca.travada { color: var(--dark-navy); }
 .marca.pronta  { color: var(--st-concluido); }
-.marca.ok      { color: var(--st-concluido); }
+.marca.ok      { color: var(--success-texto); }
 
 .desc-no { font-size: 0.84rem; color: var(--text-body); line-height: 1.35; }
 .pe-no { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; }
@@ -439,9 +443,9 @@
   gap: 20px;
 }
 
-.grade { stroke: #E9E9EF; stroke-width: 1; }
+.grade { stroke: var(--border-soft); stroke-width: 1; }
 .eixo text { fill: var(--text-muted); font-size: 0.74rem; }
-.eixo path, .eixo line { stroke: #DDD; }
+.eixo path, .eixo line { stroke: var(--border-soft); }
 
 .area-progresso { fill: var(--primary-purple); fill-opacity: 0.12; }
 .linha-progresso {
@@ -478,7 +482,7 @@
   width: 100%;
   max-width: 340px;
   padding: 9px 14px;
-  border: 1px solid #DDD;
+  border: 1px solid var(--border-soft);
   border-radius: 999px;
   font: inherit;
   font-size: 0.88rem;
@@ -519,15 +523,15 @@
 
 .nome-eixo-bloco { font-weight: 600; color: var(--text-strong); font-size: 0.94rem; }
 
-.trilho.pequeno { height: 8px; background: #E9E9EF; border-radius: 999px; overflow: hidden; }
-.trilho.pequeno .preenchida { display: block; height: 100%; background: var(--accent-orange); }
+.trilho.pequeno { height: 8px; background: var(--border-soft); border-radius: 999px; overflow: hidden; }
+.trilho.pequeno .preenchida { display: block; height: 100%; background: var(--accent-pink); }
 
-.pct-bloco { font-size: 0.82rem; font-weight: 700; color: var(--accent-orange); text-align: right; }
+.pct-bloco { font-size: 0.82rem; font-weight: 700; color: var(--pink-texto); text-align: right; }
 
 .fracao {
   font-size: 0.76rem;
   color: var(--text-muted);
-  border: 1px solid #DDD;
+  border: 1px solid var(--border-soft);
   border-radius: 999px;
   padding: 2px 8px;
   text-align: center;
