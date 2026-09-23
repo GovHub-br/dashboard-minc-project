@@ -2,12 +2,12 @@
 
 Dois painéis, com fontes e propósitos distintos.
 
-**[Entregas do TED](https://govhub-br.github.io/dashboard-minc-project/)** —
+**[Entregas do TED](https://govhub-br.github.io/dashboard-minc-project/ted.html)** —
 acompanhamento do **Termo de Execução Descentralizada nº 01/2026/SGE/SE/MINC**,
 firmado entre a Universidade de Brasília e o Ministério da Cultura. Voltado à
 prestação de contas: o que foi entregue, com que evidência, e o que falta.
 
-**[Trabalho nos 8 eixos](https://govhub-br.github.io/dashboard-minc-project/eixos.html)** —
+**[Trabalho nos 8 eixos](https://govhub-br.github.io/dashboard-minc-project/)** —
 as demandas conduzidas pelo Gov Hub em cada eixo do Plano Nacional de Cultura
 2026-2036. Voltado à condução do trabalho: o que depende do quê, o que está
 travado e o que está pronto para começar.
@@ -83,13 +83,15 @@ preciso servir o diretório:
 python3 -m http.server
 ```
 
-Depois, abrir <http://localhost:8000>.
+Depois, abrir <http://localhost:8000>, que leva ao painel dos eixos; o do
+TED fica em <http://localhost:8000/ted.html>.
 
 ## Estrutura
 
 | Caminho | Conteúdo |
 |---|---|
-| `index.html` | Painel do TED. |
+| `index.html` | Porta de entrada: redireciona para o painel dos eixos, ou para o do TED quando o link traz âncora de uma seção dele. |
+| `ted.html` | Painel do TED. |
 | `eixos.html` | Painel dos 8 eixos do PNC. |
 | `dados/` | Os acervos: `ted.json`, `eixos.json`, `historico.json`. |
 | `assets/` | Tema visual, scripts das páginas, a marca do Lab Livre e a biblioteca D3, versionada. |

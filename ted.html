@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Entregas e Status do TED — MinC</title>
+  <meta name="description"
+        content="Acompanhamento do Termo de Execução Descentralizada 01/2026/SGE/SE/MINC entre a Universidade de Brasília e o Ministério da Cultura.">
+  <link rel="icon" href="assets/marca/borboleta.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/tema.css">
+</head>
+<body>
+
+  <nav class="navegacao">
+    <div class="container">
+      <a href="eixos.html">Trabalho nos 8 eixos</a>
+      <a href="ted.html" class="ativo" aria-current="page">Entregas do TED</a>
+    </div>
+  </nav>
+
+  <header class="topo">
+    <div class="container">
+      <p class="eyebrow">Termo de Execução Descentralizada nº 01/2026/SGE/SE/MINC</p>
+      <h1>Painel de Entregas e Status</h1>
+      <p id="objeto"></p>
+      <p class="carimbo" id="carimbo"></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="secao" id="produtos" aria-labelledby="t-produtos">
+      <div class="container">
+        <h2 id="t-produtos">Acompanhamento por meta e produto</h2>
+        <div id="matriz-produtos"></div>
+      </div>
+    </section>
+
+    <section class="secao secao-alt" id="indicadores" aria-labelledby="t-indicadores">
+      <div class="container">
+        <h2 id="t-indicadores">Situação dos artefatos</h2>
+        <p class="secao-intro">
+          Os 20 artefatos do quadro de acompanhamento do TED, na situação apurada
+          no 3º Relatório Parcial. Artefato é peça: um produto só está entregue
+          quando todas as suas peças estão.
+        </p>
+        <div class="situacao-artefatos" id="grade-indicadores"></div>
+      </div>
+    </section>
+
+    <section class="secao" id="metas" aria-labelledby="t-metas">
+      <div class="container">
+        <h2 id="t-metas">Balanço das seis metas</h2>
+        <div id="grade-metas"></div>
+      </div>
+    </section>
+
+    <section class="secao secao-alt" id="evolucao" aria-labelledby="t-evolucao">
+      <div class="container">
+        <h2 id="t-evolucao">Evolução entre relatórios</h2>
+        <div id="grafico-evolucao"></div>
+      </div>
+    </section>
+
+    <section class="secao" id="artefatos" aria-labelledby="t-artefatos">
+      <div class="container">
+        <h2 id="t-artefatos">Quadro dos artefatos</h2>
+        <div id="quadro-artefatos"></div>
+      </div>
+    </section>
+
+    <section class="secao secao-alt" id="cronograma" aria-labelledby="t-cronograma">
+      <div class="container">
+        <h2 id="t-cronograma">O que vem no próximo período</h2>
+        <div id="lista-cronograma"></div>
+      </div>
+    </section>
+
+
+    <section class="secao" id="documentos" aria-labelledby="t-documentos">
+      <div class="container">
+        <h2 id="t-documentos">Documentos produzidos</h2>
+        <div id="lista-documentos"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <div class="assinatura">
+        <img src="assets/marca/lab-livre-branco.svg"
+             alt="Lab Livre — Laboratório de Software Livre da Universidade de Brasília">
+        <span class="quem">Laboratório de Software Livre<br>Faculdade do Gama · Universidade de Brasília</span>
+      </div>
+      <p id="rodape-origem"></p>
+      <p>
+        Projeto Gov Hub ·
+        <a href="https://github.com/GovHub-br/dashboard-minc-project">código-fonte</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/d3.v7.min.js"></script>
+  <script src="assets/graficos.js"></script>
+  <script src="assets/painel.js"></script>
+</body>
+</html>
