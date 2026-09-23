@@ -15,20 +15,28 @@ PRODUTOS        os 19 produtos do TED, com a redação do Termo. A cobertura
 BALANCO         o que cada produto entregou no período, derivado da seção
                 correspondente do 3º Relatório, com a página de origem.
 
-ENTREGA_PRODUTO a que produto pertence cada uma das 20 entregas do quadro de
-                acompanhamento. A evidência é "TED" quando a entrega é nomeada
+ARTEFATO_PRODUTO a que produto pertence cada um dos 20 artefatos do quadro de
+                acompanhamento. A evidência é "TED" quando o artefato é nomeado
                 na redação do produto, e "R3" quando o vínculo vem do lugar em
-                que o 3º Relatório a documenta. Como o QUEM_DESTRAVA do
+                que o 3º Relatório o documenta. Como o QUEM_DESTRAVA do
                 extrai.py, a classificação "R3" é do painel, não do documento —
                 e está marcada como tal na página.
+
+ESTADO          se o produto já está entregue. Preenchido à mão por quem
+                responde pelo TED — ver a tabela, mais abaixo.
 
 RISCO_PRODUTO   a que produto cada um dos sete riscos se refere. Classificação
                 do painel, pelo assunto do risco e da sua medida mitigadora; o
                 relatório não faz essa ligação.
 
-O quadro de acompanhamento da CGIIC chama "artefato" o que o Termo chama
-entrega. O painel adota a palavra do Termo: fazer o leitor conciliar vinte
-artefatos com dezenove produtos era o principal ruído da versão anterior.
+As três palavras do painel, que não são sinônimos:
+
+produto     o que o Termo espera. São 19, e não mudam.
+artefato    o que ficou disponível no período e compõe um produto. São os 20 do
+            quadro de acompanhamento da CGIIC.
+entrega     quando o produto inteiro é contemplado. É estado de produto, nunca
+            nome de peça: um produto com três artefatos entregues e um parcial
+            não está entregue.
 
 Importado por extrai.py. Não roda sozinho.
 """
@@ -279,11 +287,51 @@ PRODUTOS = [
     },
 ]
 
-# entrega do quadro de acompanhamento -> (meta, produto, evidência, nota)
+# (meta, produto) -> estado de entrega do produto.
 #
-# "TED": a entrega é nomeada na redação do produto.
-# "R3":  o vínculo vem do lugar em que o 3º Relatório documenta a entrega.
-ENTREGA_PRODUTO = {
+# PREENCHER À MÃO. Quem responde pelo TED assina o estado; o painel não o
+# deduz. Um produto pode ter todos os seus artefatos entregues e ainda assim
+# não estar entregue, porque o produto é mais que a soma das peças — e a
+# maioria dos produtos não tem artefato algum no quadro.
+#
+# Valores aceitos:
+#   "Entregue"     o produto inteiro foi contemplado
+#   "Em andamento" começou e não terminou
+#   "Previsto"     ainda não começou
+#   ""             ainda não classificado; a página mostra "a classificar"
+#
+# Enquanto houver linha vazia a página segue no ar e a validação passa: falta
+# de classificação é estado legítimo, e não erro de acervo.
+ESTADO = {
+    ("01", 1): "",
+    ("01", 2): "",
+    ("02", 1): "",
+    ("02", 2): "",
+    ("02", 3): "",
+    ("02", 4): "",
+    ("02", 5): "",
+    ("03", 1): "",
+    ("03", 2): "",
+    ("03", 3): "",
+    ("03", 4): "",
+    ("04", 1): "",
+    ("04", 2): "",
+    ("04", 3): "",
+    ("05", 1): "",
+    ("05", 2): "",
+    ("05", 3): "",
+    ("05", 4): "",
+    ("06", 1): "",
+}
+
+ESTADOS_ACEITOS = ("Entregue", "Em andamento", "Previsto", "")
+
+
+# artefato do quadro de acompanhamento -> (meta, produto, evidência, nota)
+#
+# "TED": o artefato é nomeado na redação do produto.
+# "R3":  o vínculo vem do lugar em que o 3º Relatório documenta o artefato.
+ARTEFATO_PRODUTO = {
     "Catálogo de fontes de dados": ("01", 2, "R3", ""),
     "Arquitetura lógica": ("02", 2, "TED", ""),
     "Arquitetura física": ("02", 2, "TED", ""),
@@ -393,15 +441,15 @@ def produto_do_risco(texto):
     return None
 
 
-def monta(entregas, riscos=None):
+def monta(artefatos, riscos=None):
     """Devolve os blocos `relatorios` e `produtos` do acervo.
 
-    Cada produto recebe a lista das entregas do quadro que lhe pertencem, com
-    a situação apurada no relatório mais recente.
+    Cada produto recebe os artefatos do quadro que o compõem, com a situação
+    apurada no relatório mais recente, e o estado de entrega do produto.
     """
     por_produto = {}
-    for a in entregas:
-        vinculo = ENTREGA_PRODUTO.get(a["nome"])
+    for a in artefatos:
+        vinculo = ARTEFATO_PRODUTO.get(a["nome"])
         if not vinculo:
             continue
         meta, num, evidencia, nota = vinculo
@@ -418,7 +466,8 @@ def monta(entregas, riscos=None):
             **p,
             "meta_nome": METAS_TED[p["meta"]],
             "balanco": BALANCO[(p["meta"], p["num"])],
-            "entregas": por_produto.get((p["meta"], p["num"]), []),
+            "estado": ESTADO.get((p["meta"], p["num"]), ""),
+            "artefatos": por_produto.get((p["meta"], p["num"]), []),
         })
 
     # Cada risco ganha o produto que ameaça, para que a seção de riscos leia
@@ -435,11 +484,25 @@ def monta(entregas, riscos=None):
     return RELATORIOS, produtos
 
 
+def estados_invalidos():
+    """Chaves de ESTADO com valor fora da lista, ou produto sem linha."""
+    problemas = []
+    for p in PRODUTOS:
+        chave = (p["meta"], p["num"])
+        if chave not in ESTADO:
+            problemas.append(f"Meta {p['meta']} · Produto {p['num']} sem linha")
+        elif ESTADO[chave] not in ESTADOS_ACEITOS:
+            problemas.append(
+                f"Meta {p['meta']} · Produto {p['num']}: {ESTADO[chave]!r}"
+            )
+    return problemas
+
+
 def sem_produto(riscos):
     """Riscos que a tabela não classifica."""
     return [r["risco"] for r in riscos if not produto_do_risco(r["risco"])]
 
 
-def sem_vinculo(entregas):
-    """Entregas do quadro que a tabela não vincula a produto algum."""
-    return [a["nome"] for a in entregas if a["nome"] not in ENTREGA_PRODUTO]
+def sem_vinculo(artefatos):
+    """Artefatos do quadro que a tabela não vincula a produto algum."""
+    return [a["nome"] for a in artefatos if a["nome"] not in ARTEFATO_PRODUTO]

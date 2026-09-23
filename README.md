@@ -20,24 +20,31 @@ Reúne numa página o estado de execução que estava espalhado pelo quadro de
 acompanhamento de produtos da CGIIC, pelo corpo do 3º Relatório Parcial e pelo
 repositório público da plataforma.
 
-Oito seções, nesta ordem: as entregas por meta, a situação das entregas, o
-balanço das seis metas, a evolução entre relatórios, o quadro das 20 entregas
-com lastro, o que vem no próximo período, os riscos e a relação dos documentos
-produzidos.
+**Três palavras, que não são sinônimos.** *Produto* é o que o Termo espera — são
+19, e não mudam. *Artefato* é o que ficou disponível no período e compõe um
+produto — são os 20 do quadro de acompanhamento da CGIIC. *Entrega* é quando o
+produto inteiro é contemplado: estado de produto, nunca nome de peça. A página
+abre pelas três definições, porque foi a confusão entre elas que tornou a versão
+anterior ilegível.
 
-**Entregas por meta** abre a página. Cruza os 19 produtos pactuados no Termo com
-os três relatórios de atividades: o que cada produto entregou até aqui, em qual
-relatório foi tratado, e quais entregas do quadro de acompanhamento lhe
-pertencem. A cobertura vem do sumário de cada relatório; o texto do que foi
-entregue vem da seção correspondente do 3º Relatório; o vínculo entrega→produto
-vem da redação do Termo, e só onde o Termo não nomeia a entrega é que vem do
-lugar em que o 3º Relatório a documenta — a etiqueta registra qual dos dois casos
-é.
+Oito seções, nesta ordem: o acompanhamento por meta e produto, a situação dos
+artefatos, o balanço das seis metas, a evolução entre relatórios, o quadro dos 20
+artefatos com lastro, o que vem no próximo período, os riscos e a relação dos
+documentos produzidos.
 
-**Sobre a palavra "entrega".** O quadro de acompanhamento da CGIIC chama
-*artefato* o que o Termo chama entrega. O painel adota a palavra do Termo: fazer
-o leitor conciliar vinte artefatos com dezenove produtos era o principal ruído da
-versão anterior. A extração lê a palavra da fonte e grava a do Termo.
+**Acompanhamento por meta e produto** abre a página. Cada um dos 19 produtos é
+uma ficha que abre com o que o Termo prevê, o que foi feito até aqui, os
+artefatos que o compõem com a situação de cada um, e os encaminhamentos da sua
+meta. A cobertura por relatório vem do sumário de cada um; o que foi feito vem da
+seção correspondente do 3º Relatório; o vínculo artefato→produto vem da redação
+do Termo, e só onde o Termo não nomeia o artefato é que vem do lugar em que o 3º
+Relatório o documenta — a marca ao lado registra qual dos dois casos é.
+
+**O estado de entrega é preenchido à mão**, na tabela `ESTADO` de
+`scripts/produtos.py`. O painel não o deduz: um produto pode ter todos os seus
+artefatos entregues sem estar entregue, e doze dos dezenove não têm artefato
+algum no quadro. Linha em branco aparece como *a classificar* e não reprova a
+validação — falta de classificação é estado legítimo, não erro de acervo.
 
 **Fonte:** `dados/ted.json`, extraído uma vez dos geradores do 3º Relatório
 Parcial por `scripts/extrai.py`. Atualiza-se a cada relatório parcial.
@@ -84,7 +91,7 @@ Depois, abrir <http://localhost:8000>.
 | `dados/` | Os acervos: `ted.json`, `eixos.json`, `historico.json`. |
 | `assets/` | Tema visual, scripts das páginas e a biblioteca D3, versionada. |
 | `planilha/` | Modelo da planilha dos eixos e o guia de preenchimento. |
-| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório e a classificação dos riscos. |
+| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório, o estado de entrega e a classificação dos riscos. |
 | `tests/` | Testes dos dois conversores. |
 | `docs/` | Documento de desenho e plano de implementação. |
 

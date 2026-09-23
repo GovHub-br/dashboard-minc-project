@@ -21,9 +21,6 @@ function classeDe(situacao) {
   return CLASSES[situacao] || '';
 }
 
-/* O quadro de acompanhamento chama "artefato" o que o Termo chama entrega.
-   O painel usa a palavra do Termo — ver scripts/produtos.py. */
-
 /* Todo texto vindo do acervo passa por aqui antes de virar HTML. O extrator já
    remove marcação, mas o painel não depende disso: o acervo é editado à mão a
    cada relatório. */
@@ -33,9 +30,9 @@ function escapaHtml(texto) {
   return div.innerHTML;
 }
 
-function contaSituacoes(entregas, coluna = 'agora') {
+function contaSituacoes(artefatos, coluna = 'agora') {
   const contagem = {};
-  for (const a of entregas) {
+  for (const a of artefatos) {
     contagem[a[coluna]] = (contagem[a[coluna]] || 0) + 1;
   }
   return contagem;
@@ -74,35 +71,55 @@ function montaCabecalho(acervo) {
 
 /* ----------------------------------------------------------- indicadores */
 
+/* O que cada situação do quadro quer dizer. "Entregue como proposta" é a que
+   mais gera dúvida, e a definição vem do próprio 3º Relatório: descreve o
+   estado-alvo pactuado, e não ambiente em operação. */
+const DEFINICOES = {
+  'Entregue': 'O artefato existe e está disponível para consulta.',
+  'Entregue como proposta': 'Existe como desenho pactuado do estado-alvo, e '
+    + 'não como ambiente em operação.',
+  'Parcial': 'Parte do artefato existe; o que falta está registrado nas '
+    + 'pendências.',
+  'Não entregue': 'O artefato ainda não existe.',
+};
+
 function montaIndicadores(acervo) {
-  const contagem = contaSituacoes(acervo.entregas);
-  const grade = document.getElementById('grade-indicadores');
+  const contagem = contaSituacoes(acervo.artefatos);
+  const total = acervo.artefatos.length;
+  const alvo = document.getElementById('grade-indicadores');
 
-  const cartoes = [
-    { numero: acervo.entregas.length, rotulo: 'entregas acompanhadas', classe: '' },
-    ...SITUACOES.map((s) => ({
-      numero: contagem[s] || 0,
-      rotulo: s.toLowerCase(),
-      classe: classeDe(s),
-    })),
-    { numero: acervo.documentos.length, rotulo: 'documentos publicados', classe: '' },
-  ];
+  const comValor = SITUACOES.filter((s) => contagem[s]);
 
-  grade.innerHTML = cartoes.map((c) => `
-    <div class="indicador ${c.classe}">
-      <div class="numero">${c.numero}</div>
-      <div class="rotulo">${c.rotulo}</div>
+  const barra = comValor.map((s) => `
+    <div class="faixa ${classeDe(s)}" style="flex: ${contagem[s]}"
+         title="${escapaHtml(`${contagem[s]} de ${total}: ${s}`)}">
+      ${contagem[s]}
     </div>
   `).join('');
+
+  const legenda = SITUACOES.map((s) => `
+    <li>
+      <span class="ponto ${classeDe(s)}"></span>
+      <span class="quanto">${contagem[s] || 0}</span>
+      <span class="qual">${escapaHtml(s)}</span>
+      <span class="oque">${escapaHtml(DEFINICOES[s] || '')}</span>
+    </li>
+  `).join('');
+
+  alvo.innerHTML = `
+    <div class="barra-situacao" role="img"
+         aria-label="${escapaHtml(SITUACOES.map((s) =>
+           `${contagem[s] || 0} ${s}`).join(', '))}">${barra}</div>
+    <ul class="legenda-situacao">${legenda}</ul>`;
 }
 
 /* -------------------------------------------------------------- evolução */
 
-/* O quadro anterior marcava três entregas como "Falta artefato". O relatório
-   as agrega em "Não entregue", chegando a 14. O painel faz o mesmo, e a nota
+/* O quadro anterior marcava três artefatos como "Falta artefato". O relatório
+   os agrega em "Não entregue", chegando a 14. O painel faz o mesmo, e a nota
    registra a agregação. */
-function contaAntesAgregado(entregas) {
-  const contagem = contaSituacoes(entregas, 'antes');
+function contaAntesAgregado(artefatos) {
+  const contagem = contaSituacoes(artefatos, 'antes');
   const falta = contagem['Falta artefato'] || 0;
   if (falta) {
     contagem['Não entregue'] = (contagem['Não entregue'] || 0) + falta;
@@ -112,8 +129,8 @@ function contaAntesAgregado(entregas) {
 }
 
 function montaEvolucao(acervo) {
-  const antes = contaAntesAgregado(acervo.entregas);
-  const agora = contaSituacoes(acervo.entregas);
+  const antes = contaAntesAgregado(acervo.artefatos);
+  const agora = contaSituacoes(acervo.artefatos);
 
   const series = SITUACOES.map((s) => ({
     situacao: s,
@@ -125,9 +142,9 @@ function montaEvolucao(acervo) {
   const alvo = document.getElementById('grafico-evolucao');
   alvo.innerHTML = `
     <p class="secao-intro">
-      Como a situação das 20 entregas mudou do 2º para o 3º Relatório Parcial.
-      Cada linha é uma situação: a barra de cima conta quantas entregas estavam
-      nela no 2º relatório, a de baixo quantas estão nela agora.
+      Como a situação dos 20 artefatos mudou do 2º para o 3º Relatório Parcial.
+      Cada linha é uma situação: a barra de cima conta quantos artefatos estavam
+      nela no 2º relatório, a de baixo quantos estão nela agora.
     </p>
     <div id="svg-evolucao"></div>
     <div class="nota">
@@ -148,7 +165,7 @@ function montaEvolucao(acervo) {
         <strong>Por que 11 entregues, e não 12.</strong> O texto do 3º Relatório
         declara 12 entregues e 6 parciais. A conferência item a item do quadro dá
         ${agora['Entregue']} entregues, ${agora['Entregue como proposta']} entregues
-        como proposta e ${agora['Parcial']} parciais — as mesmas 20 entregas, nas
+        como proposta e ${agora['Parcial']} parciais — os mesmos 20 artefatos, nas
         mesmas situações. A diferença é que o painel conta à parte as arquiteturas
         que estão propostas, para não dar por operante o que ainda está projetado.
       </p>
@@ -159,43 +176,85 @@ function montaEvolucao(acervo) {
 
 /* -------------------------------------------------------------- produtos */
 
-/* Os 19 produtos pactuados no Termo, meta a meta, com a cobertura em cada
-   relatório. A cobertura vem do sumário de cada relatório: "secao" quando o
-   produto tem seção própria, "mencao" quando foi tratado sob outro produto. */
+/* Três palavras, que não são sinônimos:
+     produto   o que o Termo espera. São 19.
+     artefato  o que ficou disponível no período e compõe um produto. São 20.
+     entrega   quando o produto inteiro é contemplado — estado, não peça.
+   A página abre por elas, porque foi a confusão entre as três que tornou a
+   versão anterior ilegível. */
+
+const GLOSSARIO = [
+  {
+    termo: 'Produto',
+    conta: (a) => `${a.produtos.length} no Termo`,
+    diz: 'O que se espera. Pactuado no TED, não muda.',
+  },
+  {
+    termo: 'Artefato',
+    conta: (a) => `${a.artefatos.length} no quadro`,
+    diz: 'O que ficou disponível no período e compõe um produto.',
+  },
+  {
+    termo: 'Entrega',
+    conta: () => 'estado do produto',
+    diz: 'Quando o produto inteiro é contemplado.',
+  },
+];
 
 const MARCAS = {
   secao: { glifo: '●', classe: 'marca-secao', diz: 'seção própria' },
   mencao: { glifo: '○', classe: 'marca-mencao', diz: 'tratado sob outro produto' },
 };
 
-function celulaCobertura(produto, num) {
-  const c = produto.cobertura[String(num)];
+function marcaCobertura(produto, relatorio) {
+  const c = produto.cobertura[String(relatorio.num)];
   if (!c) {
-    return '<td class="marca"><span class="marca-ausente" '
-      + 'aria-label="não tratado">–</span></td>';
+    return `<span class="marca-ausente" title="${relatorio.rotulo}: não tratado"
+      >${relatorio.num}º</span>`;
   }
   const m = MARCAS[c.tipo];
   const onde = c.pagina ? `${c.onde} · p. ${c.pagina}` : c.onde;
-  const titulo = escapaHtml(`${m.diz} — ${onde}${c.nota ? ' · ' + c.nota : ''}`);
-  return `<td class="marca"><span class="${m.classe}" title="${titulo}" `
-    + `aria-label="${titulo}">${m.glifo}</span></td>`;
+  const titulo = escapaHtml(`${relatorio.rotulo} — ${m.diz}: ${onde}`);
+  return `<span class="${m.classe}" title="${titulo}">${relatorio.num}º</span>`;
 }
 
-function etiquetasEntregas(produto) {
-  if (!produto.entregas.length) {
-    return '<span class="sem-entrega">nenhuma no quadro</span>';
+function selo(produto) {
+  const estado = produto.estado || 'A classificar';
+  const classe = {
+    'Entregue': 'estado-entregue',
+    'Em andamento': 'estado-andamento',
+    'Previsto': 'estado-previsto',
+  }[produto.estado] || 'estado-vazio';
+  return `<span class="selo ${classe}">${escapaHtml(estado)}</span>`;
+}
+
+function artefatosDoProduto(produto, acervo) {
+  if (!produto.artefatos.length) {
+    return `<p class="nenhum-artefato">
+      O quadro de acompanhamento não registra artefato para este produto. O que
+      se sabe dele é o que o relatório declara, acima.
+    </p>`;
   }
-  return produto.entregas.map((a) => {
-    const titulo = escapaHtml(
-      a.situacao
-      + (a.evidencia === 'TED'
-        ? ' · nomeado na redação do produto no TED'
-        : ' · vínculo derivado do 3º Relatório')
-      + (a.nota ? ' · ' + a.nota : '')
-    );
-    return `<span class="entrega-pil ${classeDe(a.situacao)}" title="${titulo}">`
-      + `${escapaHtml(a.nome)}</span>`;
+  const itens = produto.artefatos.map((a) => {
+    const origem = a.evidencia === 'TED'
+      ? 'Nomeado na redação do produto, no Termo.'
+      : 'Vínculo derivado do lugar em que o 3º Relatório o documenta.';
+    const noQuadro = acervo.artefatos.find((x) => x.nome === a.nome) || {};
+    return `
+      <li>
+        <span class="etiqueta ${classeDe(a.situacao)}">${escapaHtml(a.situacao)}</span>
+        <span class="nome-do-artefato">${escapaHtml(a.nome)}</span>
+        ${noQuadro.onde
+          ? `<span class="lastro">${ligaDocumentos(noQuadro.onde, acervo)}</span>`
+          : ''}
+        <span class="origem-vinculo" title="${escapaHtml(origem + (a.nota ? ' ' + a.nota : ''))}">
+          ${a.evidencia === 'TED' ? 'Termo' : '3º Rel.'}</span>
+      </li>`;
   }).join('');
+
+  return `
+    <p class="rotulo-bloco">Artefatos que o compõem</p>
+    <ul class="artefatos-produto">${itens}</ul>`;
 }
 
 function montaProdutos(acervo) {
@@ -205,8 +264,15 @@ function montaProdutos(acervo) {
   const tratados = (r) => acervo.produtos
     .filter((p) => p.cobertura[String(r.num)]).length;
 
+  const glossario = GLOSSARIO.map((g) => `
+    <div class="termo">
+      <div class="palavra">${g.termo}<span class="quantos">${g.conta(acervo)}</span></div>
+      <p>${g.diz}</p>
+    </div>
+  `).join('');
+
   /* Os três números não somam: são os mesmos 19 produtos, e cada relatório
-     alcança mais deles que o anterior. O rótulo diz isso. */
+     alcança mais deles que o anterior. */
   const resumo = rels.map((r) => `
     <div class="indicador">
       <div class="numero">${tratados(r)}<span class="de">de ${acervo.produtos.length}</span></div>
@@ -215,80 +281,96 @@ function montaProdutos(acervo) {
     </div>
   `).join('');
 
+  const encaminhamentosDe = (meta) => {
+    const m = acervo.metas.find((x) => x.num === meta);
+    return m && m.encaminhamentos.length ? m.encaminhamentos : null;
+  };
+
   const metas = [...new Set(acervo.produtos.map((p) => p.meta))];
 
-  const quadros = metas.map((num) => {
+  const blocos = metas.map((num) => {
     const daMeta = acervo.produtos.filter((p) => p.meta === num);
-    const linhas = daMeta.map((p) => `
-      <tr>
-        <td class="nome-produto">
-          <strong>Produto ${p.num}</strong> ${escapaHtml(p.nome)}
-          ${p.redacao === p.nome ? ''
-            : `<span class="redacao">${escapaHtml(p.redacao)}.</span>`}
-        </td>
-        <td class="balanco-produto">${ligaDocumentos(p.balanco, acervo)}</td>
-        ${rels.map((r) => celulaCobertura(p, r.num)).join('')}
-        <td class="entregas-do-produto">${etiquetasEntregas(p)}</td>
-      </tr>
+    const enc = encaminhamentosDe(num);
+
+    const fichas = daMeta.map((p) => `
+      <details class="produto" name="produto">
+        <summary>
+          <span class="id-produto">Produto ${p.num}</span>
+          <span class="titulo-produto">${escapaHtml(p.nome)}</span>
+          ${selo(p)}
+          <span class="cobertura-resumo">
+            ${rels.map((r) => marcaCobertura(p, r)).join('')}
+          </span>
+          <span class="conta-artefatos">${p.artefatos.length
+            ? `${p.artefatos.length} artefato${p.artefatos.length > 1 ? 's' : ''}`
+            : 'sem artefato'}</span>
+        </summary>
+        <div class="corpo-produto">
+          <p class="rotulo-bloco">O que o Termo prevê</p>
+          <p class="previsto">${escapaHtml(p.redacao)}.</p>
+
+          <p class="rotulo-bloco">O que foi feito até aqui</p>
+          <p class="feito">${ligaDocumentos(p.balanco, acervo)}</p>
+
+          ${artefatosDoProduto(p, acervo)}
+
+          ${enc ? `
+            <p class="rotulo-bloco">Previsto para ${escapaHtml(acervo.origem.proximo_periodo)}</p>
+            <ul class="encaminhamentos-produto">
+              ${enc.map((e) => `<li>${escapaHtml(e)}</li>`).join('')}
+            </ul>
+            <p class="ressalva">
+              O relatório registra os encaminhamentos por meta, e não por
+              produto: os acima são os da Meta ${escapaHtml(num)} inteira.
+            </p>` : ''}
+        </div>
+      </details>
     `).join('');
 
     return `
-      <article class="quadro-meta">
+      <article class="bloco-meta">
         <h3><span class="numero-meta">Meta ${num}</span>${escapaHtml(daMeta[0].meta_nome)}</h3>
-        <div class="rolagem">
-          <table class="quadro quadro-produtos">
-            <thead>
-              <tr>
-                <th>Produto pactuado</th>
-                <th>O que foi entregue até aqui</th>
-                ${rels.map((r) => `<th class="col-rel" scope="col"
-                  title="${escapaHtml(`${r.rotulo} · ${r.periodo}`)}">${r.num}º</th>`).join('')}
-                <th>Entregas do quadro</th>
-              </tr>
-            </thead>
-            <tbody>${linhas}</tbody>
-          </table>
-        </div>
+        <div class="produtos-da-meta">${fichas}</div>
       </article>`;
   }).join('');
 
   alvo.innerHTML = `
     <p class="secao-intro">
-      Os ${acervo.produtos.length} produtos pactuados no Termo, meta a meta: o que
-      cada um entregou até aqui, em que relatório foi tratado e quais entregas do
-      quadro de acompanhamento lhe pertencem.
+      O acompanhamento começa pelo que o Termo pactua: seis metas, e dentro de
+      cada uma os seus produtos. Clique num produto para ver o previsto, o feito
+      até aqui, os artefatos que o compõem e o que vem no próximo período.
     </p>
+    <div class="glossario">${glossario}</div>
     <div class="indicadores indicadores-3">${resumo}</div>
     <p class="legenda-marcas">
-      <span class="marca-secao">●</span> seção própria no relatório ·
-      <span class="marca-mencao">○</span> tratado sob outro produto ·
-      <span class="marca-ausente">–</span> não tratado.
-      Cada marca guarda a seção e a página; o cursor as revela.
+      Em cada produto, <span class="marca-secao">1º</span> marca o relatório que
+      lhe deu seção própria, <span class="marca-mencao">2º</span> o que o tratou
+      sob outro produto e <span class="marca-ausente">3º</span> o que não o
+      tratou. O cursor sobre a marca mostra a seção e a página.
     </p>
-    ${quadros}
+    ${blocos}
     <div class="nota">
       <p>
-        <strong>O que a marca diz, e o que não diz.</strong> A cobertura vem do
-        sumário de cada relatório: diz onde o assunto foi tratado, não que o
-        produto esteja concluído. Quem responde pela conclusão é a coluna do que
-        foi entregue, e as etiquetas ao lado.
+        <strong>Sobre o estado de cada produto.</strong> Quem responde pelo TED
+        assina se o produto está entregue; o painel não deduz. Um produto pode
+        ter todos os seus artefatos entregues sem estar entregue, e a maioria
+        deles não tem artefato algum no quadro de acompanhamento.
       </p>
       <p>
-        <strong>De onde vem o texto da coluna.</strong> Da seção correspondente
-        do 3º Relatório, uma frase por produto. A página está na marca do 3º
-        relatório, para conferência.
+        <strong>De onde vem o que foi feito.</strong> Da seção correspondente do
+        3º Relatório, uma frase por produto. A página do relatório está na marca
+        do 3º, para conferência.
       </p>
       <p>
-        <strong>Sobre o vínculo das entregas.</strong> Cada entrega do quadro é
-        ligada ao produto que a nomeia na redação do Termo. Onde o Termo não a
-        nomeia, o vínculo vem do lugar em que o 3º Relatório a documenta, e a
-        classificação é do painel, não do documento — a etiqueta registra qual dos
-        dois casos é.
+        <strong>Sobre o vínculo dos artefatos.</strong> Cada artefato do quadro é
+        ligado ao produto que o nomeia na redação do Termo. Onde o Termo não o
+        nomeia, o vínculo vem do lugar em que o 3º Relatório o documenta, e a
+        classificação é do painel, não do documento — a marca ao lado do artefato
+        registra qual dos dois casos é.
       </p>
       <p>
         O 1º Relatório trata apenas da Meta 01, e o quadro de acompanhamento só
-        começa a ser apurado no 2º. Por isso a situação de cada entrega tem dois
-        pontos no tempo, e a cobertura dos produtos tem três.
+        começa a ser apurado no 2º.
       </p>
     </div>`;
 }
@@ -320,7 +402,7 @@ function montaMetas(acervo) {
   alvo.innerHTML = intro + `<div class="grade-metas">${cartoes}</div>`;
 }
 
-/* -------------------------------------------------------------- entregas */
+/* ------------------------------------------------------------- artefatos */
 
 /* Textos do acervo citam documentos pelo nome do arquivo. Onde o nome consta
    da relação de documentos publicados, vira link para o repositório; onde não
@@ -341,24 +423,24 @@ function ligaDocumentos(texto, acervo) {
   );
 }
 
-function montaEntregas(acervo) {
-  const alvo = document.getElementById('quadro-entregas');
+function montaArtefatos(acervo) {
+  const alvo = document.getElementById('quadro-artefatos');
   let filtro = 'Todos';
 
   const opcoes = ['Todos', ...SITUACOES];
 
   function linhas() {
     const visiveis = filtro === 'Todos'
-      ? acervo.entregas
-      : acervo.entregas.filter((a) => a.agora === filtro);
+      ? acervo.artefatos
+      : acervo.artefatos.filter((a) => a.agora === filtro);
 
     if (!visiveis.length) {
-      return '<tr><td colspan="4" class="vazio">Nenhuma entrega nesta situação.</td></tr>';
+      return '<tr><td colspan="4" class="vazio">Nenhum artefato nesta situação.</td></tr>';
     }
 
     return visiveis.map((a) => `
       <tr>
-        <td class="nome-entrega">${escapaHtml(a.nome)}</td>
+        <td class="nome-artefato">${escapaHtml(a.nome)}</td>
         <td>${escapaHtml(a.antes)}</td>
         <td><span class="etiqueta ${classeDe(a.agora)}">${escapaHtml(a.agora)}</span></td>
         <td class="onde">${a.onde ? ligaDocumentos(a.onde, acervo) : '—'}</td>
@@ -369,8 +451,8 @@ function montaEntregas(acervo) {
   function desenha() {
     alvo.innerHTML = `
       <p class="secao-intro">
-        As ${acervo.entregas.length} entregas do quadro de acompanhamento, com a
-        situação anterior, a atual e a localização de cada uma. Nomes de arquivo
+        Os ${acervo.artefatos.length} artefatos do quadro de acompanhamento, com
+        a situação anterior, a atual e a localização de cada um. Nomes de arquivo
         levam ao documento no repositório da plataforma.
       </p>
       <div class="filtros" role="group" aria-label="Filtrar por situação">
@@ -382,7 +464,7 @@ function montaEntregas(acervo) {
       <div class="rolagem">
         <table class="quadro">
           <thead>
-            <tr><th>Entrega</th><th>2º Relatório</th><th>3º Relatório</th><th>Onde está</th></tr>
+            <tr><th>Artefato</th><th>2º Relatório</th><th>3º Relatório</th><th>Onde está</th></tr>
           </thead>
           <tbody>${linhas()}</tbody>
         </table>
@@ -432,7 +514,7 @@ function montaCronograma(acervo) {
       ${grupos[quem].map((p) => `
         <div class="pendencia">
           <div class="titulo-pendencia">
-            ${escapaHtml(p.entrega)}
+            ${escapaHtml(p.artefato)}
             <span class="etiqueta ${classeDe(p.situacao)}">${escapaHtml(p.situacao)}</span>
           </div>
           <div class="detalhe"><strong>Falta:</strong> ${escapaHtml(p.falta)}</div>
@@ -446,8 +528,8 @@ function montaCronograma(acervo) {
     <p class="secao-intro">
       O 3º Relatório encerra cada meta com os compromissos que ela assume para o
       período seguinte. São ${total} encaminhamentos, reunidos aqui meta a meta,
-      seguidos das ${acervo.pendencias.length} entregas que seguem pendentes e do
-      que destrava cada uma.
+      seguidos dos ${acervo.pendencias.length} artefatos que seguem pendentes e
+      do que destrava cada um.
     </p>
     <span class="janela">${escapaHtml(acervo.origem.proximo_periodo)}</span>
     ${trilhas}
@@ -542,7 +624,7 @@ async function inicia() {
     montaIndicadores(acervo);
     montaMetas(acervo);
     montaEvolucao(acervo);
-    montaEntregas(acervo);
+    montaArtefatos(acervo);
     montaCronograma(acervo);
     montaRiscos(acervo);
     montaDocumentos(acervo);

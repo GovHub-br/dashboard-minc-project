@@ -56,7 +56,8 @@
       },
       "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
       "balanco": "Vinte e dois encontros de trabalho por eixo do Plano, com o Ministério e a equipe de pesquisa, cumprindo a escuta qualificada prevista. Seis dos oito eixos percorridos.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "01",
@@ -80,7 +81,8 @@
       },
       "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
       "balanco": "Catálogo de fontes de dados, levantamento a partir do código, arquitetura comum de ingestão e visão consolidada das fontes, com ênfase no Eixo 2, que inaugurou a integração.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Catálogo de fontes de dados",
           "situacao": "Entregue",
@@ -107,7 +109,8 @@
       },
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Camada semântica sobre as tabelas de consumo, com doze métricas nomeadas. Os painéis propriamente ditos aguardam a reunião de requisitos com o Ministério.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "02",
@@ -127,7 +130,8 @@
       },
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Os três níveis: arquitetura lógica em operação (Figuras 1 e 2), física proposta (Figura 3) e de segurança, somadas aos fluxos de dados do Anexo III.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Arquitetura lógica",
           "situacao": "Entregue",
@@ -172,7 +176,8 @@
       },
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Modelo conceitual, lógico e físico do Eixo 2, dicionário de dados e metadados. Especificação completa no Anexo IV.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Dicionário de dados",
           "situacao": "Entregue",
@@ -211,7 +216,8 @@
       },
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Critérios de qualidade convertidos em testes automáticos em cinco dimensões, com 858 verificações inventariadas. Papéis, responsabilidades e políticas de acesso seguem em elaboração.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Matriz de papéis e responsabilidades",
           "situacao": "Não entregue",
@@ -256,7 +262,8 @@
       },
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Repositório público sob licença MIT, com ficha técnica de treze das dezesseis rotinas em operação e os exemplos de uso do Anexo VI.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Documentação dos pipelines",
           "situacao": "Entregue",
@@ -285,7 +292,8 @@
       },
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Especificado na arquitetura de segurança do Produto 2 da Meta 02, e não implantado: o motor pressupõe fronteira administrativa única, que o ambiente de produção ainda não oferece.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "03",
@@ -301,7 +309,8 @@
       },
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Atendido pelo conjunto do Produto 2 da Meta 02 — os três níveis de arquitetura — somado aos fluxos de dados derivados da linhagem dos modelos.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "03",
@@ -317,7 +326,8 @@
       },
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Repositório público sob licença MIT, com os scripts e procedimentos de implantação do Anexo VIII e o manual de evolução do Anexo IX.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Scripts de implantação",
           "situacao": "Entregue",
@@ -353,7 +363,8 @@
       },
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Nenhuma oficina realizada no período. A atividade segue prevista, apoiada nos documentos de implantação e de evolução do Produto 3.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "04",
@@ -374,7 +385,8 @@
       },
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "Agente de domínio operando de ponta a ponta desde agosto de 2026, com recuperação por busca híbrida sobre base vetorial, fundida por posto recíproco.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "04",
@@ -390,7 +402,8 @@
       },
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "Camada de entrega em quatro estágios: uma pergunta em português produz as bases consultadas, a consulta, o gráfico, a explicação e o relatório.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "04",
@@ -406,7 +419,8 @@
       },
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "Dezesseis decisões de arquitetura registradas entre 21 de julho e 19 de agosto, planejamento datado, suíte de testes e ambiente de avaliação versionado. Visão geral no Anexo X.",
-      "entregas": [
+      "estado": "",
+      "artefatos": [
         {
           "nome": "Manual de uso",
           "situacao": "Parcial",
@@ -445,7 +459,8 @@
       },
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "OpenMetadata adotado como catálogo institucional, alimentado por declaração versionada do projeto de transformação. Integração implantada e em operação.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "05",
@@ -465,7 +480,8 @@
       },
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Oficina realizada em junho de 2026 junto à STII do Ministério, sobre o motor de consulta distribuído e o componente de governança e autorização de acesso.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "05",
@@ -489,7 +505,8 @@
       },
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Planejamento, produção e mobilização do evento: dois dias em Brasília, oito oficinas preparatórias — uma por eixo — e grupos de trabalho por eixo. Detalhamento no Anexo XI.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "05",
@@ -509,7 +526,8 @@
       },
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Proposta de estrutura construída em reuniões da equipe da Universidade, alinhamentos com o Ministério e contribuições do Comitê Gestor do SNIIC.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     },
     {
       "meta": "06",
@@ -525,7 +543,8 @@
       },
       "meta_nome": "Brasiliana Cultura — catálogo integrado dos acervos culturais do sistema MinC",
       "balanco": "Diagnóstico da gestão da informação dos acervos das seis instituições do sistema MinC e estudo comparativo de vocabulários. Portal em construção; coleta ainda por iniciar.",
-      "entregas": []
+      "estado": "",
+      "artefatos": []
     }
   ],
   "metas": [
@@ -594,7 +613,7 @@
       ]
     }
   ],
-  "entregas": [
+  "artefatos": [
     {
       "nome": "Arquitetura lógica",
       "antes": "Parcial",
@@ -718,49 +737,49 @@
   ],
   "pendencias": [
     {
-      "entrega": "Metadados",
+      "artefato": "Metadados",
       "situacao": "Parcial",
       "falta": "O documento de catálogo com a contagem correta",
       "destrava": "Sincronizar o domínio de cotas com o catálogo institucional: dos 49 modelos do projeto, 23 constam do catálogo",
       "quem": "UnB"
     },
     {
-      "entrega": "Políticas de acesso",
+      "artefato": "Políticas de acesso",
       "situacao": "Parcial",
       "falta": "As políticas propriamente ditas",
       "destrava": "Implantar o componente de governança de acesso, que pressupõe fronteira administrativa única",
       "quem": "MinC"
     },
     {
-      "entrega": "Manual de uso",
+      "artefato": "Manual de uso",
       "situacao": "Parcial",
       "falta": "Guia dirigido ao usuário final",
       "destrava": "Definir o público e o ponto de acesso, hoje condicionados aos painéis",
       "quem": "MinC"
     },
     {
-      "entrega": "Evidências de testes e validação",
+      "artefato": "Evidências de testes e validação",
       "situacao": "Parcial",
       "falta": "Relatório consolidado de homologação",
       "destrava": "Ambiente de homologação com aceite formal",
       "quem": "MinC"
     },
     {
-      "entrega": "Relação de componentes e versões",
+      "artefato": "Relação de componentes e versões",
       "situacao": "Parcial",
       "falta": "Inventário com versão de cada componente",
       "destrava": "Versionar o poetry.lock, hoje fora do controle de versão",
       "quem": "UnB"
     },
     {
-      "entrega": "Manual de manutenção",
+      "artefato": "Manual de manutenção",
       "situacao": "Não entregue",
       "falta": "O documento",
       "destrava": "Ambiente de produção definido",
       "quem": "MinC"
     },
     {
-      "entrega": "Matriz de papéis e responsabilidades",
+      "artefato": "Matriz de papéis e responsabilidades",
       "situacao": "Não entregue",
       "falta": "O documento",
       "destrava": "Declarado em elaboração na Meta 02 · Produto 4",

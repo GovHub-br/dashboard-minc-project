@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 """Extrai o acervo do painel a partir dos geradores do 3º Relatório Parcial.
 
-O quadro de acompanhamento da CGIIC chama "artefato" o que o Termo chama
-entrega. A extração lê a palavra da fonte e grava a do Termo, que é a do
-painel — ver scripts/produtos.py.
+Produto, artefato e entrega não são sinônimos aqui: produto é o que o Termo
+espera, artefato é o que compõe um produto, entrega é o produto inteiro
+contemplado. Ver scripts/produtos.py.
 
 Roda uma vez, na máquina de quem tem o relatório. O resultado é versionado em
 dados/ted.json e passa a ser a fonte do painel.
@@ -67,13 +67,13 @@ def tabelas(bls, primeira_coluna):
 
 
 # --------------------------------------------------------------------------
-# doc-acompanhamento: entregas, pendências, documentos
+# doc-acompanhamento: artefatos, pendências, documentos
 # --------------------------------------------------------------------------
 def extrai_acompanhamento(raiz):
     mod = carrega(raiz / "doc-acompanhamento" / "conteudo.py")
     caps = mod.CAPITULOS
 
-    entregas = [
+    artefatos = [
         {
             "nome": texto(l[0]),
             "antes": texto(l[1]),
@@ -90,11 +90,11 @@ def extrai_acompanhamento(raiz):
         # artefatos e reaparece aqui entre os parciais. A tabela dos vinte é a
         # fonte; a duplicidade está registrada na seção 4.2.1 do desenho.
         situacao = next(
-            (a["agora"] for a in entregas if a["nome"] == nome), None
+            (a["agora"] for a in artefatos if a["nome"] == nome), None
         )
         pendencias.append(
             {
-                "entrega": nome,
+                "artefato": nome,
                 "situacao": situacao,
                 "falta": texto(l[1]),
                 "destrava": texto(l[2]),
@@ -103,13 +103,13 @@ def extrai_acompanhamento(raiz):
         )
 
     # Os dois não entregues não têm linha de tabela: vêm dos h4 do capítulo 04.
-    for a in entregas:
+    for a in artefatos:
         if a["agora"] == "Não entregue" and not any(
-            p["entrega"] == a["nome"] for p in pendencias
+            p["artefato"] == a["nome"] for p in pendencias
         ):
             pendencias.append(
                 {
-                    "entrega": a["nome"],
+                    "artefato": a["nome"],
                     "situacao": "Não entregue",
                     "falta": "O documento",
                     "destrava": a["onde"],
@@ -126,7 +126,7 @@ def extrai_acompanhamento(raiz):
         for l in tabelas(blocos(caps, "05"), "Arquivo no repositório")
     ]
 
-    return entregas, pendencias, documentos
+    return artefatos, pendencias, documentos
 
 
 # --------------------------------------------------------------------------
@@ -194,22 +194,29 @@ def main():
         sys.exit(__doc__)
     raiz = Path(sys.argv[1]).expanduser()
 
-    entregas, pendencias, documentos = extrai_acompanhamento(raiz)
+    artefatos, pendencias, documentos = extrai_acompanhamento(raiz)
     metas, riscos = extrai_relatorio(raiz)
 
-    # Entrega ou risco novo sem classificação é buraco no painel: falha alto,
-    # em vez de publicar uma linha órfã.
-    orfaos = tabela_produtos.sem_vinculo(entregas)
+    # Artefato ou risco novo sem classificação é buraco no painel: falha alto,
+    # em vez de publicar uma linha órfã. Estado de produto em branco não é
+    # buraco — é classificação ainda não feita, e a página diz isso.
+    orfaos = tabela_produtos.sem_vinculo(artefatos)
     if orfaos:
         sys.exit(
-            "Entregas sem produto em scripts/produtos.py: " + ", ".join(orfaos)
+            "Artefatos sem produto em scripts/produtos.py: " + ", ".join(orfaos)
         )
     soltos = tabela_produtos.sem_produto(riscos)
     if soltos:
         sys.exit(
             "Riscos sem produto em scripts/produtos.py: " + ", ".join(soltos)
         )
-    relatorios, produtos = tabela_produtos.monta(entregas, riscos)
+    invalidos = tabela_produtos.estados_invalidos()
+    if invalidos:
+        sys.exit(
+            "Estado de produto fora da lista em scripts/produtos.py: "
+            + "; ".join(invalidos)
+        )
+    relatorios, produtos = tabela_produtos.monta(artefatos, riscos)
 
     acervo = {
         "ted": {
@@ -230,7 +237,7 @@ def main():
         "relatorios": relatorios,
         "produtos": produtos,
         "metas": metas,
-        "entregas": entregas,
+        "artefatos": artefatos,
         "pendencias": pendencias,
         "riscos": riscos,
         "documentos": documentos,
