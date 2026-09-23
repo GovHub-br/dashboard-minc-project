@@ -111,7 +111,9 @@ Não há etapa de compilação. O GitHub Pages serve o diretório como está, e 
 
 Para a sincronização funcionar, cadastre o ID da planilha publicada em
 **Settings → Secrets and variables → Actions → Variables**, com o nome
-`PLANILHA_ID`. Opcionalmente, `PROXIMA_REUNIAO` (AAAA-MM-DD) e `GUARDIA`.
+`PLANILHA_ID`. Opcionalmente, `PROXIMA_REUNIAO` e `GUARDIA`. A data da reunião sai por extenso
+quando vem em AAAA-MM-DD, e como veio em qualquer outro caso — "Toda quinta às
+16h." é um valor válido.
 
 ## Verificação
 
