@@ -302,26 +302,29 @@ PRODUTOS = [
 #
 # Enquanto houver linha vazia a página segue no ar e a validação passa: falta
 # de classificação é estado legítimo, e não erro de acervo.
+#
+# Classificado por Luiza Maluf em 22/09/2026, produto a produto, sobre o
+# 3º Relatório Parcial. A reclassificação acompanha cada novo relatório.
 ESTADO = {
-    ("01", 1): "",
-    ("01", 2): "",
-    ("02", 1): "",
-    ("02", 2): "",
-    ("02", 3): "",
-    ("02", 4): "",
-    ("02", 5): "",
-    ("03", 1): "",
-    ("03", 2): "",
-    ("03", 3): "",
-    ("03", 4): "",
-    ("04", 1): "",
-    ("04", 2): "",
-    ("04", 3): "",
-    ("05", 1): "",
-    ("05", 2): "",
-    ("05", 3): "",
-    ("05", 4): "",
-    ("06", 1): "",
+    ("01", 1): "Em andamento",
+    ("01", 2): "Em andamento",
+    ("02", 1): "Em andamento",
+    ("02", 2): "Entregue",
+    ("02", 3): "Em andamento",
+    ("02", 4): "Em andamento",
+    ("02", 5): "Entregue",
+    ("03", 1): "Previsto",
+    ("03", 2): "Entregue",
+    ("03", 3): "Entregue",
+    ("03", 4): "Previsto",
+    ("04", 1): "Entregue",
+    ("04", 2): "Em andamento",
+    ("04", 3): "Em andamento",
+    ("05", 1): "Em andamento",
+    ("05", 2): "Em andamento",
+    ("05", 3): "Em andamento",
+    ("05", 4): "Entregue",
+    ("06", 1): "Em andamento",
 }
 
 ESTADOS_ACEITOS = ("Entregue", "Em andamento", "Previsto", "")

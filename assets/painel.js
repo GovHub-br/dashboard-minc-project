@@ -201,6 +201,14 @@ const GLOSSARIO = [
   },
 ];
 
+const ESTADOS = ['Entregue', 'Em andamento', 'Previsto'];
+
+const CLASSE_ESTADO = {
+  'Entregue': 'estado-entregue',
+  'Em andamento': 'estado-andamento',
+  'Previsto': 'estado-previsto',
+};
+
 const MARCAS = {
   secao: { glifo: '●', classe: 'marca-secao', diz: 'seção própria' },
   mencao: { glifo: '○', classe: 'marca-mencao', diz: 'tratado sob outro produto' },
@@ -220,12 +228,37 @@ function marcaCobertura(produto, relatorio) {
 
 function selo(produto) {
   const estado = produto.estado || 'A classificar';
-  const classe = {
-    'Entregue': 'estado-entregue',
-    'Em andamento': 'estado-andamento',
-    'Previsto': 'estado-previsto',
-  }[produto.estado] || 'estado-vazio';
+  const classe = CLASSE_ESTADO[produto.estado] || 'estado-vazio';
   return `<span class="selo ${classe}">${escapaHtml(estado)}</span>`;
+}
+
+/* Quantos produtos em cada estado. Some quando nenhum está classificado. */
+function barraDeEstados(acervo) {
+  const conta = {};
+  for (const p of acervo.produtos) {
+    if (p.estado) conta[p.estado] = (conta[p.estado] || 0) + 1;
+  }
+  const classificados = Object.values(conta).reduce((a, b) => a + b, 0);
+  if (!classificados) return '';
+
+  const faixas = ESTADOS.filter((e) => conta[e]).map((e) => `
+    <div class="faixa ${CLASSE_ESTADO[e]}" style="flex: ${conta[e]}"
+         title="${escapaHtml(`${conta[e]} de ${acervo.produtos.length}: ${e}`)}">
+      ${conta[e]} ${escapaHtml(e.toLowerCase())}
+    </div>
+  `).join('');
+
+  const falta = acervo.produtos.length - classificados;
+
+  return `
+    <div class="barra-estados" role="img"
+         aria-label="${escapaHtml(ESTADOS.map((e) =>
+           `${conta[e] || 0} ${e}`).join(', '))}">${faixas}</div>
+    <p class="sob-barra">
+      Os ${acervo.produtos.length} produtos do Termo, na leitura do
+      3º Relatório Parcial.${falta
+        ? ` ${falta} ainda sem classificação.` : ''}
+    </p>`;
 }
 
 function artefatosDoProduto(produto, acervo) {
@@ -341,6 +374,7 @@ function montaProdutos(acervo) {
       até aqui, os artefatos que o compõem e o que vem no próximo período.
     </p>
     <div class="glossario">${glossario}</div>
+    ${barraDeEstados(acervo)}
     <div class="indicadores indicadores-3">${resumo}</div>
     <p class="legenda-marcas">
       Em cada produto, <span class="marca-secao">1º</span> marca o relatório que

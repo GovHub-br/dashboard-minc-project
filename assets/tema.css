@@ -571,6 +571,38 @@ table.quadro .etiqueta {
 
 .termo p { margin: 0; font-size: 0.86rem; color: var(--text-body); }
 
+/* Os 19 produtos por estado, no topo da seção. */
+.barra-estados {
+  display: flex;
+  height: 40px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.barra-estados .faixa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 0.84rem;
+  min-width: 46px;
+  padding: 0 8px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.barra-estados .estado-entregue  { background: var(--color-success); color: var(--bg-white); }
+.barra-estados .estado-andamento { background: var(--color-warm);    color: var(--text-strong); }
+.barra-estados .estado-previsto  { background: #D6D3E4;              color: var(--text-body); }
+
+.sob-barra {
+  margin: 8px 0 20px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
 .indicadores-3 { margin-bottom: 16px; }
 .indicadores-3 .rotulo { line-height: 1.35; }
 .indicadores-3 .periodo { color: var(--text-muted); font-size: 0.78rem; }

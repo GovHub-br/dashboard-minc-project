@@ -46,6 +46,9 @@ artefatos entregues sem estar entregue, e doze dos dezenove não têm artefato
 algum no quadro. Linha em branco aparece como *a classificar* e não reprova a
 validação — falta de classificação é estado legítimo, não erro de acervo.
 
+Na leitura do 3º Relatório Parcial: 6 entregues, 11 em andamento, 2 previstos.
+A reclassificação acompanha cada novo relatório.
+
 **Fonte:** `dados/ted.json`, extraído uma vez dos geradores do 3º Relatório
 Parcial por `scripts/extrai.py`. Atualiza-se a cada relatório parcial.
 
