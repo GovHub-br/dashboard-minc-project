@@ -423,57 +423,6 @@ table.quadro .etiqueta {
 
 .pendencia .detalhe { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
 
-/* ----------------------------------------------------------- matriz de riscos */
-
-.celula { stroke: var(--bg-white); stroke-width: 2; }
-.celula.sev-0, .celula.sev-1 { fill: #E8F5EE; }
-.celula.sev-2 { fill: #FDF3E3; }
-.celula.sev-3 { fill: #FBE6D8; }
-.celula.sev-4 { fill: #F5D5C6; }
-
-.ponto-risco { fill: var(--primary-purple); }
-.numero-risco { fill: var(--bg-white); font-size: 0.82rem; font-weight: 700; }
-.rotulo-eixo { font-size: 0.82rem; fill: var(--text-muted); }
-.titulo-eixo { font-size: 0.86rem; font-weight: 600; fill: var(--text-body); }
-
-.painel-riscos {
-  display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .painel-riscos { grid-template-columns: 1fr; }
-}
-
-#svg-riscos { max-width: 420px; }
-
-.risco {
-  background: var(--bg-white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: 16px 20px;
-  margin-bottom: 12px;
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: 14px;
-}
-
-.risco .indice {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--primary-purple);
-  color: var(--bg-white);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.82rem; font-weight: 700;
-}
-
-.risco .texto-risco { font-weight: 600; color: var(--text-strong); font-size: 0.92rem; }
-.risco .grau { font-size: 0.78rem; color: var(--text-muted); margin: 4px 0 8px; }
-.risco .mitigacao { font-size: 0.88rem; }
-.risco .mitigacao strong { color: var(--text-strong); }
-
 /* -------------------------------------------------------------- documentos */
 
 .grade-documentos {
@@ -886,24 +835,3 @@ a.doc:hover { background: #EDE4FB; border-bottom-color: var(--primary-purple); }
 a.documento { text-decoration: none; color: inherit; display: block; }
 a.documento:hover code { color: var(--primary-purple); }
 
-/* O produto que cada risco ameaça. */
-.alvo-risco {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--purple-700);
-  text-decoration: none;
-}
-.alvo-risco:hover { color: var(--primary-purple); }
-.alvo-risco .numero-meta {
-  background: var(--primary-purple);
-  color: var(--bg-white);
-  border-radius: 4px;
-  padding: 2px 7px;
-  font-size: 0.68rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}

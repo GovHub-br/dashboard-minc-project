@@ -29,8 +29,8 @@ anterior ilegível.
 
 Oito seções, nesta ordem: o acompanhamento por meta e produto, a situação dos
 artefatos, o balanço das seis metas, a evolução entre relatórios, o quadro dos 20
-artefatos com lastro, o que vem no próximo período, os riscos e a relação dos
-documentos produzidos.
+artefatos com lastro, o que vem no próximo período e a relação dos documentos
+produzidos.
 
 **Acompanhamento por meta e produto** abre a página. Cada um dos 19 produtos é
 uma ficha que abre com o que o Termo prevê, o que foi feito até aqui, os

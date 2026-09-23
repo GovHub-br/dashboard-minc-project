@@ -576,56 +576,6 @@ function montaCronograma(acervo) {
     ${blocos}`;
 }
 
-/* ---------------------------------------------------------------- riscos */
-
-function montaRiscos(acervo) {
-  const alvo = document.getElementById('matriz-riscos');
-
-  const lista = acervo.riscos.map((r, i) => `
-    <article class="risco">
-      <div class="indice">${i + 1}</div>
-      <div>
-        ${r.produto_nome ? `
-          <a class="alvo-risco" href="#produtos">
-            <span class="numero-meta">Meta ${escapaHtml(r.meta)}</span>
-            Produto ${r.produto} · ${escapaHtml(r.produto_nome)}
-          </a>` : ''}
-        <div class="texto-risco">${escapaHtml(r.risco)}</div>
-        <div class="grau">
-          Probabilidade ${escapaHtml(r.probabilidade.toLowerCase())} ·
-          impacto ${escapaHtml(r.impacto.toLowerCase())}
-        </div>
-        <div class="mitigacao">
-          <strong>Medida mitigadora:</strong> ${ligaDocumentos(r.mitigacao, acervo)}
-        </div>
-      </div>
-    </article>
-  `).join('');
-
-  const porMeta = new Set(acervo.riscos.map((r) => r.meta).filter(Boolean));
-
-  alvo.innerHTML = `
-    <p class="secao-intro">
-      Os ${acervo.riscos.length} riscos identificados no período, cada um com o
-      produto que ameaça e a medida mitigadora em andamento. Concentram-se em
-      ${porMeta.size} das seis metas.
-    </p>
-    <div class="painel-riscos">
-      <div id="svg-riscos"></div>
-      <div>${lista}</div>
-    </div>
-    <div class="nota">
-      <p>
-        <strong>Sobre a ligação com o produto.</strong> O relatório lista os
-        riscos sem vinculá-los a produto. A ligação é do painel, pelo assunto do
-        risco e da sua medida mitigadora, para que a leitura siga a mesma chave
-        do resto da página.
-      </p>
-    </div>`;
-
-  desenhaRiscos('#svg-riscos', acervo.riscos);
-}
-
 /* ------------------------------------------------------------ documentos */
 
 function montaDocumentos(acervo) {
@@ -660,7 +610,6 @@ async function inicia() {
     montaEvolucao(acervo);
     montaArtefatos(acervo);
     montaCronograma(acervo);
-    montaRiscos(acervo);
     montaDocumentos(acervo);
   } catch (erro) {
     console.error(erro);

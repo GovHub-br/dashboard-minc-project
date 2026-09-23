@@ -197,18 +197,13 @@ def main():
     artefatos, pendencias, documentos = extrai_acompanhamento(raiz)
     metas, riscos = extrai_relatorio(raiz)
 
-    # Artefato ou risco novo sem classificação é buraco no painel: falha alto,
-    # em vez de publicar uma linha órfã. Estado de produto em branco não é
-    # buraco — é classificação ainda não feita, e a página diz isso.
+    # Artefato novo sem produto é buraco no painel: falha alto, em vez de
+    # publicar uma linha órfã. Estado de produto em branco não é buraco — é
+    # classificação ainda não feita, e a página diz isso.
     orfaos = tabela_produtos.sem_vinculo(artefatos)
     if orfaos:
         sys.exit(
             "Artefatos sem produto em scripts/produtos.py: " + ", ".join(orfaos)
-        )
-    soltos = tabela_produtos.sem_produto(riscos)
-    if soltos:
-        sys.exit(
-            "Riscos sem produto em scripts/produtos.py: " + ", ".join(soltos)
         )
     invalidos = tabela_produtos.estados_invalidos()
     if invalidos:
@@ -216,7 +211,7 @@ def main():
             "Estado de produto fora da lista em scripts/produtos.py: "
             + "; ".join(invalidos)
         )
-    relatorios, produtos = tabela_produtos.monta(artefatos, riscos)
+    relatorios, produtos = tabela_produtos.monta(artefatos)
 
     acervo = {
         "ted": {

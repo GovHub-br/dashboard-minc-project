@@ -224,9 +224,6 @@ class TestTabelaDeProdutos(unittest.TestCase):
         for p in self.produtos.PRODUTOS:
             self.assertIn((p["meta"], p["num"]), self.produtos.BALANCO)
 
-    def test_todo_risco_tem_produto(self):
-        self.assertEqual(self.produtos.sem_produto(self.acervo["riscos"]), [])
-
     def test_todo_documento_tem_endereco(self):
         for d in self.acervo["documentos"]:
             self.assertTrue(d["url"].startswith(self.produtos.BASE_DOCUMENTOS))

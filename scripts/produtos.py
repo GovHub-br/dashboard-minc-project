@@ -25,10 +25,6 @@ ARTEFATO_PRODUTO a que produto pertence cada um dos 20 artefatos do quadro de
 ESTADO          se o produto já está entregue. Preenchido à mão por quem
                 responde pelo TED — ver a tabela, mais abaixo.
 
-RISCO_PRODUTO   a que produto cada um dos sete riscos se refere. Classificação
-                do painel, pelo assunto do risco e da sua medida mitigadora; o
-                relatório não faz essa ligação.
-
 As três palavras do painel, que não são sinônimos:
 
 produto     o que o Termo espera. São 19, e não mudam.
@@ -424,27 +420,7 @@ BALANCO = {
                "vocabulários. Portal em construção; coleta ainda por iniciar.",
 }
 
-# risco (pelo início do texto) -> (meta, produto) que ele ameaça.
-RISCO_PRODUTO = {
-    "Inexistência de infraestrutura de produção": ("03", 1),
-    "Documentação de coluna do SALIC parcial": ("02", 3),
-    "Definição dos painéis condicionada": ("02", 1),
-    "Cadeia do BB Ágil": ("02", 3),
-    "Sincronização manual entre a plataforma": ("05", 1),
-    "Meta 06": ("06", 1),
-    "Custos, prazos e logística": ("05", 3),
-}
-
-
-def produto_do_risco(texto):
-    """(meta, produto) do risco, ou None se a tabela não o classifica."""
-    for chave, alvo in RISCO_PRODUTO.items():
-        if texto.startswith(chave):
-            return alvo
-    return None
-
-
-def monta(artefatos, riscos=None):
+def monta(artefatos):
     """Devolve os blocos `relatorios` e `produtos` do acervo.
 
     Cada produto recebe os artefatos do quadro que o compõem, com a situação
@@ -473,17 +449,6 @@ def monta(artefatos, riscos=None):
             "artefatos": por_produto.get((p["meta"], p["num"]), []),
         })
 
-    # Cada risco ganha o produto que ameaça, para que a seção de riscos leia
-    # na mesma chave do resto da página.
-    for r in riscos or []:
-        alvo = produto_do_risco(r["risco"])
-        if alvo:
-            r["meta"], r["produto"] = alvo
-            r["produto_nome"] = next(
-                p["nome"] for p in PRODUTOS
-                if p["meta"] == alvo[0] and p["num"] == alvo[1]
-            )
-
     return RELATORIOS, produtos
 
 
@@ -501,9 +466,18 @@ def estados_invalidos():
     return problemas
 
 
-def sem_produto(riscos):
-    """Riscos que a tabela não classifica."""
-    return [r["risco"] for r in riscos if not produto_do_risco(r["risco"])]
+def estados_invalidos():
+    """Chaves de ESTADO com valor fora da lista, ou produto sem linha."""
+    problemas = []
+    for p in PRODUTOS:
+        chave = (p["meta"], p["num"])
+        if chave not in ESTADO:
+            problemas.append(f"Meta {p['meta']} · Produto {p['num']} sem linha")
+        elif ESTADO[chave] not in ESTADOS_ACEITOS:
+            problemas.append(
+                f"Meta {p['meta']} · Produto {p['num']}: {ESTADO[chave]!r}"
+            )
+    return problemas
 
 
 def sem_vinculo(artefatos):

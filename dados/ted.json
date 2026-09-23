@@ -791,64 +791,43 @@
       "risco": "Inexistência de infraestrutura de produção; o ambiente disponível é de homologação e a topologia definitiva permanece em estudo",
       "probabilidade": "Alto",
       "impacto": "Alto",
-      "mitigacao": "Arquitetura física e de segurança já propostas e documentadas; diretrizes de infraestrutura produzidas; diretriz firmada de que a totalidade dos dados resida na infraestrutura do Ministério",
-      "meta": "03",
-      "produto": 1,
-      "produto_nome": "Motor de Governança e Autorização de Acesso a Dados"
+      "mitigacao": "Arquitetura física e de segurança já propostas e documentadas; diretrizes de infraestrutura produzidas; diretriz firmada de que a totalidade dos dados resida na infraestrutura do Ministério"
     },
     {
       "risco": "Documentação de coluna do SALIC parcial: 12,6% das 5.064 colunas com definição de negócio herdada do sistema de origem",
       "probabilidade": "Alto",
       "impacto": "Médio",
-      "mitigacao": "Documentação progressiva a partir da exploração; enriquecimento na camada silver; ausência de definição registrada explicitamente, e não omitida",
-      "meta": "02",
-      "produto": 3,
-      "produto_nome": "Modelo Integrado de Dados"
+      "mitigacao": "Documentação progressiva a partir da exploração; enriquecimento na camada silver; ausência de definição registrada explicitamente, e não omitida"
     },
     {
       "risco": "Definição dos painéis condicionada a acordo prévio com o Ministério quanto ao que deve ser aferido",
       "probabilidade": "Alto",
       "impacto": "Médio",
-      "mitigacao": "Camada semântica construída à frente, de modo que cada indicador acordado se torne imediatamente disponível; reunião dedicada de requisitos já pactuada; aproveitamento das escolhas validadas no Cultura em Números",
-      "meta": "02",
-      "produto": 1,
-      "produto_nome": "Relatório Informacional do PNC com painéis interativos"
+      "mitigacao": "Camada semântica construída à frente, de modo que cada indicador acordado se torne imediatamente disponível; reunião dedicada de requisitos já pactuada; aproveitamento das escolhas validadas no Cultura em Números"
     },
     {
       "risco": "Cadeia do BB Ágil com extração ativa e transformação desabilitada, impedindo a conciliação entre valor repassado e valor pago",
       "probabilidade": "Médio",
       "impacto": "Alto",
-      "mitigacao": "Modelos escritos e versionados à espera da disponibilização da fonte; lacuna documentada de forma explícita no modelo de dados",
-      "meta": "02",
-      "produto": 3,
-      "produto_nome": "Modelo Integrado de Dados"
+      "mitigacao": "Modelos escritos e versionados à espera da disponibilização da fonte; lacuna documentada de forma explícita no modelo de dados"
     },
     {
       "risco": "Sincronização manual entre a plataforma e o catálogo institucional de metadados",
       "probabilidade": "Médio",
       "impacto": "Médio",
-      "mitigacao": "Cadeia de geração integralmente reexecutável e versionada; execução do conector e avaliação de rotina automatizada encaminhadas à equipe",
-      "meta": "05",
-      "produto": 1,
-      "produto_nome": "Integrações com ferramentas livres de governança"
+      "mitigacao": "Cadeia de geração integralmente reexecutável e versionada; execução do conector e avaliação de rotina automatizada encaminhadas à equipe"
     },
     {
       "risco": "Meta 06: 90% dos itens do sistema MinC indisponíveis para coleta computacional, com o volume concentrado numa única instituição",
       "probabilidade": "Alto",
       "impacto": "Alto",
-      "mitigacao": "Priorização das três instituições que hoje expõem interfaces abertas; frente de articulação institucional específica, a cargo do GT de Acervos do SNIIC",
-      "meta": "06",
-      "produto": 1,
-      "produto_nome": "Repositório Digital Brasiliana Cultura"
+      "mitigacao": "Priorização das três instituições que hoje expõem interfaces abertas; frente de articulação institucional específica, a cargo do GT de Acervos do SNIIC"
     },
     {
       "risco": "Custos, prazos e logística de produção do Datathon",
       "probabilidade": "Médio",
       "impacto": "Médio",
-      "mitigacao": "Planejamento, produção e mobilização conduzidos no período; materiais e programação em elaboração",
-      "meta": "05",
-      "produto": 3,
-      "produto_nome": "Datathon para formulação dos indicadores do PNC"
+      "mitigacao": "Planejamento, produção e mobilização conduzidos no período; materiais e programação em elaboração"
     }
   ],
   "documentos": [
