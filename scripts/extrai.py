@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 """Extrai o acervo do painel a partir dos geradores do 3º Relatório Parcial.
 
+Produto, artefato e entrega não são sinônimos aqui: produto é o que o Termo
+espera, artefato é o que compõe um produto, entrega é o produto inteiro
+contemplado. Ver scripts/produtos.py.
+
 Roda uma vez, na máquina de quem tem o relatório. O resultado é versionado em
 dados/ted.json e passa a ser a fonte do painel.
 
@@ -114,7 +118,11 @@ def extrai_acompanhamento(raiz):
             )
 
     documentos = [
-        {"arquivo": texto(l[0]), "anexo": texto(l[1])}
+        {
+            "arquivo": texto(l[0]),
+            "anexo": texto(l[1]),
+            "url": tabela_produtos.BASE_DOCUMENTOS + texto(l[0]),
+        }
         for l in tabelas(blocos(caps, "05"), "Arquivo no repositório")
     ]
 
@@ -189,12 +197,19 @@ def main():
     artefatos, pendencias, documentos = extrai_acompanhamento(raiz)
     metas, riscos = extrai_relatorio(raiz)
 
-    # Artefato novo no quadro é artefato sem meta no painel: falha alto.
+    # Artefato novo sem produto é buraco no painel: falha alto, em vez de
+    # publicar uma linha órfã. Estado de produto em branco não é buraco — é
+    # classificação ainda não feita, e a página diz isso.
     orfaos = tabela_produtos.sem_vinculo(artefatos)
     if orfaos:
         sys.exit(
-            "Artefatos sem produto em scripts/produtos.py: "
-            + ", ".join(orfaos)
+            "Artefatos sem produto em scripts/produtos.py: " + ", ".join(orfaos)
+        )
+    invalidos = tabela_produtos.estados_invalidos()
+    if invalidos:
+        sys.exit(
+            "Estado de produto fora da lista em scripts/produtos.py: "
+            + "; ".join(invalidos)
         )
     relatorios, produtos = tabela_produtos.monta(artefatos)
 
@@ -215,12 +230,12 @@ def main():
             "apurado_em": "2026-08-31",
         },
         "relatorios": relatorios,
+        "produtos": produtos,
         "metas": metas,
         "artefatos": artefatos,
         "pendencias": pendencias,
         "riscos": riscos,
         "documentos": documentos,
-        "produtos": produtos,
     }
 
     print(json.dumps(acervo, ensure_ascii=False, indent=2))

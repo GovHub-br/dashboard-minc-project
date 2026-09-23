@@ -18,15 +18,23 @@ function plural(n, singular, plural_) {
   return `${n} ${n === 1 ? singular : plural_}`;
 }
 
-function porExtenso(iso) {
-  if (!iso) return '';
-  const [ano, mes, dia] = iso.slice(0, 10).split('-');
+/* A próxima reunião vem de uma variável de repositório que o README pede em
+   AAAA-MM-DD, mas que aceita qualquer texto — e hoje traz "Toda quinta às
+   16h.". Texto que não é data sai como veio, em vez de virar "NaN de
+   undefined". */
+const ISO = /^\d{4}-\d{2}-\d{2}/;
+
+function porExtenso(valor) {
+  if (!valor) return '';
+  if (!ISO.test(valor)) return valor;
+  const [ano, mes, dia] = valor.slice(0, 10).split('-');
   return `${Number(dia)} de ${MES[Number(mes) - 1]} de ${ano}`;
 }
 
-function curta(iso) {
-  if (!iso) return '';
-  const [ano, mes, dia] = iso.slice(0, 10).split('-');
+function curta(valor) {
+  if (!valor) return '';
+  if (!ISO.test(valor)) return valor;
+  const [ano, mes, dia] = valor.slice(0, 10).split('-');
   return `${dia}/${mes}/${ano}`;
 }
 

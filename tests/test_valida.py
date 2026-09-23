@@ -27,6 +27,7 @@ def acervo_valido():
     produtos = [
         {"meta": "01", "num": i, "nome": f"Produto {i}", "redacao": "…",
          "meta_nome": "Meta de teste",
+         "balanco": "…", "meta_nome": "Meta de teste", "estado": "",
          "cobertura": {"3": {"tipo": "secao", "onde": "Meta 01"}},
          "artefatos": []}
         for i in range(1, 20)
@@ -52,6 +53,9 @@ def acervo_valido():
              "falta": "x", "destrava": "y", "quem": "UnB"}
         ],
         "produtos": produtos,
+        "documentos": [
+            {"arquivo": "um.pdf", "anexo": "Anexo I", "url": "https://x/um.pdf"}
+        ],
     }
 
 
@@ -215,3 +219,30 @@ class TestTabelaDeProdutos(unittest.TestCase):
         _, produtos = self.produtos.monta(self.acervo["artefatos"])
         total = sum(len(p["artefatos"]) for p in produtos)
         self.assertEqual(total, len(self.acervo["artefatos"]))
+
+    def test_todo_produto_tem_balanco(self):
+        for p in self.produtos.PRODUTOS:
+            self.assertIn((p["meta"], p["num"]), self.produtos.BALANCO)
+
+    def test_todo_documento_tem_endereco(self):
+        for d in self.acervo["documentos"]:
+            self.assertTrue(d["url"].startswith(self.produtos.BASE_DOCUMENTOS))
+
+    def test_estado_de_produto_dentro_da_lista(self):
+        self.assertEqual(self.produtos.estados_invalidos(), [])
+
+    def test_toda_linha_de_estado_corresponde_a_um_produto(self):
+        chaves = {(p["meta"], p["num"]) for p in self.produtos.PRODUTOS}
+        self.assertEqual(set(self.produtos.ESTADO), chaves)
+
+
+class TestEstadoNoValidador(unittest.TestCase):
+    def test_estado_em_branco_passa(self):
+        a = acervo_valido()
+        self.assertEqual(valida.valida(a), [])
+
+    def test_estado_fora_da_lista_reprova(self):
+        a = acervo_valido()
+        a["produtos"][0]["estado"] = "Quase"
+        problemas = valida.valida(a)
+        self.assertTrue(any("fora da lista" in p for p in problemas))

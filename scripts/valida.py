@@ -18,6 +18,7 @@ TOTAL_ARTEFATOS = 20
 TOTAL_PRODUTOS = 19
 CAMPOS_ORIGEM = ("relatorio", "periodo", "apurado_em")
 TIPOS_COBERTURA = ("secao", "mencao")
+ESTADOS_PRODUTO = ("Entregue", "Em andamento", "Previsto", "")
 
 
 def valida(acervo):
@@ -51,15 +52,15 @@ def valida(acervo):
     por_nome = {a.get("nome"): a for a in artefatos}
     for p in acervo.get("pendencias", []):
         nome = p.get("artefato")
-        artefato = por_nome.get(nome)
-        if artefato is None:
+        entrega = por_nome.get(nome)
+        if entrega is None:
             problemas.append(f"Pendência de artefato inexistente: {nome!r}.")
             continue
-        if p.get("situacao") != artefato.get("agora"):
+        if p.get("situacao") != entrega.get("agora"):
             problemas.append(
                 f"Pendência {nome!r} diverge do quadro: declara "
                 f"{p.get('situacao')!r}, o quadro diz "
-                f"{artefato.get('agora')!r}."
+                f"{entrega.get('agora')!r}."
             )
 
     # 4. Carimbo de origem.
@@ -133,6 +134,25 @@ def valida(acervo):
             problemas.append(
                 f"Produto vincula artefato inexistente no quadro: {nome!r}."
             )
+
+    # 8. Todo produto diz o que entregou, declara estado conhecido, e todo
+    #    documento sabe onde está. Estado em branco é permitido: significa
+    #    "a classificar", e a página mostra assim.
+    for p in produtos:
+        if not p.get("balanco"):
+            problemas.append(
+                f"Meta {p.get('meta')} · Produto {p.get('num')} sem balanço."
+            )
+
+        if p.get("estado") not in ESTADOS_PRODUTO:
+            problemas.append(
+                f"Meta {p.get('meta')} · Produto {p.get('num')} com estado "
+                f"{p.get('estado')!r}, fora da lista."
+            )
+
+    for d in acervo.get("documentos", []):
+        if not d.get("url"):
+            problemas.append(f"Documento {d.get('arquivo')!r} sem endereço.")
 
     return problemas
 

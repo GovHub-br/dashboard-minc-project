@@ -2,12 +2,12 @@
 
 Dois painéis, com fontes e propósitos distintos.
 
-**[Entregas do TED](https://govhub-br.github.io/dashboard-minc-project/)** —
+**[Entregas do TED](https://govhub-br.github.io/dashboard-minc-project/ted.html)** —
 acompanhamento do **Termo de Execução Descentralizada nº 01/2026/SGE/SE/MINC**,
 firmado entre a Universidade de Brasília e o Ministério da Cultura. Voltado à
 prestação de contas: o que foi entregue, com que evidência, e o que falta.
 
-**[Trabalho nos 8 eixos](https://govhub-br.github.io/dashboard-minc-project/eixos.html)** —
+**[Trabalho nos 8 eixos](https://govhub-br.github.io/dashboard-minc-project/)** —
 as demandas conduzidas pelo Gov Hub em cada eixo do Plano Nacional de Cultura
 2026-2036. Voltado à condução do trabalho: o que depende do quê, o que está
 travado e o que está pronto para começar.
@@ -20,16 +20,34 @@ Reúne numa página o estado de execução que estava espalhado pelo quadro de
 acompanhamento de produtos da CGIIC, pelo corpo do 3º Relatório Parcial e pelo
 repositório público da plataforma.
 
-Oito seções: indicadores, evolução entre relatórios, as entregas por meta, as
-seis metas, o quadro dos 20 artefatos com lastro, o cronograma de setembro a
-novembro de 2026, a matriz de riscos e a relação dos documentos produzidos.
+**Três palavras, que não são sinônimos.** *Produto* é o que o Termo espera — são
+19, e não mudam. *Artefato* é o que ficou disponível no período e compõe um
+produto — são os 20 do quadro de acompanhamento da CGIIC. *Entrega* é quando o
+produto inteiro é contemplado: estado de produto, nunca nome de peça. A página
+abre pelas três definições, porque foi a confusão entre elas que tornou a versão
+anterior ilegível.
 
-**Entregas por meta** cruza os 19 produtos pactuados no Termo com os três
-relatórios de atividades: em qual deles cada produto foi tratado, e quais
-artefatos do quadro pertencem a cada produto. A cobertura vem do sumário de cada
-relatório; o vínculo artefato→produto vem da redação do Termo, e só onde o Termo
-não nomeia o artefato é que vem do lugar em que o 3º Relatório o documenta — a
-etiqueta registra qual dos dois casos é.
+Oito seções, nesta ordem: o acompanhamento por meta e produto, a situação dos
+artefatos, o balanço das seis metas, a evolução entre relatórios, o quadro dos 20
+artefatos com lastro, o que vem no próximo período e a relação dos documentos
+produzidos.
+
+**Acompanhamento por meta e produto** abre a página. Cada um dos 19 produtos é
+uma ficha que abre com o que o Termo prevê, o que foi feito até aqui, os
+artefatos que o compõem com a situação de cada um, e os encaminhamentos da sua
+meta. A cobertura por relatório vem do sumário de cada um; o que foi feito vem da
+seção correspondente do 3º Relatório; o vínculo artefato→produto vem da redação
+do Termo, e só onde o Termo não nomeia o artefato é que vem do lugar em que o 3º
+Relatório o documenta — a marca ao lado registra qual dos dois casos é.
+
+**O estado de entrega é preenchido à mão**, na tabela `ESTADO` de
+`scripts/produtos.py`. O painel não o deduz: um produto pode ter todos os seus
+artefatos entregues sem estar entregue, e doze dos dezenove não têm artefato
+algum no quadro. Linha em branco aparece como *a classificar* e não reprova a
+validação — falta de classificação é estado legítimo, não erro de acervo.
+
+Na leitura do 3º Relatório Parcial: 6 entregues, 11 em andamento, 2 previstos.
+A reclassificação acompanha cada novo relatório.
 
 **Fonte:** `dados/ted.json`, extraído uma vez dos geradores do 3º Relatório
 Parcial por `scripts/extrai.py`. Atualiza-se a cada relatório parcial.
@@ -65,23 +83,55 @@ preciso servir o diretório:
 python3 -m http.server
 ```
 
-Depois, abrir <http://localhost:8000>.
+Depois, abrir <http://localhost:8000>, que leva ao painel dos eixos; o do
+TED fica em <http://localhost:8000/ted.html>.
 
 ## Estrutura
 
 | Caminho | Conteúdo |
 |---|---|
-| `index.html` | Painel do TED. |
+| `index.html` | Porta de entrada: redireciona para o painel dos eixos, ou para o do TED quando o link traz âncora de uma seção dele. |
+| `ted.html` | Painel do TED. |
 | `eixos.html` | Painel dos 8 eixos do PNC. |
 | `dados/` | Os acervos: `ted.json`, `eixos.json`, `historico.json`. |
-| `assets/` | Tema visual, scripts das páginas e a biblioteca D3, versionada. |
+| `assets/` | Tema visual, scripts das páginas, a marca do Lab Livre e a biblioteca D3, versionada. |
 | `planilha/` | Modelo da planilha dos eixos e o guia de preenchimento. |
-| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED e sua cobertura por relatório. |
+| `scripts/` | Extração e validação. Só biblioteca padrão do Python. `produtos.py` guarda a tabela dos 19 produtos do TED, o que cada um entregou, a cobertura por relatório, o estado de entrega e o vínculo entre artefatos e produtos. |
 | `tests/` | Testes dos dois conversores. |
 | `docs/` | Documento de desenho e plano de implementação. |
 
 Não há etapa de compilação. O GitHub Pages serve o diretório como está, e nada
 é carregado de CDN — o painel abre em rede restrita.
+
+## Identidade visual
+
+A do Lab Livre, conforme a skill `lablivre-visual-identity`: roxo `#7023E8` como
+cor-assinatura, azul profundo `#080056` para contraste máximo, laranja `#F46B2F`
+como acento quente e rosa-choque `#E52E70` no degradê do cabeçalho — sempre do
+frio para o quente, como manda o manual. Os tokens estão no `:root` de
+`assets/tema.css`, com os nomes da skill: a página troca de marca trocando só
+esse bloco.
+
+Dois pontos em que a aplicação se afasta da leitura literal da skill, e ambos
+estão comentados no CSS:
+
+- **A tipografia da marca não é carregada.** A skill traz Reddit Sans e Oswald
+  por `@import` do Google Fonts, e este repositório não carrega nada de CDN. A
+  pilha de fontes nomeia as duas e cai no fallback de sistema para quem não as
+  tem instaladas.
+- **O rosa-choque não vira fundo de etiqueta.** `#E52E70` dá 4,24 de contraste
+  com branco e 4,33 com o azul profundo, abaixo do mínimo AA para texto pequeno.
+  Fica no papel que o manual lhe dá, de acento e transição de gradiente; as
+  quatro situações usam azul profundo, roxo, laranja e verde, todas acima de 6.
+
+O verde e o laranja funcionam como fundo, mas como **cor de texto** sobre branco
+dão 2,54 e 3,00. Para número e rótulo há `--success-texto` e `--pink-texto`,
+escurecidos até 4,5; o fundo continua usando as cores oficiais.
+
+A conferência de contraste varre todo elemento com texto das duas páginas — 763
+no painel do TED com as fichas abertas, 515 no dos eixos — e todos passam em AA.
+Elementos sobre o degradê do cabeçalho ficam fora da conta: a razão de contraste
+não é definida contra um fundo que varia.
 
 ## Automação
 
@@ -93,7 +143,9 @@ Não há etapa de compilação. O GitHub Pages serve o diretório como está, e 
 
 Para a sincronização funcionar, cadastre o ID da planilha publicada em
 **Settings → Secrets and variables → Actions → Variables**, com o nome
-`PLANILHA_ID`. Opcionalmente, `PROXIMA_REUNIAO` (AAAA-MM-DD) e `GUARDIA`.
+`PLANILHA_ID`. Opcionalmente, `PROXIMA_REUNIAO` e `GUARDIA`. A data da reunião sai por extenso
+quando vem em AAAA-MM-DD, e como veio em qualquer outro caso — "Toda quinta às
+16h." é um valor válido.
 
 ## Verificação
 

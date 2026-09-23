@@ -1,31 +1,70 @@
 /* Painel de Entregas e Status do TED — MinC
-   Identidade visual Gov Hub. A fonte Inter é referenciada com fallback de
-   sistema, sem @import: o painel precisa abrir em rede restrita. */
+
+   Identidade visual do Lab Livre, conforme a skill lablivre-visual-identity
+   (Manual de Identidade Visual da marca). Os nomes dos tokens são os da
+   skill, de modo que o artefato troque de marca trocando só este :root.
+
+   Duas escolhas que se afastam da leitura literal da skill, e por quê:
+
+   1. A skill traz as fontes Reddit Sans e Oswald por @import do Google
+      Fonts. Este painel não carrega nada de CDN — precisa abrir em rede
+      restrita —, então a pilha nomeia as fontes da marca e cai no
+      fallback de sistema quando elas não estão instaladas.
+
+   2. O magenta não é usado como fundo de etiqueta: #E52E70 dá 4,24 de
+      contraste com branco e 4,33 com o navy, abaixo do mínimo AA para
+      texto pequeno. Fica no papel que o MIV lhe dá — acento e transição
+      de gradiente. As quatro situações usam navy, roxo, laranja e verde,
+      todas acima de 6. */
 
 :root {
-  --primary-purple:   #7A34F3;
-  --secondary-purple: #8B5CF6;
-  --accent-orange:    #F97316;
-  --purple-600:       #7C3AAD;
-  --purple-700:       #5B21B6;
+  /* Paleta oficial (MIV Lab Livre) */
+  --primary-purple:  #7023E8; /* roxo — cor-assinatura */
+  --dark-navy:       #080056; /* azul profundo — contraste máximo */
+  --accent-magenta:  #E52E70; /* rosa-choque — acento, gradiente */
+  --accent-pink:     #F46B2F; /* laranja — acento quente pontual */
+  --bg-peach:        #FFE7E1; /* rosa claro — fundo de marca */
+  --text-white:      #FFFFFF;
 
+  /* Estados derivados do primário */
+  --purple-600: #5F1EC5;
+  --purple-700: #4A17A0;
+
+  /* Neutros / texto */
   --text-strong: #202020;
   --text-body:   #2D3748;
   --text-muted:  #666666;
 
+  /* Fundos */
   --bg-white:  #FFFFFF;
   --bg-light:  #F7F7F7;
   --bg-subtle: #F8F9FA;
 
+  /* Divisores */
+  --border-soft: #E6DCFB;
+
+  /* Semânticas */
   --color-success: #10B981;
-  --color-warm:    #F19F42;
-  --color-ausente: #C2410C;
 
-  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Versões de texto do verde e do laranja. As cores de marca funcionam como
+     fundo, mas como cor de texto sobre branco dão 2,54 e 3,00 — abaixo de AA.
+     Estes tons, escurecidos até 4,5, valem só para número e rótulo; o fundo
+     continua usando as cores oficiais. */
+  --success-texto: #0C855D;
+  --pink-texto:    #D1470B;
+
+  --shadow-md: 0 2px 10px rgba(8, 0, 86, 0.10);
+  --shadow-lg: 0 4px 20px rgba(8, 0, 86, 0.12);
+  --radius-sm: 6px;
   --radius-md: 10px;
+  --radius-lg: 16px;
 
-  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-               Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Reddit Sans e Oswald são as fontes da marca; sem CDN, a pilha só as
+     nomeia — quem as tiver instaladas vê a marca, os demais veem o
+     fallback de sistema. */
+  --font-base: 'Reddit Sans', 'Open Sans', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-titulo: 'Oswald', 'Reddit Sans', 'Open Sans', var(--font-base);
 
   --largura: 1140px;
 }
@@ -48,8 +87,10 @@ body {
 
 /* ---------------------------------------------------------------- cabeçalho */
 
+/* Degradê da marca: sempre do frio para o quente, como manda o MIV. */
 .topo {
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  background: linear-gradient(135deg,
+    var(--dark-navy) 0%, var(--primary-purple) 55%, var(--accent-magenta) 100%);
   color: var(--bg-white);
   padding: 48px 0 40px;
 }
@@ -63,7 +104,11 @@ body {
   margin: 0 0 8px;
 }
 
+.topo .eyebrow { font-family: var(--font-titulo); }
+
 .topo h1 {
+  font-family: var(--font-titulo);
+  letter-spacing: 0.01em;
   margin: 0 0 12px;
   font-size: 2.1rem;
   font-weight: 700;
@@ -127,9 +172,9 @@ body {
 }
 
 .indicador.sit-entregue           { border-top-color: var(--color-success); }
-.indicador.sit-entregue-proposta  { border-top-color: var(--secondary-purple); }
-.indicador.sit-parcial            { border-top-color: var(--color-warm); }
-.indicador.sit-nao-entregue       { border-top-color: var(--color-ausente); }
+.indicador.sit-entregue-proposta  { border-top-color: var(--primary-purple); }
+.indicador.sit-parcial            { border-top-color: var(--accent-pink); }
+.indicador.sit-nao-entregue       { border-top-color: var(--dark-navy); }
 
 /* ---------------------------------------------------------------- etiquetas */
 
@@ -143,26 +188,55 @@ body {
   color: var(--bg-white);
 }
 
-.etiqueta.sit-entregue          { background: var(--color-success); }
-.etiqueta.sit-entregue-proposta { background: var(--secondary-purple); }
-.etiqueta.sit-parcial           { background: var(--color-warm); color: var(--text-strong); }
-.etiqueta.sit-nao-entregue      { background: var(--color-ausente); }
+.etiqueta.sit-entregue          { background: var(--color-success); color: var(--dark-navy); }
+.etiqueta.sit-entregue-proposta { background: var(--primary-purple); }
+.etiqueta.sit-parcial           { background: var(--accent-pink); color: var(--dark-navy); }
+.etiqueta.sit-nao-entregue      { background: var(--dark-navy); }
 
 /* ------------------------------------------------------------------ rodapé */
 
 .rodape {
-  background: var(--text-strong);
+  background: var(--dark-navy);
   color: var(--bg-white);
   padding: 32px 0;
   font-size: 0.88rem;
 }
 
-.rodape a { color: var(--secondary-purple); }
+/* Assinatura horizontal do Lab Livre. A área de não-interferência do MIV é a
+   altura do ícone: daí a margem de 34px ao redor, para 34px de altura. */
+.assinatura {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.assinatura img {
+  height: 34px;      /* bem acima da redução mínima de 3 cm em impressão */
+  width: auto;
+  margin: 0 34px 0 0;
+  display: block;
+}
+
+.assinatura .quem {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rodape a { color: var(--border-soft); }
 
 /* --------------------------------------------------------------- responsivo */
 
 @media (max-width: 640px) {
-  .topo h1 { font-size: 1.5rem; }
+  .topo .eyebrow { font-family: var(--font-titulo); }
+
+.topo h1 {
+  font-family: var(--font-titulo);
+  letter-spacing: 0.01em; font-size: 1.5rem; }
   .secao { padding: 32px 0; }
   .indicador .numero { font-size: 1.9rem; }
 }
@@ -175,12 +249,12 @@ body {
 
 /* ------------------------------------------------------------- gráficos */
 
-.barra-antes { fill: #D6D3E4; }
+.barra-antes { fill: var(--border-soft); }
 
 .barra-agora.sit-entregue          { fill: var(--color-success); }
-.barra-agora.sit-entregue-proposta { fill: var(--secondary-purple); }
-.barra-agora.sit-parcial           { fill: var(--color-warm); }
-.barra-agora.sit-nao-entregue      { fill: var(--color-ausente); }
+.barra-agora.sit-entregue-proposta { fill: var(--primary-purple); }
+.barra-agora.sit-parcial           { fill: var(--accent-pink); }
+.barra-agora.sit-nao-entregue      { fill: var(--dark-navy); }
 
 .rotulo-situacao {
   font-size: 0.9rem;
@@ -198,7 +272,7 @@ body {
   margin-top: 24px;
   padding: 16px 20px;
   background: var(--bg-white);
-  border-left: 4px solid var(--accent-orange);
+  border-left: 4px solid var(--accent-pink);
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   color: var(--text-body);
@@ -314,7 +388,7 @@ table.quadro td {
 
 table.quadro tbody tr:nth-child(even) { background: var(--bg-subtle); }
 
-table.quadro .nome-artefato { font-weight: 600; color: var(--text-strong); }
+table.quadro .nome-entrega { font-weight: 600; color: var(--text-strong); }
 table.quadro .onde { color: var(--text-muted); font-size: 0.86rem; }
 table.quadro code {
   background: var(--bg-light);
@@ -332,7 +406,7 @@ table.quadro th:nth-child(1), table.quadro td:nth-child(1) { width: 24%; }
 table.quadro th:nth-child(2), table.quadro td:nth-child(2) { width: 13%; }
 table.quadro th:nth-child(3), table.quadro td:nth-child(3) { width: 21%; }
 table.quadro th:nth-child(4), table.quadro td:nth-child(4) { width: 42%; }
-table.quadro .onde, table.quadro .nome-artefato { overflow-wrap: break-word; }
+table.quadro .onde, table.quadro .nome-entrega { overflow-wrap: break-word; }
 
 /* Dentro da tabela a etiqueta quebra: "Entregue como proposta" não cabe numa
    linha na coluna de situação, e com nowrap invadia a coluna seguinte. Em
@@ -423,57 +497,6 @@ table.quadro .etiqueta {
 
 .pendencia .detalhe { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
 
-/* ----------------------------------------------------------- matriz de riscos */
-
-.celula { stroke: var(--bg-white); stroke-width: 2; }
-.celula.sev-0, .celula.sev-1 { fill: #E8F5EE; }
-.celula.sev-2 { fill: #FDF3E3; }
-.celula.sev-3 { fill: #FBE6D8; }
-.celula.sev-4 { fill: #F5D5C6; }
-
-.ponto-risco { fill: var(--primary-purple); }
-.numero-risco { fill: var(--bg-white); font-size: 0.82rem; font-weight: 700; }
-.rotulo-eixo { font-size: 0.82rem; fill: var(--text-muted); }
-.titulo-eixo { font-size: 0.86rem; font-weight: 600; fill: var(--text-body); }
-
-.painel-riscos {
-  display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .painel-riscos { grid-template-columns: 1fr; }
-}
-
-#svg-riscos { max-width: 420px; }
-
-.risco {
-  background: var(--bg-white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: 16px 20px;
-  margin-bottom: 12px;
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: 14px;
-}
-
-.risco .indice {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--primary-purple);
-  color: var(--bg-white);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.82rem; font-weight: 700;
-}
-
-.risco .texto-risco { font-weight: 600; color: var(--text-strong); font-size: 0.92rem; }
-.risco .grau { font-size: 0.78rem; color: var(--text-muted); margin: 4px 0 8px; }
-.risco .mitigacao { font-size: 0.88rem; }
-.risco .mitigacao strong { color: var(--text-strong); }
-
 /* -------------------------------------------------------------- documentos */
 
 .grade-documentos {
@@ -511,7 +534,7 @@ table.quadro .etiqueta {
 /* ------------------------------------------------------------- navegação */
 
 .navegacao {
-  background: var(--text-strong);
+  background: var(--dark-navy);
   padding: 0;
 }
 
@@ -535,29 +558,109 @@ table.quadro .etiqueta {
 .navegacao a.ativo {
   color: var(--bg-white);
   font-weight: 600;
-  border-bottom-color: var(--secondary-purple);
+  border-bottom-color: var(--primary-purple);
 }
 
-/* ------------------------------------------------- entregas por meta */
+/* --------------------------------------- acompanhamento por meta e produto */
 
-.indicadores-3 { margin-bottom: 20px; }
+/* As três palavras, no topo da página. */
+.glossario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.termo {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--primary-purple);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.termo .palavra {
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 4px;
+}
+
+.termo .quantos {
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.termo p { margin: 0; font-size: 0.86rem; color: var(--text-body); }
+
+/* Os 19 produtos por estado, no topo da seção. */
+.barra-estados {
+  display: flex;
+  height: 40px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.barra-estados .faixa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 0.84rem;
+  min-width: 46px;
+  padding: 0 8px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.barra-estados .estado-entregue  { background: var(--color-success); color: var(--dark-navy); }
+.barra-estados .estado-andamento { background: var(--accent-pink);   color: var(--dark-navy); }
+.barra-estados .estado-previsto  { background: var(--bg-peach);      color: var(--dark-navy); }
+
+.sob-barra {
+  margin: 8px 0 20px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.indicadores-3 { margin-bottom: 16px; }
 .indicadores-3 .rotulo { line-height: 1.35; }
 .indicadores-3 .periodo { color: var(--text-muted); font-size: 0.78rem; }
+.indicadores-3 .de {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
 
 .legenda-marcas {
   margin: 0 0 24px;
   font-size: 0.86rem;
+  line-height: 1.6;
   color: var(--text-muted);
 }
 
-.marca-secao   { color: var(--primary-purple); font-size: 1.05rem; cursor: help; }
-.marca-mencao  { color: var(--color-warm);     font-size: 1.05rem; cursor: help; }
-.marca-ausente { color: #C9C9C9;               font-size: 1.05rem; }
+.marca-secao, .marca-mencao, .marca-ausente {
+  display: inline-block;
+  min-width: 22px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-align: center;
+}
+.marca-secao  { background: var(--primary-purple); color: var(--bg-white); cursor: help; }
+.marca-mencao { background: var(--accent-pink);   color: var(--dark-navy); cursor: help; }
+.marca-ausente { background: var(--bg-light);      color: var(--text-muted); }
 
-.quadro-meta { margin-bottom: 28px; }
-.quadro-meta:last-of-type { margin-bottom: 0; }
+.bloco-meta { margin-bottom: 28px; }
+.bloco-meta:last-of-type { margin-bottom: 0; }
 
-.quadro-meta h3 {
+.bloco-meta h3 {
   display: flex;
   align-items: baseline;
   gap: 10px;
@@ -566,7 +669,7 @@ table.quadro .etiqueta {
   color: var(--text-strong);
 }
 
-.quadro-meta h3 .numero-meta {
+.bloco-meta h3 .numero-meta {
   background: var(--primary-purple);
   color: var(--bg-white);
   border-radius: 4px;
@@ -578,52 +681,231 @@ table.quadro .etiqueta {
   white-space: nowrap;
 }
 
-/* Cinco colunas: o produto, uma por relatório, e os artefatos. Sobrescreve as
-   larguras de quatro colunas de table.quadro. */
-table.quadro-produtos { min-width: 720px; }
-table.quadro-produtos th:nth-child(1),
-table.quadro-produtos td:nth-child(1) { width: 40%; }
-table.quadro-produtos th.col-rel,
-table.quadro-produtos td.marca { width: 7%; text-align: center; }
-table.quadro-produtos th:nth-child(5),
-table.quadro-produtos td:nth-child(5) { width: 39%; }
-
-table.quadro-produtos td { padding: 9px 12px; }
-table.quadro-produtos th { padding: 10px 12px; }
-table.quadro-produtos .nome-produto { color: var(--text-body); line-height: 1.35; }
-table.quadro-produtos .nome-produto strong {
-  color: var(--text-strong);
-  display: block;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--primary-purple);
+/* Cada produto é uma ficha que abre. */
+.produtos-da-meta {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
 }
-table.quadro-produtos .redacao {
-  display: block;
-  margin-top: 3px;
+
+details.produto + details.produto { border-top: 1px solid var(--bg-light); }
+
+details.produto > summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.15s ease;
+}
+details.produto > summary::-webkit-details-marker { display: none; }
+details.produto > summary::before {
+  content: '▸';
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: transform 0.15s ease;
+}
+details.produto[open] > summary::before { transform: rotate(90deg); }
+details.produto > summary:hover { background: var(--bg-subtle); }
+details.produto[open] > summary { background: var(--bg-subtle); }
+
+.id-produto {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary-purple);
+  white-space: nowrap;
+}
+
+.titulo-produto {
+  flex: 1;
+  min-width: 180px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.selo {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.selo.estado-entregue  { background: var(--color-success); color: var(--dark-navy); }
+.selo.estado-andamento { background: var(--accent-pink);   color: var(--dark-navy); }
+.selo.estado-previsto  { background: var(--bg-peach);      color: var(--dark-navy); }
+.selo.estado-vazio {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed #CFCFCF;
+  font-weight: 500;
+}
+
+.cobertura-resumo { display: inline-flex; gap: 3px; }
+
+.conta-artefatos {
   font-size: 0.78rem;
-  line-height: 1.4;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.corpo-produto {
+  padding: 4px 16px 18px 34px;
+  border-top: 1px solid var(--bg-light);
+}
+
+.rotulo-bloco {
+  margin: 16px 0 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--text-muted);
 }
 
-.artefato-pil {
-  display: inline-block;
-  margin: 0 4px 4px 0;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--bg-white);
-  cursor: help;
+.corpo-produto .previsto,
+.corpo-produto .feito {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-body);
 }
-.artefato-pil.sit-entregue          { background: var(--color-success); }
-.artefato-pil.sit-entregue-proposta { background: var(--secondary-purple); }
-.artefato-pil.sit-parcial           { background: var(--color-warm); color: var(--text-strong); }
-.artefato-pil.sit-nao-entregue      { background: var(--color-ausente); }
+.corpo-produto .previsto { color: var(--text-muted); }
 
-.sem-artefato { color: var(--text-muted); }
+ul.artefatos-produto { margin: 0; padding: 0; list-style: none; }
+ul.artefatos-produto li {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--bg-light);
+  font-size: 0.88rem;
+}
+ul.artefatos-produto li:last-child { border-bottom: none; }
+
+.nome-do-artefato { font-weight: 600; color: var(--text-strong); }
+.lastro { color: var(--text-muted); font-size: 0.84rem; }
+
+.origem-vinculo {
+  margin-left: auto;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--bg-light);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  cursor: help;
+  white-space: nowrap;
+}
+
+.nenhum-artefato {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+ul.encaminhamentos-produto {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+ul.encaminhamentos-produto li { margin-bottom: 4px; }
+
+.ressalva {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------- situação dos artefatos */
+
+/* Barra à esquerda, definições à direita; empilha em tela estreita. */
+.situacao-artefatos {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(320px, 1.2fr);
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .situacao-artefatos { grid-template-columns: 1fr; gap: 16px; }
+}
+
+.barra-situacao {
+  display: flex;
+  height: 44px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.barra-situacao .faixa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 34px;
+}
+.barra-situacao .sit-entregue          { background: var(--color-success); color: var(--dark-navy); }
+.barra-situacao .sit-entregue-proposta { background: var(--primary-purple); }
+.barra-situacao .sit-parcial           { background: var(--accent-pink); color: var(--dark-navy); }
+.barra-situacao .sit-nao-entregue      { background: var(--dark-navy); }
+
+ul.legenda-situacao { margin: 0; padding: 0; list-style: none; }
+ul.legenda-situacao li {
+  display: grid;
+  grid-template-columns: 14px 32px minmax(140px, auto) 1fr;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid #ECECEC;
+  font-size: 0.88rem;
+}
+ul.legenda-situacao li:last-child { border-bottom: none; }
+
+.legenda-situacao .ponto {
+  width: 12px; height: 12px; border-radius: 3px; align-self: center;
+}
+.legenda-situacao .ponto.sit-entregue          { background: var(--color-success); }
+.legenda-situacao .ponto.sit-entregue-proposta { background: var(--primary-purple); }
+.legenda-situacao .ponto.sit-parcial           { background: var(--accent-pink); }
+.legenda-situacao .ponto.sit-nao-entregue      { background: var(--dark-navy); }
+
+.legenda-situacao .quanto { font-weight: 700; color: var(--text-strong); }
+.legenda-situacao .qual { font-weight: 600; color: var(--text-strong); }
+.legenda-situacao .oque { color: var(--text-muted); }
 
 @media (max-width: 640px) {
-  .quadro-meta h3 { flex-wrap: wrap; }
+  .bloco-meta h3 { flex-wrap: wrap; }
+  ul.legenda-situacao li {
+    grid-template-columns: 14px 32px 1fr;
+  }
+  .legenda-situacao .oque { grid-column: 2 / -1; }
 }
+
+/* Links para os documentos no repositório da plataforma. */
+a.doc {
+  background: var(--bg-light);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  color: var(--purple-700);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(124, 58, 173, 0.35);
+}
+a.doc:hover { background: #EDE4FB; border-bottom-color: var(--primary-purple); }
+
+a.documento { text-decoration: none; color: inherit; display: block; }
+a.documento:hover code { color: var(--primary-purple); }
+

@@ -2,104 +2,29 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Painel de Entregas e Status do TED — MinC</title>
-  <meta name="description"
-        content="Acompanhamento do Termo de Execução Descentralizada 01/2026/SGE/SE/MINC entre a Universidade de Brasília e o Ministério da Cultura.">
-  <link rel="stylesheet" href="assets/tema.css">
+  <title>Painéis do Gov Hub no Ministério da Cultura</title>
+  <!-- A raiz abre o trabalho nos 8 eixos. O painel do TED mora em ted.html.
+
+       Até 22/09/2026 o TED ficava aqui, e há links para ele com âncora
+       (index.html#produtos, #metas…). Os ids das seções do TED não se
+       repetem no painel dos eixos, então a âncora diz para onde o link ia:
+       se é do TED, segue para ted.html; senão, para os eixos. -->
+  <meta http-equiv="refresh" content="0; url=eixos.html">
+  <link rel="icon" href="assets/marca/borboleta.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      var DO_TED = ['produtos', 'indicadores', 'metas', 'evolucao',
+                    'artefatos', 'cronograma', 'documentos'];
+      var ancora = location.hash.slice(1);
+      var destino = DO_TED.indexOf(ancora) >= 0 ? 'ted.html' : 'eixos.html';
+      location.replace(destino + location.hash);
+    })();
+  </script>
 </head>
 <body>
-
-  <nav class="navegacao">
-    <div class="container">
-      <a href="eixos.html">Trabalho nos 8 eixos</a>
-      <a href="index.html" class="ativo" aria-current="page">Entregas do TED</a>
-    </div>
-  </nav>
-
-  <header class="topo">
-    <div class="container">
-      <p class="eyebrow">Termo de Execução Descentralizada nº 01/2026/SGE/SE/MINC</p>
-      <h1>Painel de Entregas e Status</h1>
-      <p id="objeto"></p>
-      <p class="carimbo" id="carimbo"></p>
-    </div>
-  </header>
-
-  <main>
-    <section class="secao" id="indicadores" aria-labelledby="t-indicadores">
-      <div class="container">
-        <h2 id="t-indicadores">Situação dos artefatos</h2>
-        <p class="secao-intro">
-          Os artefatos acompanhados no quadro de produtos do TED, na situação
-          apurada no 3º Relatório Parcial.
-        </p>
-        <div class="indicadores" id="grade-indicadores"></div>
-      </div>
-    </section>
-
-    <section class="secao secao-alt" id="evolucao" aria-labelledby="t-evolucao">
-      <div class="container">
-        <h2 id="t-evolucao">Evolução entre relatórios</h2>
-        <div id="grafico-evolucao"></div>
-      </div>
-    </section>
-
-    <section class="secao" id="produtos" aria-labelledby="t-produtos">
-      <div class="container">
-        <h2 id="t-produtos">Entregas por meta</h2>
-        <div id="matriz-produtos"></div>
-      </div>
-    </section>
-
-    <section class="secao secao-alt" id="metas" aria-labelledby="t-metas">
-      <div class="container">
-        <h2 id="t-metas">As seis metas</h2>
-        <div id="grade-metas"></div>
-      </div>
-    </section>
-
-    <section class="secao" id="artefatos" aria-labelledby="t-artefatos">
-      <div class="container">
-        <h2 id="t-artefatos">Quadro dos artefatos</h2>
-        <div id="quadro-artefatos"></div>
-      </div>
-    </section>
-
-    <section class="secao secao-alt" id="cronograma" aria-labelledby="t-cronograma">
-      <div class="container">
-        <h2 id="t-cronograma">Cronograma</h2>
-        <div id="lista-cronograma"></div>
-      </div>
-    </section>
-
-    <section class="secao" id="riscos" aria-labelledby="t-riscos">
-      <div class="container">
-        <h2 id="t-riscos">Riscos</h2>
-        <div id="matriz-riscos"></div>
-      </div>
-    </section>
-
-    <section class="secao secao-alt" id="documentos" aria-labelledby="t-documentos">
-      <div class="container">
-        <h2 id="t-documentos">Documentos produzidos</h2>
-        <div id="lista-documentos"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="rodape">
-    <div class="container">
-      <p id="rodape-origem"></p>
-      <p>
-        Projeto Gov Hub · Lab Livre · Faculdade do Gama, Universidade de Brasília
-        · <a href="https://github.com/GovHub-br/dashboard-minc-project">código-fonte</a>
-      </p>
-    </div>
-  </footer>
-
-  <script src="assets/d3.v7.min.js"></script>
-  <script src="assets/graficos.js"></script>
-  <script src="assets/painel.js"></script>
+  <p>
+    <a href="eixos.html">Trabalho nos 8 eixos</a> ·
+    <a href="ted.html">Entregas do TED</a>
+  </p>
 </body>
 </html>

@@ -12,15 +12,37 @@ PRODUTOS        os 19 produtos do TED, com a redação do Termo. A cobertura
                 ("secao") ou foi tratado sob outro produto ("mencao"), com a
                 localização. Vem do sumário de cada relatório.
 
-ARTEFATO_PRODUTO  a que produto pertence cada um dos 20 artefatos do quadro de
-                acompanhamento. A evidência é "TED" quando o artefato é
-                nomeado na redação do produto, e "R3" quando o vínculo vem do
-                lugar em que o 3º Relatório o documenta. Como o QUEM_DESTRAVA
-                do extrai.py, a classificação "R3" é do painel, não do
-                documento — e está marcada como tal na página.
+BALANCO         o que cada produto entregou no período, derivado da seção
+                correspondente do 3º Relatório, com a página de origem.
+
+ARTEFATO_PRODUTO a que produto pertence cada um dos 20 artefatos do quadro de
+                acompanhamento. A evidência é "TED" quando o artefato é nomeado
+                na redação do produto, e "R3" quando o vínculo vem do lugar em
+                que o 3º Relatório o documenta. Como o QUEM_DESTRAVA do
+                extrai.py, a classificação "R3" é do painel, não do documento —
+                e está marcada como tal na página.
+
+ESTADO          se o produto já está entregue. Preenchido à mão por quem
+                responde pelo TED — ver a tabela, mais abaixo.
+
+As três palavras do painel, que não são sinônimos:
+
+produto     o que o Termo espera. São 19, e não mudam.
+artefato    o que ficou disponível no período e compõe um produto. São os 20 do
+            quadro de acompanhamento da CGIIC.
+entrega     quando o produto inteiro é contemplado. É estado de produto, nunca
+            nome de peça: um produto com três artefatos entregues e um parcial
+            não está entregue.
 
 Importado por extrai.py. Não roda sozinho.
 """
+
+# Onde ficam os documentos produzidos, versionados no repositório da
+# plataforma. O painel liga cada documento citado a este endereço.
+BASE_DOCUMENTOS = (
+    "https://github.com/GovHub-br/data-application-minc/blob/main/"
+    "docs/documentos/"
+)
 
 RELATORIOS = [
     {
@@ -261,6 +283,49 @@ PRODUTOS = [
     },
 ]
 
+# (meta, produto) -> estado de entrega do produto.
+#
+# PREENCHER À MÃO. Quem responde pelo TED assina o estado; o painel não o
+# deduz. Um produto pode ter todos os seus artefatos entregues e ainda assim
+# não estar entregue, porque o produto é mais que a soma das peças — e a
+# maioria dos produtos não tem artefato algum no quadro.
+#
+# Valores aceitos:
+#   "Entregue"     o produto inteiro foi contemplado
+#   "Em andamento" começou e não terminou
+#   "Previsto"     ainda não começou
+#   ""             ainda não classificado; a página mostra "a classificar"
+#
+# Enquanto houver linha vazia a página segue no ar e a validação passa: falta
+# de classificação é estado legítimo, e não erro de acervo.
+#
+# Classificado por Luiza Maluf em 22/09/2026, produto a produto, sobre o
+# 3º Relatório Parcial. A reclassificação acompanha cada novo relatório.
+ESTADO = {
+    ("01", 1): "Em andamento",
+    ("01", 2): "Em andamento",
+    ("02", 1): "Em andamento",
+    ("02", 2): "Entregue",
+    ("02", 3): "Em andamento",
+    ("02", 4): "Em andamento",
+    ("02", 5): "Entregue",
+    ("03", 1): "Previsto",
+    ("03", 2): "Entregue",
+    ("03", 3): "Entregue",
+    ("03", 4): "Previsto",
+    ("04", 1): "Entregue",
+    ("04", 2): "Em andamento",
+    ("04", 3): "Em andamento",
+    ("05", 1): "Em andamento",
+    ("05", 2): "Em andamento",
+    ("05", 3): "Em andamento",
+    ("05", 4): "Entregue",
+    ("06", 1): "Em andamento",
+}
+
+ESTADOS_ACEITOS = ("Entregue", "Em andamento", "Previsto", "")
+
+
 # artefato do quadro de acompanhamento -> (meta, produto, evidência, nota)
 #
 # "TED": o artefato é nomeado na redação do produto.
@@ -290,11 +355,76 @@ ARTEFATO_PRODUTO = {
 }
 
 
+# (meta, produto) -> o que o produto entregou no período.
+#
+# Transcrito da seção correspondente do 3º Relatório Parcial, em uma frase.
+# A página consta da cobertura do produto; quem quiser conferir vai direto a
+# ela. Nenhuma linha afirma coisa que o relatório não diga.
+BALANCO = {
+    ("01", 1): "Vinte e dois encontros de trabalho por eixo do Plano, com o "
+               "Ministério e a equipe de pesquisa, cumprindo a escuta "
+               "qualificada prevista. Seis dos oito eixos percorridos.",
+    ("01", 2): "Catálogo de fontes de dados, levantamento a partir do código, "
+               "arquitetura comum de ingestão e visão consolidada das fontes, "
+               "com ênfase no Eixo 2, que inaugurou a integração.",
+    ("02", 1): "Camada semântica sobre as tabelas de consumo, com doze métricas "
+               "nomeadas. Os painéis propriamente ditos aguardam a reunião de "
+               "requisitos com o Ministério.",
+    ("02", 2): "Os três níveis: arquitetura lógica em operação (Figuras 1 e 2), "
+               "física proposta (Figura 3) e de segurança, somadas aos fluxos "
+               "de dados do Anexo III.",
+    ("02", 3): "Modelo conceitual, lógico e físico do Eixo 2, dicionário de "
+               "dados e metadados. Especificação completa no Anexo IV.",
+    ("02", 4): "Critérios de qualidade convertidos em testes automáticos em "
+               "cinco dimensões, com 858 verificações inventariadas. Papéis, "
+               "responsabilidades e políticas de acesso seguem em elaboração.",
+    ("02", 5): "Repositório público sob licença MIT, com ficha técnica de treze "
+               "das dezesseis rotinas em operação e os exemplos de uso do "
+               "Anexo VI.",
+    ("03", 1): "Especificado na arquitetura de segurança do Produto 2 da Meta "
+               "02, e não implantado: o motor pressupõe fronteira "
+               "administrativa única, que o ambiente de produção ainda não "
+               "oferece.",
+    ("03", 2): "Atendido pelo conjunto do Produto 2 da Meta 02 — os três níveis "
+               "de arquitetura — somado aos fluxos de dados derivados da "
+               "linhagem dos modelos.",
+    ("03", 3): "Repositório público sob licença MIT, com os scripts e "
+               "procedimentos de implantação do Anexo VIII e o manual de "
+               "evolução do Anexo IX.",
+    ("03", 4): "Nenhuma oficina realizada no período. A atividade segue "
+               "prevista, apoiada nos documentos de implantação e de evolução "
+               "do Produto 3.",
+    ("04", 1): "Agente de domínio operando de ponta a ponta desde agosto de "
+               "2026, com recuperação por busca híbrida sobre base vetorial, "
+               "fundida por posto recíproco.",
+    ("04", 2): "Camada de entrega em quatro estágios: uma pergunta em português "
+               "produz as bases consultadas, a consulta, o gráfico, a "
+               "explicação e o relatório.",
+    ("04", 3): "Dezesseis decisões de arquitetura registradas entre 21 de julho "
+               "e 19 de agosto, planejamento datado, suíte de testes e ambiente "
+               "de avaliação versionado. Visão geral no Anexo X.",
+    ("05", 1): "OpenMetadata adotado como catálogo institucional, alimentado "
+               "por declaração versionada do projeto de transformação. "
+               "Integração implantada e em operação.",
+    ("05", 2): "Oficina realizada em junho de 2026 junto à STII do Ministério, "
+               "sobre o motor de consulta distribuído e o componente de "
+               "governança e autorização de acesso.",
+    ("05", 3): "Planejamento, produção e mobilização do evento: dois dias em "
+               "Brasília, oito oficinas preparatórias — uma por eixo — e grupos "
+               "de trabalho por eixo. Detalhamento no Anexo XI.",
+    ("05", 4): "Proposta de estrutura construída em reuniões da equipe da "
+               "Universidade, alinhamentos com o Ministério e contribuições do "
+               "Comitê Gestor do SNIIC.",
+    ("06", 1): "Diagnóstico da gestão da informação dos acervos das seis "
+               "instituições do sistema MinC e estudo comparativo de "
+               "vocabulários. Portal em construção; coleta ainda por iniciar.",
+}
+
 def monta(artefatos):
     """Devolve os blocos `relatorios` e `produtos` do acervo.
 
-    Cada produto recebe a lista dos artefatos do quadro que lhe pertencem, com
-    a situação apurada no relatório mais recente.
+    Cada produto recebe os artefatos do quadro que o compõem, com a situação
+    apurada no relatório mais recente, e o estado de entrega do produto.
     """
     por_produto = {}
     for a in artefatos:
@@ -314,10 +444,40 @@ def monta(artefatos):
         produtos.append({
             **p,
             "meta_nome": METAS_TED[p["meta"]],
+            "balanco": BALANCO[(p["meta"], p["num"])],
+            "estado": ESTADO.get((p["meta"], p["num"]), ""),
             "artefatos": por_produto.get((p["meta"], p["num"]), []),
         })
 
     return RELATORIOS, produtos
+
+
+def estados_invalidos():
+    """Chaves de ESTADO com valor fora da lista, ou produto sem linha."""
+    problemas = []
+    for p in PRODUTOS:
+        chave = (p["meta"], p["num"])
+        if chave not in ESTADO:
+            problemas.append(f"Meta {p['meta']} · Produto {p['num']} sem linha")
+        elif ESTADO[chave] not in ESTADOS_ACEITOS:
+            problemas.append(
+                f"Meta {p['meta']} · Produto {p['num']}: {ESTADO[chave]!r}"
+            )
+    return problemas
+
+
+def estados_invalidos():
+    """Chaves de ESTADO com valor fora da lista, ou produto sem linha."""
+    problemas = []
+    for p in PRODUTOS:
+        chave = (p["meta"], p["num"])
+        if chave not in ESTADO:
+            problemas.append(f"Meta {p['meta']} · Produto {p['num']} sem linha")
+        elif ESTADO[chave] not in ESTADOS_ACEITOS:
+            problemas.append(
+                f"Meta {p['meta']} · Produto {p['num']}: {ESTADO[chave]!r}"
+            )
+    return problemas
 
 
 def sem_vinculo(artefatos):
