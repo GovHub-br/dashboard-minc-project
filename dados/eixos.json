@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-09-25T14:13:11+00:00",
+    "sincronizado_em": "2026-09-26T13:24:47+00:00",
     "proxima_reuniao": "Toda quinta às 16h.",
     "guardia": "Luiza Maluf"
   },
@@ -1081,6 +1081,24 @@
       "motivo": "prazo vencido",
       "prazo": "2026-09-18",
       "resp": "MinC + UnB"
+    },
+    {
+      "cod": "E1.1.5",
+      "tarefa": "Ingestão das bases de enriquecimento",
+      "eixo": 1,
+      "eixo_nome": "Gestão e Participação Social",
+      "motivo": "prazo vencido",
+      "prazo": "2026-09-25",
+      "resp": "UnB"
+    },
+    {
+      "cod": "E1.1.6",
+      "tarefa": "Enriquecimento do datalakehouse",
+      "eixo": 1,
+      "eixo_nome": "Gestão e Participação Social",
+      "motivo": "prazo vencido",
+      "prazo": "2026-09-25",
+      "resp": "UnB"
     },
     {
       "cod": "E6.1.2",
