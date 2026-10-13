@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-10-12T18:16:05+00:00",
+    "sincronizado_em": "2026-10-13T16:29:48+00:00",
     "proxima_reuniao": "Toda quinta às 16h.",
     "guardia": "Luiza Maluf"
   },
@@ -15,13 +15,13 @@
   "resumo": {
     "total": 46,
     "por_status": {
-      "concluido": 9,
-      "em_andamento": 13,
-      "nao_iniciado": 23,
-      "bloqueado": 1
+      "concluido": 11,
+      "em_andamento": 11,
+      "nao_iniciado": 22,
+      "bloqueado": 2
     },
-    "progresso_medio": 34.2,
-    "travadas": 27,
+    "progresso_medio": 37.0,
+    "travadas": 24,
     "prontas": 0,
     "encadeadas": 42,
     "vinculos": 43,
@@ -313,10 +313,11 @@
       "id": 2,
       "nome": "Fomento à Cultura",
       "total": 7,
-      "concluidas": 0,
-      "progresso": 28.6,
+      "concluidas": 2,
+      "progresso": 42.9,
       "por_status": {
-        "em_andamento": 4,
+        "em_andamento": 2,
+        "concluido": 2,
         "nao_iniciado": 3
       },
       "tarefas": [
@@ -350,11 +351,11 @@
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "em_andamento",
+          "status": "concluido",
           "prioridade": "alta",
-          "progresso": 50,
+          "progresso": 100,
           "passo": 1,
-          "travada": true,
+          "travada": false,
           "pronta": false,
           "segura": 5
         },
@@ -370,11 +371,11 @@
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "em_andamento",
+          "status": "concluido",
           "prioridade": "alta",
-          "progresso": 50,
+          "progresso": 100,
           "passo": 2,
-          "travada": true,
+          "travada": false,
           "pronta": false,
           "segura": 4
         },
@@ -394,7 +395,7 @@
           "prioridade": "alta",
           "progresso": 50,
           "passo": 3,
-          "travada": true,
+          "travada": false,
           "pronta": false,
           "segura": 3
         },
@@ -495,10 +496,10 @@
       "nome": "Formação",
       "total": 11,
       "concluidas": 0,
-      "progresso": 4.5,
+      "progresso": 9.1,
       "por_status": {
-        "em_andamento": 1,
-        "nao_iniciado": 10
+        "em_andamento": 2,
+        "nao_iniciado": 9
       },
       "tarefas": [
         {
@@ -531,9 +532,9 @@
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "nao_iniciado",
+          "status": "em_andamento",
           "prioridade": "alta",
-          "progresso": 0,
+          "progresso": 50,
           "passo": 1,
           "travada": true,
           "pronta": false,
@@ -757,10 +758,9 @@
       "nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
       "total": 11,
       "concluidas": 0,
-      "progresso": 6.8,
+      "progresso": 4.5,
       "por_status": {
-        "em_andamento": 1,
-        "bloqueado": 1,
+        "bloqueado": 2,
         "nao_iniciado": 9
       },
       "tarefas": [
@@ -774,9 +774,9 @@
           "depende_de": [],
           "resp": "MinC",
           "prazo": "2026-09-18",
-          "status": "em_andamento",
+          "status": "bloqueado",
           "prioridade": "alta",
-          "progresso": 50,
+          "progresso": 25,
           "passo": 0,
           "travada": false,
           "pronta": false,
@@ -1046,6 +1046,15 @@
   ],
   "alertas": [
     {
+      "cod": "E6.1.1",
+      "tarefa": "Viabilizar o acesso ao dado da RAIS",
+      "eixo": 6,
+      "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
+      "motivo": "bloqueada",
+      "prazo": "2026-09-18",
+      "resp": "MinC"
+    },
+    {
       "cod": "E6.1.2",
       "tarefa": "Fazer a ingestão dos dados da RAIS",
       "eixo": 6,
@@ -1053,15 +1062,6 @@
       "motivo": "bloqueada",
       "prazo": "2026-09-25",
       "resp": "UnB"
-    },
-    {
-      "cod": "E6.1.1",
-      "tarefa": "Viabilizar o acesso ao dado da RAIS",
-      "eixo": 6,
-      "eixo_nome": "Economia Criativa, Economia Solidária, Trabalho, Emprego, Renda e Proteção Social",
-      "motivo": "prazo vencido",
-      "prazo": "2026-09-18",
-      "resp": "MinC"
     }
   ]
 }
