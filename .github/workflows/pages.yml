@@ -3,11 +3,14 @@
 #
 # PRÉ-REQUISITO, uma vez: em Settings → Pages, a origem tem de estar em
 # "GitHub Actions".
+#
+# Só roda à mão. Quem publica no dia a dia é o sync-planilha.yml, que também
+# roda a cada push na main: com os dois disparando no mesmo push, o último a
+# terminar vencia, e este publicava os dados antigos do repositório por cima
+# dos que a sincronização tinha acabado de gerar.
 name: Publicar painel
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
