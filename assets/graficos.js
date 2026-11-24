@@ -2,8 +2,9 @@
 
 'use strict';
 
-/* Barras pareadas: cada situação com a contagem do 2º e do 3º relatório. */
-function desenhaEvolucao(seletor, series) {
+/* Barras pareadas: cada situação com a contagem do relatório anterior e do
+   atual. `rotulos` traz os ordinais, como { antes: '3º', agora: '4º' }. */
+function desenhaEvolucao(seletor, series, rotulos) {
   const alvo = d3.select(seletor);
   alvo.selectAll('*').remove();
 
@@ -19,7 +20,7 @@ function desenhaEvolucao(seletor, series) {
     .attr('viewBox', `0 0 ${largura} ${altura}`)
     .attr('width', '100%')
     .attr('role', 'img')
-    .attr('aria-label', legendaAcessivel(series));
+    .attr('aria-label', legendaAcessivel(series, rotulos));
 
   const maximo = d3.max(series, (d) => Math.max(d.antes, d.agora)) || 1;
 
@@ -88,7 +89,7 @@ function desenhaEvolucao(seletor, series) {
     .attr('width', 14).attr('height', 14).attr('y', -11);
   legenda.append('text')
     .attr('class', 'rotulo-legenda').attr('x', 20)
-    .text('2º Relatório Parcial');
+    .text(`${rotulos.antes} Relatório Parcial`);
 
   const tira = legenda.append('g').attr('transform', 'translate(160, 0)');
   series.forEach((d, i) => {
@@ -99,12 +100,12 @@ function desenhaEvolucao(seletor, series) {
   legenda.append('text')
     .attr('class', 'rotulo-legenda')
     .attr('x', 160 + series.length * 15 + 6)
-    .text('3º Relatório Parcial, na cor de cada situação');
+    .text(`${rotulos.agora} Relatório Parcial, na cor de cada situação`);
 }
 
-function legendaAcessivel(series) {
+function legendaAcessivel(series, rotulos) {
   const partes = series.map(
-    (d) => `${d.situacao}: ${d.antes} no 2º relatório, ${d.agora} no 3º`
+    (d) => `${d.situacao}: ${d.antes} no ${rotulos.antes} relatório, ${d.agora} no ${rotulos.agora}`
   );
   return `Evolução das entregas entre relatórios. ${partes.join('; ')}.`;
 }

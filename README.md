@@ -36,7 +36,7 @@ produzidos.
 uma ficha que abre com o que o Termo prevê, o que foi feito até aqui, os
 artefatos que o compõem com a situação de cada um, e os encaminhamentos da sua
 meta. A cobertura por relatório vem do sumário de cada um; o que foi feito vem da
-seção correspondente do 3º Relatório; o vínculo artefato→produto vem da redação
+situação que o 4º Relatório declara para o produto; o vínculo artefato→produto vem da redação
 do Termo, e só onde o Termo não nomeia o artefato é que vem do lugar em que o 3º
 Relatório o documenta — a marca ao lado registra qual dos dois casos é.
 
@@ -46,11 +46,14 @@ artefatos entregues sem estar entregue, e doze dos dezenove não têm artefato
 algum no quadro. Linha em branco aparece como *a classificar* e não reprova a
 validação — falta de classificação é estado legítimo, não erro de acervo.
 
-Na leitura do 3º Relatório Parcial: 6 entregues, 11 em andamento, 2 previstos.
-A reclassificação acompanha cada novo relatório.
+Na leitura do 4º Relatório Parcial (set.–nov./2026): 6 entregues, 12 em
+andamento, 1 previsto. A reclassificação acompanha cada novo relatório.
 
-**Fonte:** `dados/ted.json`, extraído uma vez dos geradores do 3º Relatório
-Parcial por `scripts/extrai.py`. Atualiza-se a cada relatório parcial.
+**Fonte:** `dados/ted.json`, extraído dos geradores do 3º Relatório Parcial por
+`scripts/extrai.py` e atualizado para o 4º por `scripts/atualiza_4o.py`, que
+transcreve o que o 4º Relatório (escrito em documento de texto, sem geradores)
+declara. Atualiza-se a cada relatório parcial. O quadro de artefatos da CGIIC
+não foi reapurado no 4º: a situação só muda onde o relatório a declara.
 
 O painel **não produz número novo** — cada valor vem do relatório e pode ser
 conferido na fonte. Onde a leitura diverge do texto do relatório, a divergência
