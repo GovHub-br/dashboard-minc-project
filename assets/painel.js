@@ -56,6 +56,13 @@ function dataPorExtenso(iso) {
   return `${Number(dia)} de ${MESES[Number(mes) - 1]} de ${ano}`;
 }
 
+/* Ordinais dos dois últimos relatórios, para os textos que comparam. */
+function ordinais(acervo) {
+  const rels = acervo.relatorios;
+  const ord = (r) => r.rotulo.split(' ')[0];
+  return { antes: ord(rels[rels.length - 2]), agora: ord(rels[rels.length - 1]) };
+}
+
 function montaCabecalho(acervo) {
   document.getElementById('objeto').textContent = acervo.ted.objeto + '.';
 
@@ -139,39 +146,38 @@ function montaEvolucao(acervo) {
     classe: classeDe(s),
   }));
 
+  const { antes: rAntes, agora: rAgora } = ordinais(acervo);
+  const mudaram = acervo.artefatos.filter((a) => a.antes !== a.agora);
+
   const alvo = document.getElementById('grafico-evolucao');
   alvo.innerHTML = `
     <p class="secao-intro">
-      Como a situação dos 20 artefatos mudou do 2º para o 3º Relatório Parcial.
-      Cada linha é uma situação: a barra de cima conta quantos artefatos estavam
-      nela no 2º relatório, a de baixo quantos estão nela agora.
+      Como a situação dos ${acervo.artefatos.length} artefatos mudou do
+      ${rAntes} para o ${rAgora} Relatório Parcial. Cada linha é uma situação: a
+      barra de cima conta quantos artefatos estavam nela no ${rAntes} relatório,
+      a de baixo quantos estão nela agora.
     </p>
     <div id="svg-evolucao"></div>
     <div class="nota">
       <p>
-        <strong>O que explica a mudança.</strong> Menos trabalho novo que
-        <strong>publicação</strong>: parte do que a avaliação anterior não
-        localizou existia como código, e não como documento. O período foi
-        dedicado a derivar documentos do próprio repositório, de modo que cada
-        afirmação pudesse ser conferida na fonte.
+        <strong>O que mudou.</strong> ${mudaram.length === 1 ? 'Um artefato' :
+          `${mudaram.length} artefatos`} mudou de situação:
+        ${mudaram.map((a) => `${escapaHtml(a.nome)}, de ${escapaHtml(a.antes.toLowerCase())}
+          para ${escapaHtml(a.agora.toLowerCase())}`).join('; ')}. O período foi
+        de refazer para a arquitetura final o que já estava entregue: o modelo
+        conceitual, lógico e físico, o dicionário de dados e os catálogos de
+        fontes e de metadados ganharam segunda versão, nos anexos do
+        ${rAgora} Relatório.
       </p>
       <p>
-        <strong>Por que 14 não entregues no 2º relatório.</strong> São os
-        ${(antes['Não entregue'] || 0) - 3} assim marcados mais os três com a
-        marcação <em>falta apresentar artefato</em>, que o próprio documento
-        agrega no mesmo grupo.
-      </p>
-      <p>
-        <strong>Por que 11 entregues, e não 12.</strong> O texto do 3º Relatório
-        declara 12 entregues e 6 parciais. A conferência item a item do quadro dá
-        ${agora['Entregue']} entregues, ${agora['Entregue como proposta']} entregues
-        como proposta e ${agora['Parcial']} parciais — os mesmos 20 artefatos, nas
-        mesmas situações. A diferença é que o painel conta à parte as arquiteturas
-        que estão propostas, para não dar por operante o que ainda está projetado.
+        <strong>Leitura do painel.</strong> O quadro de acompanhamento da CGIIC
+        não foi reapurado no ${rAgora} Relatório. A situação de cada artefato só
+        muda onde o relatório a declara; nos demais, muda apenas o lugar em que
+        o artefato está.
       </p>
     </div>`;
 
-  desenhaEvolucao('#svg-evolucao', series);
+  desenhaEvolucao('#svg-evolucao', series, { antes: rAntes, agora: rAgora });
 }
 
 /* -------------------------------------------------------------- produtos */
@@ -256,7 +262,7 @@ function barraDeEstados(acervo) {
            `${conta[e] || 0} ${e}`).join(', '))}">${faixas}</div>
     <p class="sob-barra">
       Os ${acervo.produtos.length} produtos do Termo, na leitura do
-      3º Relatório Parcial.${falta
+      ${escapaHtml(acervo.origem.relatorio)}.${falta
         ? ` ${falta} ainda sem classificação.` : ''}
     </p>`;
 }
@@ -355,7 +361,12 @@ function montaProdutos(acervo) {
             <p class="ressalva">
               O relatório registra os encaminhamentos por meta, e não por
               produto: os acima são os da Meta ${escapaHtml(num)} inteira.
-            </p>` : ''}
+            </p>` : `
+            <p class="rotulo-bloco">Previsto para ${escapaHtml(acervo.origem.proximo_periodo)}</p>
+            <p class="ressalva">
+              O relatório não registra encaminhamentos para a Meta
+              ${escapaHtml(num)} neste período.
+            </p>`}
         </div>
       </details>
     `).join('');
@@ -391,9 +402,10 @@ function montaProdutos(acervo) {
         deles não tem artefato algum no quadro de acompanhamento.
       </p>
       <p>
-        <strong>De onde vem o que foi feito.</strong> Da seção correspondente do
-        3º Relatório, uma frase por produto. A página do relatório está na marca
-        do 3º, para conferência.
+        <strong>De onde vem o que foi feito.</strong> Da situação que o
+        ${escapaHtml(acervo.origem.relatorio)} declara para o produto, no quadro
+        de abertura e na seção correspondente. A página está na marca do
+        ${ordinais(acervo).agora}, para conferência.
       </p>
       <p>
         <strong>Sobre o vínculo dos artefatos.</strong> Cada artefato do quadro é
@@ -426,8 +438,10 @@ function montaMetas(acervo) {
       <h3>${escapaHtml(m.nome)}</h3>
       <p>${escapaHtml(m.balanco)}</p>
       <p class="contagem">
-        ${m.encaminhamentos.length}
-        ${m.encaminhamentos.length === 1 ? 'encaminhamento' : 'encaminhamentos'}
+        ${m.encaminhamentos.length
+          ? `${m.encaminhamentos.length}
+             ${m.encaminhamentos.length === 1 ? 'encaminhamento' : 'encaminhamentos'}`
+          : 'Nenhum encaminhamento'}
         para ${acervo.origem.proximo_periodo}
       </p>
     </article>
@@ -498,7 +512,7 @@ function montaArtefatos(acervo) {
       <div class="rolagem">
         <table class="quadro">
           <thead>
-            <tr><th>Artefato</th><th>2º Relatório</th><th>3º Relatório</th><th>Onde está</th></tr>
+            <tr><th>Artefato</th><th>${ordinais(acervo).antes} Relatório</th><th>${ordinais(acervo).agora} Relatório</th><th>Onde está</th></tr>
           </thead>
           <tbody>${linhas()}</tbody>
         </table>
@@ -560,8 +574,11 @@ function montaCronograma(acervo) {
 
   alvo.innerHTML = `
     <p class="secao-intro">
-      O 3º Relatório encerra cada meta com os compromissos que ela assume para o
-      período seguinte. São ${total} encaminhamentos, reunidos aqui meta a meta,
+      O que o ${escapaHtml(acervo.origem.relatorio)} prevê para o período
+      seguinte. Os das Metas 02, 03 e 04 vêm dos encaminhamentos do relatório; os
+      das Metas 05 e 06, do que as seções dos produtos declaram como pendente ou
+      próximo passo. A Meta 01 se encerra em 24 de novembro de 2026.
+      São ${total} encaminhamentos, reunidos aqui meta a meta,
       seguidos dos ${acervo.pendencias.length} artefatos que seguem pendentes e
       do que destrava cada um.
     </p>
@@ -590,8 +607,10 @@ function montaDocumentos(acervo) {
 
   alvo.innerHTML = `
     <p class="secao-intro">
-      Os ${acervo.documentos.length} documentos técnicos produzidos, versionados
-      no repositório público da plataforma — clique para abrir. Todos são gerados
+      Os ${acervo.documentos.length} documentos técnicos entregues no 3º Relatório,
+      versionados no repositório público da plataforma — clique para abrir. As
+      segundas versões do modelo, do dicionário e dos catálogos, refeitas para a
+      arquitetura final, estão nos anexos do ${escapaHtml(acervo.origem.relatorio)}. Todos são gerados
       a partir do código, e não redigidos sobre ele: divergência entre documento e
       plataforma é detectável, e corrigível na fonte.
     </p>

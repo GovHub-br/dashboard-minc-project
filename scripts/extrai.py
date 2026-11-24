@@ -31,8 +31,8 @@ QUEM_DESTRAVA = {
     "Manual de manutenção": "MinC",
     "Políticas de acesso": "MinC",
     "Manual de uso": "MinC",
-    "Evidências de testes e validação": "MinC",
-    "Metadados": "UnB",
+    "Evidências de testes e validação": "UnB",  # 4º Relatório
+    "Metadados": "UnB",  # resolvida no 4º Relatório
     "Relação de componentes e versões": "UnB",
 }
 

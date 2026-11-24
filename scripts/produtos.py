@@ -66,6 +66,13 @@ RELATORIOS = [
         "periodo": "maio a agosto de 2026",
         "periodo_declarado": True,
     },
+    {
+        "num": 4,
+        "rotulo": "4º Relatório",
+        "data": "2026-11-03",
+        "periodo": "setembro a novembro de 2026",
+        "periodo_declarado": True,
+    },
 ]
 
 METAS_TED = {
@@ -92,6 +99,7 @@ PRODUTOS = [
             "1": {"tipo": "secao", "onde": "Descrição das atividades · Produto 1"},
             "2": {"tipo": "secao", "onde": "§ 3.1"},
             "3": {"tipo": "secao", "onde": "Meta 01 · Produto 1", "pagina": 12},
+            "4": {"tipo": "secao", "onde": "Meta 01 · Produto 1", "pagina": 9},
         },
     },
     {
@@ -105,6 +113,7 @@ PRODUTOS = [
             "1": {"tipo": "secao", "onde": "Descrição das atividades · Produto 2"},
             "2": {"tipo": "secao", "onde": "§ 3.2"},
             "3": {"tipo": "secao", "onde": "Meta 01 · Produto 2", "pagina": 17},
+            "4": {"tipo": "secao", "onde": "Meta 01 · Produto 2", "pagina": 11},
         },
     },
     {
@@ -117,6 +126,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 4.1"},
             "3": {"tipo": "secao", "onde": "Meta 02 · Produto 1", "pagina": 24},
+            "4": {"tipo": "secao", "onde": "Meta 02 · Produto 1", "pagina": 16},
         },
     },
     {
@@ -128,6 +138,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 4.2"},
             "3": {"tipo": "secao", "onde": "Meta 02 · Produto 2", "pagina": 25},
+            "4": {"tipo": "secao", "onde": "Meta 02 · Produto 2", "pagina": 17},
         },
     },
     {
@@ -138,6 +149,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 4.3"},
             "3": {"tipo": "secao", "onde": "Meta 02 · Produto 3", "pagina": 32},
+            "4": {"tipo": "secao", "onde": "Meta 02 · Produto 3", "pagina": 20},
         },
     },
     {
@@ -148,6 +160,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 4.4"},
             "3": {"tipo": "secao", "onde": "Meta 02 · Produto 4", "pagina": 42},
+            "4": {"tipo": "secao", "onde": "Meta 02 · Produto 4", "pagina": 21},
         },
     },
     {
@@ -158,6 +171,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 4.5"},
             "3": {"tipo": "secao", "onde": "Meta 02 · Produto 5", "pagina": 44},
+            "4": {"tipo": "secao", "onde": "Meta 02 · Produto 5", "pagina": 23},
         },
     },
     {
@@ -168,6 +182,7 @@ PRODUTOS = [
                    "institucionais",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 03 · Produto 1", "pagina": 46},
+            "4": {"tipo": "secao", "onde": "Meta 03 · Produto 1", "pagina": 25},
         },
     },
     {
@@ -178,6 +193,7 @@ PRODUTOS = [
                    "de governança e integração",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 03 · Produto 2", "pagina": 47},
+            "4": {"tipo": "secao", "onde": "Meta 03 · Produto 2", "pagina": 26},
         },
     },
     {
@@ -188,6 +204,7 @@ PRODUTOS = [
                    "licença aberta",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 03 · Produto 3", "pagina": 48},
+            "4": {"tipo": "secao", "onde": "Meta 03 · Produto 3", "pagina": 26},
         },
     },
     {
@@ -199,6 +216,7 @@ PRODUTOS = [
             "3": {"tipo": "secao", "onde": "Meta 03 · Produto 4", "pagina": 52,
                   "nota": "O relatório declara as oficinas não executadas no "
                           "período."},
+            "4": {"tipo": "secao", "onde": "Meta 03 · Produto 4", "pagina": 27},
         },
     },
     {
@@ -209,6 +227,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 5.1", "nota": "Em estágio de estudo."},
             "3": {"tipo": "secao", "onde": "Meta 04 · Produto 1", "pagina": 53},
+            "4": {"tipo": "secao", "onde": "Meta 04 · Produto 1", "pagina": 28},
         },
     },
     {
@@ -218,6 +237,7 @@ PRODUTOS = [
                    "partir de textos, relatórios e documentos institucionais",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 04 · Produto 2", "pagina": 56},
+            "4": {"tipo": "secao", "onde": "Meta 04 · Produto 2", "pagina": 28},
         },
     },
     {
@@ -229,6 +249,7 @@ PRODUTOS = [
                    "publicação de um livro",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 04 · Produto 3", "pagina": 57},
+            "4": {"tipo": "secao", "onde": "Meta 04 · Produto 3", "pagina": 29},
         },
     },
     {
@@ -239,6 +260,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 6.1"},
             "3": {"tipo": "secao", "onde": "Meta 05 · Produto 1", "pagina": 59},
+            "4": {"tipo": "secao", "onde": "Meta 05 · Produto 1", "pagina": 30},
         },
     },
     {
@@ -248,6 +270,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 6.2"},
             "3": {"tipo": "secao", "onde": "Meta 05 · Produto 2", "pagina": 60},
+            "4": {"tipo": "secao", "onde": "Meta 05 · Produto 2", "pagina": 31},
         },
     },
     {
@@ -261,6 +284,7 @@ PRODUTOS = [
                   "onde": "Anexos 2 e 3, sob a Meta 01 · Produto 1"},
             "2": {"tipo": "mencao", "onde": "§ 6.2 e Anexo III"},
             "3": {"tipo": "secao", "onde": "Meta 05 · Produto 3", "pagina": 61},
+            "4": {"tipo": "secao", "onde": "Meta 05 · Produto 3", "pagina": 32},
         },
     },
     {
@@ -271,6 +295,7 @@ PRODUTOS = [
         "cobertura": {
             "2": {"tipo": "secao", "onde": "§ 6.3"},
             "3": {"tipo": "secao", "onde": "Meta 05 · Produto 4", "pagina": 64},
+            "4": {"tipo": "secao", "onde": "Meta 05 · Produto 4", "pagina": 33},
         },
     },
     {
@@ -279,6 +304,7 @@ PRODUTOS = [
         "redacao": "Catálogo integrado de todos os acervos culturais do sistema MinC",
         "cobertura": {
             "3": {"tipo": "secao", "onde": "Meta 06 · Produto 1", "pagina": 66},
+            "4": {"tipo": "secao", "onde": "Meta 06 · Produto 1", "pagina": 35},
         },
     },
 ]
@@ -299,27 +325,29 @@ PRODUTOS = [
 # Enquanto houver linha vazia a página segue no ar e a validação passa: falta
 # de classificação é estado legítimo, e não erro de acervo.
 #
-# Classificado por Luiza Maluf em 22/09/2026, produto a produto, sobre o
-# 3º Relatório Parcial. A reclassificação acompanha cada novo relatório.
+# Classificado por Luiza Maluf em 22/09/2026 sobre o 3º Relatório Parcial e
+# reclassificado em 24/11/2026 sobre o 4º, produto a produto, conforme a
+# situação que o 4º Relatório declara. A reclassificação acompanha cada novo
+# relatório.
 ESTADO = {
-    ("01", 1): "Em andamento",
-    ("01", 2): "Em andamento",
+    ("01", 1): "Entregue",
+    ("01", 2): "Entregue",
     ("02", 1): "Em andamento",
     ("02", 2): "Entregue",
-    ("02", 3): "Em andamento",
+    ("02", 3): "Entregue",
     ("02", 4): "Em andamento",
-    ("02", 5): "Entregue",
-    ("03", 1): "Previsto",
+    ("02", 5): "Em andamento",
+    ("03", 1): "Em andamento",
     ("03", 2): "Entregue",
-    ("03", 3): "Entregue",
+    ("03", 3): "Em andamento",
     ("03", 4): "Previsto",
-    ("04", 1): "Entregue",
+    ("04", 1): "Em andamento",
     ("04", 2): "Em andamento",
     ("04", 3): "Em andamento",
     ("05", 1): "Em andamento",
     ("05", 2): "Em andamento",
-    ("05", 3): "Em andamento",
-    ("05", 4): "Entregue",
+    ("05", 3): "Entregue",
+    ("05", 4): "Em andamento",
     ("06", 1): "Em andamento",
 }
 
@@ -355,69 +383,83 @@ ARTEFATO_PRODUTO = {
 }
 
 
-# (meta, produto) -> o que o produto entregou no período.
+# (meta, produto) -> o que o produto entregou até aqui.
 #
-# Transcrito da seção correspondente do 3º Relatório Parcial, em uma frase.
-# A página consta da cobertura do produto; quem quiser conferir vai direto a
-# ela. Nenhuma linha afirma coisa que o relatório não diga.
+# Transcrito da situação que o 4º Relatório Parcial declara para o produto
+# (Quadro 1 e seção correspondente). A página consta da cobertura do produto;
+# quem quiser conferir vai direto a ela. Nenhuma linha afirma coisa que o
+# relatório não diga.
 BALANCO = {
-    ("01", 1): "Vinte e dois encontros de trabalho por eixo do Plano, com o "
-               "Ministério e a equipe de pesquisa, cumprindo a escuta "
-               "qualificada prevista. Seis dos oito eixos percorridos.",
-    ("01", 2): "Catálogo de fontes de dados, levantamento a partir do código, "
-               "arquitetura comum de ingestão e visão consolidada das fontes, "
-               "com ênfase no Eixo 2, que inaugurou a integração.",
-    ("02", 1): "Camada semântica sobre as tabelas de consumo, com doze métricas "
-               "nomeadas. Os painéis propriamente ditos aguardam a reunião de "
-               "requisitos com o Ministério.",
-    ("02", 2): "Os três níveis: arquitetura lógica em operação (Figuras 1 e 2), "
-               "física proposta (Figura 3) e de segurança, somadas aos fluxos "
-               "de dados do Anexo III.",
-    ("02", 3): "Modelo conceitual, lógico e físico do Eixo 2, dicionário de "
-               "dados e metadados. Especificação completa no Anexo IV.",
-    ("02", 4): "Critérios de qualidade convertidos em testes automáticos em "
-               "cinco dimensões, com 858 verificações inventariadas. Papéis, "
-               "responsabilidades e políticas de acesso seguem em elaboração.",
-    ("02", 5): "Repositório público sob licença MIT, com ficha técnica de treze "
-               "das dezesseis rotinas em operação e os exemplos de uso do "
-               "Anexo VI.",
-    ("03", 1): "Especificado na arquitetura de segurança do Produto 2 da Meta "
-               "02, e não implantado: o motor pressupõe fronteira "
-               "administrativa única, que o ambiente de produção ainda não "
-               "oferece.",
-    ("03", 2): "Atendido pelo conjunto do Produto 2 da Meta 02 — os três níveis "
-               "de arquitetura — somado aos fluxos de dados derivados da "
-               "linhagem dos modelos.",
-    ("03", 3): "Repositório público sob licença MIT, com os scripts e "
-               "procedimentos de implantação do Anexo VIII e o manual de "
-               "evolução do Anexo IX.",
-    ("03", 4): "Nenhuma oficina realizada no período. A atividade segue "
-               "prevista, apoiada nos documentos de implantação e de evolução "
-               "do Produto 3.",
-    ("04", 1): "Agente de domínio operando de ponta a ponta desde agosto de "
-               "2026, com recuperação por busca híbrida sobre base vetorial, "
-               "fundida por posto recíproco.",
-    ("04", 2): "Camada de entrega em quatro estágios: uma pergunta em português "
-               "produz as bases consultadas, a consulta, o gráfico, a "
-               "explicação e o relatório.",
-    ("04", 3): "Dezesseis decisões de arquitetura registradas entre 21 de julho "
-               "e 19 de agosto, planejamento datado, suíte de testes e ambiente "
-               "de avaliação versionado. Visão geral no Anexo X.",
-    ("05", 1): "OpenMetadata adotado como catálogo institucional, alimentado "
-               "por declaração versionada do projeto de transformação. "
-               "Integração implantada e em operação.",
-    ("05", 2): "Oficina realizada em junho de 2026 junto à STII do Ministério, "
-               "sobre o motor de consulta distribuído e o componente de "
-               "governança e autorização de acesso.",
-    ("05", 3): "Planejamento, produção e mobilização do evento: dois dias em "
-               "Brasília, oito oficinas preparatórias — uma por eixo — e grupos "
-               "de trabalho por eixo. Detalhamento no Anexo XI.",
-    ("05", 4): "Proposta de estrutura construída em reuniões da equipe da "
-               "Universidade, alinhamentos com o Ministério e contribuições do "
-               "Comitê Gestor do SNIIC.",
-    ("06", 1): "Diagnóstico da gestão da informação dos acervos das seis "
-               "instituições do sistema MinC e estudo comparativo de "
-               "vocabulários. Portal em construção; coleta ainda por iniciar.",
+    ("01", 1): "Escuta concluída nos oito eixos do Plano: 14 encontros de "
+               "trabalho em setembro e outubro, além do Datathon do PNC (9 e "
+               "10/09). A sistematização dos resultados está no Anexo II "
+               "(Sistematização das Escutas por Eixo).",
+    ("01", 2): "Relatório concluído, com a arquitetura atual, os gargalos, as "
+               "fontes e o diagnóstico por eixo do PNC, no Anexo III. O "
+               "catálogo das fontes presentes no Data Lakehouse, segunda "
+               "versão, está no Anexo V.",
+    ("02", 1): "Painéis ainda não construídos. Definido que a visualização "
+               "usará a mesma estrutura de gráficos da versão digital do "
+               "Cultura em Números, tendo o portal em Plone como face pública. "
+               "Os requisitos (eixos, indicadores e ordem de publicação) "
+               "dependem de definição com o Ministério.",
+    ("02", 2): "Arquitetura de referência do Data Lakehouse aprovada pelo "
+               "Ministério em outubro e documentada no Anexo I. A plataforma "
+               "em funcionamento está em transição: Trino e Ranger implantados "
+               "desde junho de 2026; Iceberg e Polaris pendentes.",
+    ("02", 3): "Entregue: modelo conceitual, lógico e físico (Anexo IV), "
+               "dicionário de dados (Anexo VII) e catálogo de metadados (Anexo "
+               "VIII), refeitos para a arquitetura final. O projeto de "
+               "transformação soma 730 modelos.",
+    ("02", 4): "Em andamento, com sugestão de repactuação do prazo para março "
+               "de 2027. Critérios de qualidade entregues; matriz de papéis, "
+               "Registro de Atividades de Tratamento (ROPA), relatório de "
+               "testes e RIPD preliminar em elaboração.",
+    ("02", 5): "Repositório público, sob licença MIT, com site de "
+               "documentação, 279 alterações e 88 propostas aprovadas entre "
+               "setembro e outubro. Faltam marcar a versão de entrega, "
+               "verificar o histórico em busca de senhas esquecidas e produzir "
+               "o inventário de componentes.",
+    ("03", 1): "Ranger e Trino implantados no ambiente do Ministério desde "
+               "19/06/2026; o Ranger anonimiza na consulta, e as políticas "
+               "serão refinadas com os perfis de usuários do Ministério.",
+    ("03", 2): "Concluído: arquitetura de referência documentada no Anexo I, "
+               "com as decisões registradas nos ADRs 0009 a 0012 e 0014 a 0017 "
+               "do repositório público.",
+    ("03", 3): "Scripts de implantação e manual de evolução entregues no 3º "
+               "Relatório. Faltam atualizá-los para a arquitetura final, "
+               "marcar a versão de entrega e verificar o histórico do "
+               "repositório.",
+    ("03", 4): "Não iniciadas; previstas no cronograma para os meses 11 e 12 "
+               "do TED (início de 2027), com datas e formato a definir com o "
+               "Ministério.",
+    ("04", 1): "TAIS em operação sobre os dados do Ministério e usado no "
+               "Datathon do PNC (9 e 10/09/2026). Faltam ajustes e a "
+               "integração das demais bases.",
+    ("04", 2): "Modo Indicador do TAIS: responde com as bases usadas, a "
+               "consulta, a leitura do resultado, um gráfico e um relatório "
+               "editável; regras de recusa e mascaramento de dados sensíveis "
+               "em setembro e adaptação aos dados do Ministério em 20/10/2026. "
+               "Faltam ajustes e a integração das demais bases.",
+    ("04", 3): "Documentação técnica do agente no repositório público do TAIS, "
+               "com os ADRs 0016 a 0019 e página do MinC. Guias, oficinas e "
+               "livro começam no mês 9 (25/11/2026).",
+    ("05", 1): "Catálogo institucional (OpenMetadata) em operação, com carga "
+               "agendada no Airflow e sugestões de descrição feitas no próprio "
+               "catálogo, que viram propostas de alteração revisadas pela "
+               "equipe. Publicação de dados abertos não iniciada.",
+    ("05", 2): "Em preparação; ainda não realizada (prazo no mês 11 do TED). "
+               "Os insumos são a Instrução Normativa do Data Lakehouse, em "
+               "elaboração pela SGE, e o documento de modelagem do SNIIC.",
+    ("05", 3): "Entregue: realizado em 9 e 10/09/2026, no espaço cultural do "
+               "TCU, com 104 participantes de 35 organizações; relatório no "
+               "Anexo IX.",
+    ("05", 4): "Em elaboração; modelagem do SNIIC construída em reuniões com a "
+               "SGE desde abril de 2026.",
+    ("06", 1): "Tainacan Agregador em operação; piloto com a Brasiliana Museus "
+               "(IBRAM) em coleta desde 28/10/2026, com cerca de 2.400 dos "
+               "74.121 itens já agregados em 1º/11. Demais repositórios a "
+               "cadastrar.",
 }
 
 def monta(artefatos):
