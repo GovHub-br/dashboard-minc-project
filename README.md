@@ -142,7 +142,7 @@ não é definida contra um fundo que varia.
 |---|---|
 | `valida.yml` | Roda os testes e verifica a consistência do acervo do TED a cada push. |
 | `sync-planilha.yml` | Baixa a planilha dos eixos, converte, publica no GitHub Pages e commita o histórico. Diariamente às 6h e sob demanda. |
-| `pages.yml` | Publica no GitHub Pages. |
+| `pages.yml` | Publica no GitHub Pages sem passar pela planilha. Só à mão: no dia a dia quem publica é o `sync-planilha.yml`. |
 
 Para a sincronização funcionar, cadastre o ID da planilha publicada em
 **Settings → Secrets and variables → Actions → Variables**, com o nome
