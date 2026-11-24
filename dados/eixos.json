@@ -1,7 +1,7 @@
 {
   "origem": {
     "fonte": "Planilha dos 8 eixos do PNC",
-    "sincronizado_em": "2026-11-24T13:45:12+00:00",
+    "sincronizado_em": "2026-11-24T14:37:56+00:00",
     "proxima_reuniao": "Toda quinta às 16h.",
     "guardia": "Luiza Maluf"
   },
@@ -13,20 +13,20 @@
     "nao_iniciado": "Não iniciado"
   },
   "resumo": {
-    "total": 46,
+    "total": 61,
     "por_status": {
-      "concluido": 11,
-      "em_andamento": 11,
-      "nao_iniciado": 22,
-      "bloqueado": 2
+      "concluido": 20,
+      "em_andamento": 10,
+      "nao_iniciado": 28,
+      "bloqueado": 3
     },
-    "progresso_medio": 37.0,
-    "travadas": 24,
-    "prontas": 0,
-    "encadeadas": 42,
-    "vinculos": 43,
+    "progresso_medio": 42.2,
+    "travadas": 25,
+    "prontas": 1,
+    "encadeadas": 55,
+    "vinculos": 54,
     "cadeia_mais_longa": 7,
-    "sem_prazo": 38,
+    "sem_prazo": 46,
     "gargalo": {
       "cod": "E4.1.1",
       "tarefa": "Definição de metas e objetivos do eixo para guiar exploração",
@@ -38,13 +38,13 @@
     {
       "id": 1,
       "nome": "Gestão e Participação Social",
-      "total": 13,
-      "concluidas": 9,
-      "progresso": 80.8,
+      "total": 14,
+      "concluidas": 10,
+      "progresso": 78.6,
       "por_status": {
-        "concluido": 9,
-        "em_andamento": 3,
-        "nao_iniciado": 1
+        "concluido": 10,
+        "em_andamento": 2,
+        "nao_iniciado": 2
       },
       "tarefas": [
         {
@@ -100,6 +100,24 @@
           "travada": false,
           "pronta": false,
           "segura": 6
+        },
+        {
+          "cod": "E1.2.6",
+          "eixo": 1,
+          "eixo_nome": "Gestão e Participação Social",
+          "processo": "Pipeline",
+          "atividade": "Validação",
+          "tarefa": "Definir as variáveis da ESTADIC para lei de incentivo e patrimônio afro e quilombola (issue #176)",
+          "depende_de": [],
+          "resp": "MinC (time do Eixo 1)",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "media",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
         },
         {
           "cod": "E1.1.3",
@@ -174,9 +192,9 @@
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "em_andamento",
+          "status": "concluido",
           "prioridade": "alta",
-          "progresso": 50,
+          "progresso": 100,
           "passo": 2,
           "travada": false,
           "pronta": false,
@@ -314,11 +332,11 @@
       "nome": "Fomento à Cultura",
       "total": 7,
       "concluidas": 2,
-      "progresso": 42.9,
+      "progresso": 50.0,
       "por_status": {
-        "em_andamento": 2,
+        "em_andamento": 3,
         "concluido": 2,
-        "nao_iniciado": 3
+        "nao_iniciado": 2
       },
       "tarefas": [
         {
@@ -431,9 +449,9 @@
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "nao_iniciado",
+          "status": "em_andamento",
           "prioridade": "alta",
-          "progresso": 0,
+          "progresso": 50,
           "passo": 4,
           "travada": true,
           "pronta": false,
@@ -464,11 +482,13 @@
     {
       "id": 3,
       "nome": "Patrimônio e Memória",
-      "total": 1,
-      "concluidas": 0,
-      "progresso": 50.0,
+      "total": 7,
+      "concluidas": 4,
+      "progresso": 64.3,
       "por_status": {
-        "em_andamento": 1
+        "em_andamento": 1,
+        "concluido": 4,
+        "nao_iniciado": 2
       },
       "tarefas": [
         {
@@ -487,6 +507,120 @@
           "passo": 0,
           "travada": false,
           "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E3.2.1",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Ingestão de dados",
+          "atividade": "Senado",
+          "tarefa": "Ingestão da legislação federal (API de Dados Abertos do Senado)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E3.2.2",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Ingestão de dados",
+          "atividade": "Fundação Palmares",
+          "tarefa": "Ingestão das comunidades quilombolas certificadas (Fundação Palmares)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E3.2.3",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Ingestão de dados",
+          "atividade": "Tainacan",
+          "tarefa": "Ingestão dos repositórios Tainacan do Iphan e do Ibram",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 2
+        },
+        {
+          "cod": "E3.2.4",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Ingestão de dados",
+          "atividade": "IBGE",
+          "tarefa": "Ingestão das planilhas territoriais do IBGE (áreas, REGIC e recortes metropolitanos)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E3.2.5",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Ingestão de dados",
+          "atividade": "IPHAN",
+          "tarefa": "Integração com o datalake do IPHAN",
+          "depende_de": [],
+          "resp": "MinC + UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E3.3.1",
+          "eixo": 3,
+          "eixo_nome": "Patrimônio e Memória",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds do eixo",
+          "depende_de": [
+            "E3.1.1",
+            "E3.2.1",
+            "E3.2.2",
+            "E3.2.3",
+            "E3.2.4"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
           "segura": 0
         }
       ]
@@ -494,12 +628,13 @@
     {
       "id": 4,
       "nome": "Formação",
-      "total": 11,
-      "concluidas": 0,
-      "progresso": 9.1,
+      "total": 13,
+      "concluidas": 1,
+      "progresso": 11.5,
       "por_status": {
-        "em_andamento": 2,
-        "nao_iniciado": 9
+        "em_andamento": 1,
+        "concluido": 1,
+        "nao_iniciado": 11
       },
       "tarefas": [
         {
@@ -521,22 +656,58 @@
           "segura": 10
         },
         {
+          "cod": "E4.2.5",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Ingestão de dados",
+          "atividade": "INEP",
+          "tarefa": "Ingestão do Censo da Educação Superior (INEP)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E4.2.6",
+          "eixo": 4,
+          "eixo_nome": "Formação",
+          "processo": "Acesso ao dado",
+          "atividade": "SEDAP+",
+          "tarefa": "Viabilizar o acesso aos microdados protegidos do INEP (SEDAP+)",
+          "depende_de": [],
+          "resp": "MinC",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 0
+        },
+        {
           "cod": "E4.2.1",
           "eixo": 4,
           "eixo_nome": "Formação",
           "processo": "Ingestão de dados",
-          "atividade": "Fonte a definir",
-          "tarefa": "Ingestão da fonte de dados do eixo",
+          "atividade": "INEP",
+          "tarefa": "Ingestão do Censo Escolar (INEP, 1995–2025)",
           "depende_de": [
             "E4.1.1"
           ],
           "resp": "UnB",
           "prazo": "",
-          "status": "em_andamento",
+          "status": "concluido",
           "prioridade": "alta",
-          "progresso": 50,
+          "progresso": 100,
           "passo": 1,
-          "travada": true,
+          "travada": false,
           "pronta": false,
           "segura": 6
         },
@@ -596,8 +767,8 @@
           "prioridade": "alta",
           "progresso": 0,
           "passo": 2,
-          "travada": true,
-          "pronta": false,
+          "travada": false,
+          "pronta": true,
           "segura": 5
         },
         {
@@ -726,11 +897,14 @@
     {
       "id": 5,
       "nome": "Infraestrutura, Equipamentos e Espaços Culturais",
-      "total": 1,
-      "concluidas": 0,
-      "progresso": 50.0,
+      "total": 7,
+      "concluidas": 3,
+      "progresso": 53.6,
       "por_status": {
-        "em_andamento": 1
+        "em_andamento": 1,
+        "concluido": 3,
+        "bloqueado": 1,
+        "nao_iniciado": 2
       },
       "tarefas": [
         {
@@ -748,6 +922,122 @@
           "progresso": 50,
           "passo": 0,
           "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E5.2.1",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Ingestão de dados",
+          "atividade": "ANCINE",
+          "tarefa": "Ingestão do cadastro de salas de exibição (ANCINE)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E5.2.2",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Ingestão de dados",
+          "atividade": "IBGE",
+          "tarefa": "Ingestão do CNEFE 2022 (IBGE)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E5.2.3",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Ingestão de dados",
+          "atividade": "IBGE",
+          "tarefa": "Ingestão dos indicadores do SIDRA por agregado (IBGE)",
+          "depende_de": [],
+          "resp": "UnB",
+          "prazo": "2026-11-24",
+          "status": "concluido",
+          "prioridade": "alta",
+          "progresso": 100,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E5.2.4",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Acesso ao dado",
+          "atividade": "BiblioBR",
+          "tarefa": "Liberar o acesso ao cadastro de bibliotecas (BiblioBR/SEFLI)",
+          "depende_de": [],
+          "resp": "MinC",
+          "prazo": "",
+          "status": "bloqueado",
+          "prioridade": "alta",
+          "progresso": 25,
+          "passo": 0,
+          "travada": false,
+          "pronta": false,
+          "segura": 1
+        },
+        {
+          "cod": "E5.2.5",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Ingestão de dados",
+          "atividade": "BiblioBR",
+          "tarefa": "Ingestão do cadastro de bibliotecas (BiblioBR/SEFLI)",
+          "depende_de": [
+            "E5.2.4"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
+          "pronta": false,
+          "segura": 0
+        },
+        {
+          "cod": "E5.3.1",
+          "eixo": 5,
+          "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+          "processo": "Pipeline",
+          "atividade": "Transformação",
+          "tarefa": "Desenvolvimento das Golds do eixo",
+          "depende_de": [
+            "E5.1.1",
+            "E5.2.1",
+            "E5.2.2",
+            "E5.2.3",
+            "E3.2.3"
+          ],
+          "resp": "UnB",
+          "prazo": "",
+          "status": "nao_iniciado",
+          "prioridade": "alta",
+          "progresso": 0,
+          "passo": 1,
+          "travada": true,
           "pronta": false,
           "segura": 0
         }
@@ -1062,6 +1352,15 @@
       "motivo": "bloqueada",
       "prazo": "2026-09-25",
       "resp": "UnB"
+    },
+    {
+      "cod": "E5.2.4",
+      "tarefa": "Liberar o acesso ao cadastro de bibliotecas (BiblioBR/SEFLI)",
+      "eixo": 5,
+      "eixo_nome": "Infraestrutura, Equipamentos e Espaços Culturais",
+      "motivo": "bloqueada",
+      "prazo": "",
+      "resp": "MinC"
     }
   ]
 }
