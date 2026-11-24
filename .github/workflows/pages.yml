@@ -18,16 +18,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  publica:
-    name: Publicar
+  # Artefato e deploy em jobs separados: no mesmo job, o deploy-pages às vezes
+  # consulta o artefato antes de a API o listar ("Found 0 artifact(s)").
+  empacota:
+    name: Empacotar
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       contents: read
-      pages: write
-      id-token: write
+      pages: read
     steps:
       - uses: actions/checkout@v4
 
@@ -37,5 +35,17 @@ jobs:
         with:
           path: .
 
+  publica:
+    name: Publicar
+    needs: empacota
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
