@@ -141,7 +141,7 @@ não é definida contra um fundo que varia.
 | Workflow | O que faz |
 |---|---|
 | `valida.yml` | Roda os testes e verifica a consistência do acervo do TED a cada push. |
-| `sync-planilha.yml` | Baixa a planilha dos eixos, converte e commita. Diariamente às 6h e sob demanda. |
+| `sync-planilha.yml` | Baixa a planilha dos eixos, converte, publica no GitHub Pages e commita o histórico. Diariamente às 6h e sob demanda. |
 | `pages.yml` | Publica no GitHub Pages. |
 
 Para a sincronização funcionar, cadastre o ID da planilha publicada em

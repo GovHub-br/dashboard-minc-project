@@ -23,12 +23,22 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Mesmo grupo do pages.yml: dois deploys do Pages não rodam ao mesmo tempo.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   sincroniza:
-    name: Baixar e converter
+    name: Baixar, converter e publicar
     runs-on: ubuntu-latest
     if: github.actor != 'github-actions[bot]'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -69,8 +79,26 @@ jobs:
         if: steps.config.outputs.configurada == 'true'
         run: python3 -m unittest discover -s tests
 
+      # Publica daqui mesmo, com os dados recém-convertidos. Commit feito com o
+      # GITHUB_TOKEN não dispara o pages.yml, e a main exige PR: sem este passo
+      # a sincronização atualizava os dados e o site continuava com os antigos.
+      - uses: actions/configure-pages@v5
+        if: steps.config.outputs.configurada == 'true'
+
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.config.outputs.configurada == 'true'
+        with:
+          path: .
+
+      - id: deployment
+        if: steps.config.outputs.configurada == 'true'
+        uses: actions/deploy-pages@v4
+
+      # Guarda o histórico no repositório. Se a regra da main recusar o push,
+      # o site já foi publicado; só a série histórica deixa de avançar.
       - name: Commitar se houve mudança
         if: steps.config.outputs.configurada == 'true'
+        continue-on-error: true
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
