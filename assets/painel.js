@@ -351,6 +351,11 @@ function montaProdutos(acervo) {
           <p class="rotulo-bloco">O que foi feito até aqui</p>
           <p class="feito">${ligaDocumentos(p.balanco, acervo)}</p>
 
+          ${p.mudanca_estado ? `
+            <div class="nota mudanca-estado">
+              <strong>Mudança de situação.</strong> ${escapaHtml(p.mudanca_estado)}
+            </div>` : ''}
+
           ${artefatosDoProduto(p, acervo)}
 
           ${enc ? `

@@ -69,6 +69,7 @@
       "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
       "balanco": "Escuta concluída nos oito eixos do Plano: 14 encontros de trabalho em setembro e outubro, além do Datathon do PNC (9 e 10/09). A sistematização dos resultados está no Anexo II (Sistematização das Escutas por Eixo).",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -99,6 +100,7 @@
       "meta_nome": "Diagnóstico, mapeamento de recursos e levantamento de bases de dados",
       "balanco": "Relatório concluído, com a arquitetura atual, os gargalos, as fontes e o diagnóstico por eixo do PNC, no Anexo III. O catálogo das fontes presentes no Data Lakehouse, segunda versão, está no Anexo V.",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": [
         {
           "nome": "Catálogo de fontes de dados",
@@ -132,6 +134,7 @@
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Painéis ainda não construídos. Definido que a visualização usará a mesma estrutura de gráficos da versão digital do Cultura em Números, tendo o portal em Plone como face pública. Os requisitos (eixos, indicadores e ordem de publicação) dependem de definição com o Ministério.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -158,6 +161,7 @@
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Arquitetura de referência do Data Lakehouse aprovada pelo Ministério em outubro e documentada no Anexo I. A plataforma em funcionamento está em transição: Trino e Ranger implantados desde junho de 2026; Iceberg e Polaris pendentes.",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": [
         {
           "nome": "Arquitetura lógica",
@@ -209,6 +213,7 @@
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Entregue: modelo conceitual, lógico e físico (Anexo IV), dicionário de dados (Anexo VII) e catálogo de metadados (Anexo VIII), refeitos para a arquitetura final. O projeto de transformação soma 730 modelos.",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": [
         {
           "nome": "Dicionário de dados",
@@ -254,6 +259,7 @@
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Em andamento, com sugestão de repactuação do prazo para março de 2027. Critérios de qualidade entregues; matriz de papéis, Registro de Atividades de Tratamento (ROPA), relatório de testes e RIPD preliminar em elaboração.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": [
         {
           "nome": "Matriz de papéis e responsabilidades",
@@ -305,6 +311,7 @@
       "meta_nome": "Integração e jornada dos dados do Plano Nacional de Cultura",
       "balanco": "Repositório público, sob licença MIT, com site de documentação, 279 alterações e 88 propostas aprovadas entre setembro e outubro. Faltam marcar a versão de entrega, verificar o histórico em busca de senhas esquecidas e produzir o inventário de componentes.",
       "estado": "Em andamento",
+      "mudanca_estado": "No acompanhamento de setembro, este produto constava como entregue, com base na publicação do repositório sob licença aberta. Com os critérios de fiscalização adotados em outubro (versão de entrega identificada, inventário de componentes e verificação de credenciais no histórico), passou a em andamento até que esses itens estejam cumpridos, dentro do prazo do Plano de Trabalho (fev./2027).",
       "artefatos": [
         {
           "nome": "Documentação dos pipelines",
@@ -340,6 +347,7 @@
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Ranger e Trino implantados no ambiente do Ministério desde 19/06/2026; o Ranger anonimiza na consulta, e as políticas serão refinadas com os perfis de usuários do Ministério.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -362,6 +370,7 @@
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Concluído: arquitetura de referência documentada no Anexo I, com as decisões registradas nos ADRs 0009 a 0012 e 0014 a 0017 do repositório público.",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -384,6 +393,7 @@
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Scripts de implantação e manual de evolução entregues no 3º Relatório. Faltam atualizá-los para a arquitetura final, marcar a versão de entrega e verificar o histórico do repositório.",
       "estado": "Em andamento",
+      "mudanca_estado": "No acompanhamento de setembro, este produto constava como entregue, com base no repositório público, nos scripts de implantação e no manual de evolução. Com a adoção da arquitetura final em outubro, passou a em andamento até que scripts e manual sejam atualizados para ela, dentro do prazo do Plano de Trabalho (mar./2027).",
       "artefatos": [
         {
           "nome": "Scripts de implantação",
@@ -426,6 +436,7 @@
       "meta_nome": "Estratégia de governança, adoção e transferência de tecnologia",
       "balanco": "Não iniciadas; previstas no cronograma para os meses 11 e 12 do TED (início de 2027), com datas e formato a definir com o Ministério.",
       "estado": "Previsto",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -453,6 +464,7 @@
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "TAIS em operação sobre os dados do Ministério e usado no Datathon do PNC (9 e 10/09/2026). Faltam ajustes e a integração das demais bases.",
       "estado": "Em andamento",
+      "mudanca_estado": "No acompanhamento de setembro, este produto constava como entregue, com base no agente operando de ponta a ponta desde agosto. O Termo prevê um conjunto de agentes por área temática, com fontes validadas; hoje há um agente, o TAIS, adaptado aos dados do Ministério em 20/10/2026, e faltam ajustes e a integração das demais bases. Por isso passou a em andamento, dentro do prazo do Plano de Trabalho (jan./2027).",
       "artefatos": []
     },
     {
@@ -475,6 +487,7 @@
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "Modo Indicador do TAIS: responde com as bases usadas, a consulta, a leitura do resultado, um gráfico e um relatório editável; regras de recusa e mascaramento de dados sensíveis em setembro e adaptação aos dados do Ministério em 20/10/2026. Faltam ajustes e a integração das demais bases.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -497,6 +510,7 @@
       "meta_nome": "Desenvolvimento de agentes de IA para acesso qualificado aos dados",
       "balanco": "Documentação técnica do agente no repositório público do TAIS, com os ADRs 0016 a 0019 e página do MinC. Guias, oficinas e livro começam no mês 9 (25/11/2026).",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": [
         {
           "nome": "Manual de uso",
@@ -542,6 +556,7 @@
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Catálogo institucional (OpenMetadata) em operação, com carga agendada no Airflow e sugestões de descrição feitas no próprio catálogo, que viram propostas de alteração revisadas pela equipe. Publicação de dados abertos não iniciada.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -568,6 +583,7 @@
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Em preparação; ainda não realizada (prazo no mês 11 do TED). Os insumos são a Instrução Normativa do Data Lakehouse, em elaboração pela SGE, e o documento de modelagem do SNIIC.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -598,6 +614,7 @@
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Entregue: realizado em 9 e 10/09/2026, no espaço cultural do TCU, com 104 participantes de 35 organizações; relatório no Anexo IX.",
       "estado": "Entregue",
+      "mudanca_estado": "",
       "artefatos": []
     },
     {
@@ -624,6 +641,7 @@
       "meta_nome": "Governança de dados do SNIIC e modelo estratégico de política pública de informação",
       "balanco": "Em elaboração; modelagem do SNIIC construída em reuniões com a SGE desde abril de 2026.",
       "estado": "Em andamento",
+      "mudanca_estado": "No acompanhamento de setembro, este produto constava como entregue, com base na proposta de estrutura construída nas reuniões com a SGE e o Comitê Gestor do SNIIC. O Termo prevê um documento analítico do processo de modelagem, que segue em elaboração. Por isso passou a em andamento, dentro do prazo do Plano de Trabalho (fev./2027).",
       "artefatos": []
     },
     {
@@ -646,6 +664,7 @@
       "meta_nome": "Brasiliana Cultura — catálogo integrado dos acervos culturais do sistema MinC",
       "balanco": "Tainacan Agregador em operação; piloto com a Brasiliana Museus (IBRAM) em coleta desde 28/10/2026, com cerca de 2.400 dos 74.121 itens já agregados em 1º/11. Demais repositórios a cadastrar.",
       "estado": "Em andamento",
+      "mudanca_estado": "",
       "artefatos": []
     }
   ],

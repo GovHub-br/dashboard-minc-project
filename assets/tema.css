@@ -282,6 +282,14 @@ body {
 .nota p { margin: 0 0 8px; }
 .nota p:last-child { margin-bottom: 0; }
 
+/* Na ficha do produto a nota fica junto do texto, sem o respiro de seção. */
+.corpo-produto .mudanca-estado {
+  margin-top: 12px;
+  background: var(--bg-light);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 /* O SVG acompanha a largura do container até este limite. Sem o limite, o
    viewBox seria esticado e as fontes ampliadas junto. */
 #svg-evolucao { max-width: 860px; }

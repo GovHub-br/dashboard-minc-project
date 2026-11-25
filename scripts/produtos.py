@@ -353,6 +353,38 @@ ESTADO = {
 
 ESTADOS_ACEITOS = ("Entregue", "Em andamento", "Previsto", "")
 
+# Produtos que voltaram de "Entregue" (classificação de 22/09/2026, sobre o 3º
+# Relatório) para "Em andamento" na reclassificação sobre o 4º. A página mostra
+# o texto na ficha do produto, para a mudança não parecer regressão sem motivo.
+MUDANCA_ESTADO = {
+    ("02", 5): "No acompanhamento de setembro, este produto constava como "
+               "entregue, com base na publicação do repositório sob licença "
+               "aberta. Com os critérios de fiscalização adotados em outubro "
+               "(versão de entrega identificada, inventário de componentes e "
+               "verificação de credenciais no histórico), passou a em "
+               "andamento até que esses itens estejam cumpridos, dentro do "
+               "prazo do Plano de Trabalho (fev./2027).",
+    ("03", 3): "No acompanhamento de setembro, este produto constava como "
+               "entregue, com base no repositório público, nos scripts de "
+               "implantação e no manual de evolução. Com a adoção da "
+               "arquitetura final em outubro, passou a em andamento até que "
+               "scripts e manual sejam atualizados para ela, dentro do prazo "
+               "do Plano de Trabalho (mar./2027).",
+    ("04", 1): "No acompanhamento de setembro, este produto constava como "
+               "entregue, com base no agente operando de ponta a ponta desde "
+               "agosto. O Termo prevê um conjunto de agentes por área temática, "
+               "com fontes validadas; hoje há um agente, o TAIS, adaptado aos "
+               "dados do Ministério em 20/10/2026, e faltam ajustes e a "
+               "integração das demais bases. Por isso passou a em andamento, "
+               "dentro do prazo do Plano de Trabalho (jan./2027).",
+    ("05", 4): "No acompanhamento de setembro, este produto constava como "
+               "entregue, com base na proposta de estrutura construída nas "
+               "reuniões com a SGE e o Comitê Gestor do SNIIC. O Termo prevê "
+               "um documento analítico do processo de modelagem, que segue em "
+               "elaboração. Por isso passou a em andamento, dentro do prazo do "
+               "Plano de Trabalho (fev./2027).",
+}
+
 
 # artefato do quadro de acompanhamento -> (meta, produto, evidência, nota)
 #
@@ -488,6 +520,7 @@ def monta(artefatos):
             "meta_nome": METAS_TED[p["meta"]],
             "balanco": BALANCO[(p["meta"], p["num"])],
             "estado": ESTADO.get((p["meta"], p["num"]), ""),
+            "mudanca_estado": MUDANCA_ESTADO.get((p["meta"], p["num"]), ""),
             "artefatos": por_produto.get((p["meta"], p["num"]), []),
         })
 
