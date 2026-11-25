@@ -2873,6 +2873,59 @@
           "total": 1
         }
       ]
+    },
+    {
+      "data": "2026-11-25",
+      "total": 61,
+      "por_status": {
+        "concluido": 20,
+        "em_andamento": 10,
+        "nao_iniciado": 28,
+        "bloqueado": 3
+      },
+      "progresso_medio": 42.2,
+      "por_eixo": [
+        {
+          "id": 1,
+          "progresso": 78.6,
+          "total": 14
+        },
+        {
+          "id": 2,
+          "progresso": 50.0,
+          "total": 7
+        },
+        {
+          "id": 3,
+          "progresso": 64.3,
+          "total": 7
+        },
+        {
+          "id": 4,
+          "progresso": 11.5,
+          "total": 13
+        },
+        {
+          "id": 5,
+          "progresso": 53.6,
+          "total": 7
+        },
+        {
+          "id": 6,
+          "progresso": 4.5,
+          "total": 11
+        },
+        {
+          "id": 7,
+          "progresso": 50.0,
+          "total": 1
+        },
+        {
+          "id": 8,
+          "progresso": 50.0,
+          "total": 1
+        }
+      ]
     }
   ]
 }
